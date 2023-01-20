@@ -143,33 +143,33 @@ in
   # services.xserver.libinput.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.meeri = {
-    isNormalUser = true;
-    description = "Max Meijer";
-    extraGroups = [ "networkmanager" "wheel" "libvirtd" ];
-    packages = with pkgs; [
-      firefox
-      kate
-    #  thunderbird
-    ];
+  users.users = {
+    ${mainUser} = {
+      isNormalUser = true;
+      description = "Max Meijer";
+      extraGroups = [ "networkmanager" "wheel" "libvirtd" ];
+    };
+    ${workUser} = {
+      isNormalUser = true;
+      description = "MYP";
+      extraGroups = [ "networkmanager" "wheel" "libvirtd" ];
+      initialPassword = "password";
+    };
   };
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
-  environment.systemPackages = let 
-    myPythonPackages = pythonPackages: with pythonPackages; [
-      dbus-python
-    ]; 
-  in with pkgs; [
-    (python3.withPackages myPythonPackages)
-    # all other non-Python packages
-    vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-  #  wget
+  environment.systemPackages = with pkgs; [
+    vim
+    wget
     git
+    firefox
+    kate
     discord
     vscode
     nodejs
+    python3
     vlc
     libreoffice-qt
     openssl
@@ -226,9 +226,12 @@ in
     })
   ];
 
-  #home-manager.users.${mainUser} = { pkgs, ... }: {
-  #  
-  #}
-
+  home-manager.users.${workUser} = { pkgs, ... }: {
+    nixpkgs.config.allowUnfree = true;
+    home.packages = with pkgs; [
+      android-studio
+    ];
+    home.stateVersion = "22.11";
+  };
 
 }
