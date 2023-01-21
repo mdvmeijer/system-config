@@ -12,7 +12,7 @@ in
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
-      <home-manager/nixos>
+      #<home-manager/nixos>
     ];
 
   # Bootloader.
@@ -66,7 +66,7 @@ in
   networking.networkmanager.wifi.backend = "iwd";
   services.connman.wifi.backend = "iwd"; # maybe can be removed?
 
-  environment.etc."vimrc".source = /home/meeri/.vimrc;
+  #environment.etc."vimrc".source = /home/meeri/.vimrc;
 
   fonts.fonts = with pkgs; [
     iosevka
@@ -176,6 +176,7 @@ in
     ffmpeg
     alacritty
     kdeconnect
+    htop
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -221,6 +222,7 @@ in
         _: { src = builtins.fetchTarball {
           url =
           "https://discord.com/api/download?platform=linux&format=tar.gz";
+          sha256 = "087p8z538cyfa9phd4nvzjrvx4s9952jz1azb2k8g6pggh1vxwm8";
         }; }
       );
     })
@@ -232,6 +234,11 @@ in
       android-studio
     ];
     home.stateVersion = "22.11";
+  };
+
+  nix = {
+    package = pkgs.nixFlakes;
+    extraOptions = "experimental-features = nix-command flakes";
   };
 
 }
