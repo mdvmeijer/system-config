@@ -49,6 +49,12 @@ in
   # services.power-profiles-daemon.enable = false;
   # services.tlp.enable = true;
 
+  services.locate = {
+    enable = true;
+    locate = pkgs.mlocate;
+    interval = "daily";
+  };
+
   hardware.opengl = {
     enable = true;
     extraPackages = with pkgs; [
@@ -65,6 +71,11 @@ in
   networking.wireless.iwd.enable = true;
   networking.networkmanager.wifi.backend = "iwd";
   services.connman.wifi.backend = "iwd"; # maybe can be removed?
+
+  # mullvad
+  networking.firewall.checkReversePath = "loose";
+  networking.wireguard.enable = true;
+  services.mullvad-vpn.enable = true;
 
   #environment.etc."vimrc".source = /home/meeri/.vimrc;
 
@@ -147,7 +158,7 @@ in
     ${mainUser} = {
       isNormalUser = true;
       description = "Max Meijer";
-      extraGroups = [ "networkmanager" "wheel" "libvirtd" ];
+      extraGroups = [ "networkmanager" "wheel" "libvirtd" "mlocate" ];
     };
     ${workUser} = {
       isNormalUser = true;
@@ -177,7 +188,14 @@ in
     alacritty
     kdeconnect
     htop
+    qbittorrent
+    dotnet-sdk # for dafny course
+    mlocate
   ];
+
+  environment.sessionVariables = {
+    DOTNET_ROOT = "${pkgs.dotnet-sdk}";
+  };
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
