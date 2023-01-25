@@ -22,7 +22,7 @@
         meeri = lib.nixosSystem {
           inherit system;
           modules = [ 
-            ./modules/configuration.nix
+            ./nixos-modules/configuration.nix
 
             home-manager.nixosModules.home-manager {
               home-manager.useGlobalPkgs = true;
