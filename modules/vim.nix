@@ -6,9 +6,9 @@
   environment.systemPackages = with pkgs; [
       (pkgs.vim_configurable.customize {
         name = "vim";
-        #vimrcConfig.packages.myplugins = with pkgs.vimPlugins; {
-        #  start = [ vim-autoclose ]; # vim-autoclose is not packaged
-        #};
+        vimrcConfig.packages.myplugins = with pkgs.vimPlugins; {
+          start = [ delimitMate ]; # vim-autoclose is not packaged
+        };
         vimrcConfig.customRC = ''
           " GENERAL BEHAVIOR ---------------------------------------------------------------- {{{
 
