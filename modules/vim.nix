@@ -15,6 +15,9 @@
           " Disable compatibility with vi which can cause unexpected issues.
           set nocompatible
 
+          " Backspace did not work by default on NixOS with vim_configurable
+          set backspace=indent,eol,start
+
           " Enable type file detection. Vim will be able to try to detect the type of file in use.
           filetype on
 
