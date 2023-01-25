@@ -12,6 +12,7 @@ in
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
+      ./vim.nix
       #<home-manager/nixos>
     ];
 
@@ -42,8 +43,6 @@ in
     enable = true;
     clock24 = true;
   };
-
-  programs.vim.defaultEditor = true;
 
   services.thermald.enable = true;
   # services.power-profiles-daemon.enable = false;
@@ -172,7 +171,6 @@ in
   nixpkgs.config.allowUnfree = true;
 
   environment.systemPackages = with pkgs; [
-    vim
     wget
     git
     firefox
