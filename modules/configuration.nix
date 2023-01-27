@@ -189,6 +189,7 @@ in
     qbittorrent
     dotnet-sdk # for dafny course
     mlocate
+    rofi
   ];
 
   environment.sessionVariables = {
