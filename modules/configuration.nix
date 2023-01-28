@@ -29,6 +29,7 @@ in
   ##### edited by meeri
   boot.kernelPackages = pkgs.linuxPackages_latest;
   boot.kernelParams = [ "module_blacklist=hid_sensor_hub" ];
+  boot.supportedFilesystems = [ "ntfs" ];
   hardware.bluetooth.enable = true;
 
   programs.steam = {
@@ -190,6 +191,13 @@ in
     dotnet-sdk # for dafny course
     mlocate
     rofi
+    chromium
+    unzip
+    powertop
+    easyeffects
+    virt-manager
+    yakuake
+    # kamoso (using nix-env atm) 
   ];
 
   environment.sessionVariables = {
