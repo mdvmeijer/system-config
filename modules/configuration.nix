@@ -198,6 +198,7 @@ in
     virt-manager
     yakuake
     # kamoso (using nix-env atm) 
+    killall
   ];
 
   environment.sessionVariables = {
