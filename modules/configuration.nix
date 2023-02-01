@@ -53,6 +53,8 @@ in
     enable = true;
     locate = pkgs.mlocate;
     interval = "daily";
+    # warning: mlocate and plocate do not support the services.locate.localuser option. updatedb will run as root. Silence this warning by setting services.locate.localuser = null
+    localuser = null;
   };
 
   hardware.opengl = {
@@ -159,6 +161,7 @@ in
       isNormalUser = true;
       description = "Max Meijer";
       extraGroups = [ "networkmanager" "wheel" "libvirtd" "mlocate" ];
+      initialPassword = "password";
     };
     ${workUser} = {
       isNormalUser = true;
