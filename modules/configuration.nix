@@ -203,6 +203,7 @@ in
     yakuake
     # kamoso (using nix-env atm) 
     killall
+    google-chrome
   ];
 
   environment.sessionVariables = {
@@ -263,6 +264,13 @@ in
     home.packages = with pkgs; [
       android-studio
     ];
+    home.stateVersion = "22.11";
+  };
+
+  home-manager.users.${mainUser} = { pkgs, ... }: {
+    home.file.".bash_aliases".source = "/home/meeri/config-sync/.bash_aliases";
+    home.file.".bashrc".source = "/home/meeri/config-sync/.bashrc";
+    home.file.".tmux.conf".source = "/home/meeri/config-sync/.tmux.conf";
     home.stateVersion = "22.11";
   };
 
