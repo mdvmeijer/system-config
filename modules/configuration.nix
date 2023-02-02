@@ -13,6 +13,7 @@ in
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
       ./vim.nix
+      ./python.nix
       #<home-manager/nixos>
     ];
 
@@ -49,6 +50,19 @@ in
   powerManagement.powertop.enable = true;
   # services.power-profiles-daemon.enable = false;
   # services.tlp.enable = true;
+
+  # systemd.services.fw-fanctrl = {
+  #   enable = true;
+  #   description = "Framework fan controller";
+  #   after = [ "multi-user.target" ];
+  #   wantedBy = [ "multi-user.target" ];
+  #   unitConfig = {
+  #     Type = "simple";
+  #   };
+  #   serviceConfig = {
+  #     ExecStart = "/run/current-system/sw/bin/python3 /home/meeri/bin/fw-fanctrl --config /home/meeri/.config/fw-fanctrl/config.json --no-log";
+  #   };
+  # };
 
   services.locate = {
     enable = true;
@@ -183,7 +197,6 @@ in
     discord
     vscode
     nodejs
-    python3
     vlc
     libreoffice-qt
     openssl
@@ -204,6 +217,8 @@ in
     # kamoso (using nix-env atm) 
     killall
     google-chrome
+    lm_sensors
+    (import /home/meeri/framework/fw-ectool/default.nix)
   ];
 
   environment.sessionVariables = {
