@@ -41,6 +41,8 @@
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 
   ##### 12th gen Framework stuff #####
+
+  services.xserver.videoDrivers = [ "modesetting" ];
   boot.kernelParams = [
     # Workaround iGPU hangs
     # https://discourse.nixos.org/t/intel-12th-gen-igpu-freezes/21768/4
