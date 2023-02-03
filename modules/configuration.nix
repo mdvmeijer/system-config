@@ -85,6 +85,7 @@ in
   };
 
   virtualisation.libvirtd.enable = true;
+  virtualisation.spiceUSBRedirection.enable = true;
 
   # make sure eduroam works
   networking.wireless.iwd.enable = true;
@@ -177,13 +178,13 @@ in
     ${mainUser} = {
       isNormalUser = true;
       description = "Max Meijer";
-      extraGroups = [ "networkmanager" "wheel" "libvirtd" "mlocate" ];
+      extraGroups = [ "networkmanager" "wheel" "libvirtd" "kvm" "mlocate" ];
       initialPassword = "password";
     };
     ${workUser} = {
       isNormalUser = true;
       description = "MYP";
-      extraGroups = [ "networkmanager" "wheel" "libvirtd" "mlocate" ];
+      extraGroups = [ "networkmanager" "wheel" "libvirtd" "kvm" "mlocate" ];
       initialPassword = "password";
     };
   };
@@ -213,13 +214,17 @@ in
     unzip
     powertop
     easyeffects
+
+    # TODO: include in virtualization module
     virt-manager
+
     yakuake
     # kamoso (using nix-env atm) 
     killall
     google-chrome
     lm_sensors
     (import /home/meeri/framework/fw-ectool/default.nix)
+    galaxy-buds-client
   ];
 
   environment.sessionVariables = {
