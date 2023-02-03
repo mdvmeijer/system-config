@@ -286,6 +286,7 @@ in
     home.file.".bash_aliases".source = "/home/meeri/config-sync/.bash_aliases";
     home.file.".bashrc".source = "/home/meeri/config-sync/.bashrc";
     home.file.".tmux.conf".source = "/home/meeri/config-sync/.tmux.conf";
+    home.file.".alacritty.yml".source = "/home/meeri/config-sync/.alacritty.yml";
   };
 
   home-manager.users.${mainUser} = { pkgs, ... }: {
@@ -294,6 +295,7 @@ in
     home.file.".bash_aliases".source = "/home/meeri/config-sync/.bash_aliases";
     home.file.".bashrc".source = "/home/meeri/config-sync/.bashrc";
     home.file.".tmux.conf".source = "/home/meeri/config-sync/.tmux.conf";
+    home.file.".alacritty.yml".source = "/home/meeri/config-sync/.alacritty.yml";
   };
 
   nix = {
