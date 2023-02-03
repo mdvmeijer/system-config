@@ -183,7 +183,7 @@ in
     ${workUser} = {
       isNormalUser = true;
       description = "MYP";
-      extraGroups = [ "networkmanager" "wheel" "libvirtd" ];
+      extraGroups = [ "networkmanager" "wheel" "libvirtd" "mlocate" ];
       initialPassword = "password";
     };
   };
@@ -284,19 +284,19 @@ in
       slack
     ];
 
-    home.file.".bash_aliases".source = "/home/meeri/config-sync/.bash_aliases";
-    home.file.".bashrc".source = "/home/meeri/config-sync/.bashrc";
-    home.file.".tmux.conf".source = "/home/meeri/config-sync/.tmux.conf";
-    home.file.".alacritty.yml".source = "/home/meeri/config-sync/.alacritty.yml";
+    home.file.".bash_aliases".source = "/home/meeri/.system-config/legacy-configs/.bash_aliases";
+    home.file.".bashrc".source = "/home/meeri/.system-config/legacy-configs/.bashrc";
+    home.file.".tmux.conf".source = "/home/meeri/.system-config/legacy-configs/.tmux.conf";
+    home.file.".alacritty.yml".source = "/home/meeri/.system-config/legacy-configs/.alacritty.yml";
   };
 
   home-manager.users.${mainUser} = { pkgs, ... }: {
     home.stateVersion = "22.11";
 
-    home.file.".bash_aliases".source = "/home/meeri/config-sync/.bash_aliases";
-    home.file.".bashrc".source = "/home/meeri/config-sync/.bashrc";
-    home.file.".tmux.conf".source = "/home/meeri/config-sync/.tmux.conf";
-    home.file.".alacritty.yml".source = "/home/meeri/config-sync/.alacritty.yml";
+    home.file.".bash_aliases".source = "/home/meeri/.system-config/legacy-configs/.bash_aliases";
+    home.file.".bashrc".source = "/home/meeri/.system-config/legacy-configs/.bashrc";
+    home.file.".tmux.conf".source = "/home/meeri/.system-config/legacy-configs/.tmux.conf";
+    home.file.".alacritty.yml".source = "/home/meeri/.system-config/legacy-configs/.alacritty.yml";
   };
 
   nix = {
