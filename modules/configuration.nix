@@ -281,6 +281,7 @@ in
 
     home.packages = with pkgs; [
       android-studio
+      slack
     ];
 
     home.file.".bash_aliases".source = "/home/meeri/config-sync/.bash_aliases";
