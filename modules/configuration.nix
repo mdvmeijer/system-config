@@ -14,6 +14,7 @@ in
       ./hardware-configuration.nix
       ./vim.nix
       ./python.nix
+      ./vscode.nix
       #<home-manager/nixos>
     ];
 
@@ -54,13 +55,14 @@ in
   # systemd.services.fw-fanctrl = {
   #   enable = true;
   #   description = "Framework fan controller";
-  #   after = [ "multi-user.target" ];
-  #   wantedBy = [ "multi-user.target" ];
+  #   after = [ "default.target" ];
+  #   wantedBy = [ "default.target" ];
   #   unitConfig = {
   #     Type = "simple";
   #   };
   #   serviceConfig = {
-  #     ExecStart = "/run/current-system/sw/bin/python3 /home/meeri/bin/fw-fanctrl --config /home/meeri/.config/fw-fanctrl/config.json --no-log";
+  #     # ExecStart = "${pkgs.python3}/bin/python3 /home/meeri/bin/fw-fanctrl --config /home/meeri/.config/fw-fanctrl/config.json --no-log";
+  #     ExecStart = "${pkgs.bash}/bin/bash /home/meeri/bin/fw-fanctrl-autostart";
   #   };
   # };
 
@@ -195,7 +197,6 @@ in
     firefox
     kate
     discord
-    vscode
     nodejs
     vlc
     libreoffice-qt
@@ -275,18 +276,24 @@ in
   ];
 
   home-manager.users.${workUser} = { pkgs, ... }: {
+    home.stateVersion = "22.11";
     nixpkgs.config.allowUnfree = true;
+
     home.packages = with pkgs; [
       android-studio
     ];
-    home.stateVersion = "22.11";
-  };
 
-  home-manager.users.${mainUser} = { pkgs, ... }: {
     home.file.".bash_aliases".source = "/home/meeri/config-sync/.bash_aliases";
     home.file.".bashrc".source = "/home/meeri/config-sync/.bashrc";
     home.file.".tmux.conf".source = "/home/meeri/config-sync/.tmux.conf";
+  };
+
+  home-manager.users.${mainUser} = { pkgs, ... }: {
     home.stateVersion = "22.11";
+
+    home.file.".bash_aliases".source = "/home/meeri/config-sync/.bash_aliases";
+    home.file.".bashrc".source = "/home/meeri/config-sync/.bashrc";
+    home.file.".tmux.conf".source = "/home/meeri/config-sync/.tmux.conf";
   };
 
   nix = {
