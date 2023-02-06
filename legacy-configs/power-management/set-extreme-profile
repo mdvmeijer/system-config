@@ -1,0 +1,21 @@
+#! /usr/bin/env bash
+
+# Extreme/uncapped profile for use with Framework laptop (Intel i5-1240p)
+# Tested with fw-fanctrl on 'medium' profile, but I'd recommend using the 'agile' profile instead
+#
+# Main usecase: very good performance, but make sure no one else is around, or you'll deafen them.
+#               ...and you should bring some noise-cancelling headphones for yourself
+# - not recommended for use on battery
+# - all the fan noise
+# - very responsive
+
+# 4.4GHz clock speed limit
+cpupower --cpu all frequency-set --max 4.4GHz
+
+# 30W PL1
+echo 30000000 | tee /sys/class/powercap/intel-rapl/intel-rapl\:0/constraint_0_power_limit_uw
+
+# 60W PL2
+# Note: FW laptop needs to be plugged in to a >=60W charger for it to be able to feed more than 30W to the CPU.
+# This limit is enforced/managed by the EC (Embedded Controller)
+echo 60000000 | tee /sys/class/powercap/intel-rapl/intel-rapl\:0/constraint_1_power_limit_uw

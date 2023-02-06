@@ -1,0 +1,18 @@
+#! /usr/bin/env bash
+
+# Performance profile for use with Framework laptop (Intel i5-1240p)
+# Tested with fw-fanctrl on 'medium' profile
+#
+# Main usecase: good performance with audible fan noise
+# - not recommended for use on battery
+# - more fan noise
+# - responsive
+
+# 3.5GHz clock speed limit
+cpupower --cpu all frequency-set --max 3.5GHz
+
+# 17W PL1
+echo 17000000 | tee /sys/class/powercap/intel-rapl/intel-rapl\:0/constraint_0_power_limit_uw
+
+# 25W PL2
+echo 25000000 | tee /sys/class/powercap/intel-rapl/intel-rapl\:0/constraint_1_power_limit_uw

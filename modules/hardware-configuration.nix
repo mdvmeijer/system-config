@@ -44,11 +44,11 @@
 
   services.xserver.videoDrivers = [ "modesetting" ];
   boot.kernelParams = [
-    # Workaround iGPU hangs
+    # disabling psr (panel self-refresh rate) as workaround for iGPU hangs
     # https://discourse.nixos.org/t/intel-12th-gen-igpu-freezes/21768/4
     # NOTE: Instead of setting the option to 1 as in the linked forum topic,
     # setting it to 0 in combination with the 'modesetting' driver seems to fix the problem for me.
-    "i915.enable_psr=0"
+    "i915.enable_psr=1"
   ];
 
   # For fingerprint support

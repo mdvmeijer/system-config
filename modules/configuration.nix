@@ -48,9 +48,32 @@ in
   };
 
   services.thermald.enable = true;
-  powerManagement.powertop.enable = true;
-  # services.power-profiles-daemon.enable = false;
-  # services.tlp.enable = true;
+
+  # powertop --auto-tune and ppd conflict with tlp
+  powerManagement.powertop.enable = false;
+  services.power-profiles-daemon.enable = false;
+
+  # services.auto-cpufreq.enable = true;
+
+  services.tlp.enable = false;
+  services.tlp.settings = {
+    # https://community.frame.work/t/guide-linux-battery-life-tuning/6665/204
+    INTEL_GPU_MIN_FREQ_ON_AC=100;
+    INTEL_GPU_MIN_FREQ_ON_BAT=100;
+    INTEL_GPU_MAX_FREQ_ON_AC=1300;
+    INTEL_GPU_MAX_FREQ_ON_BAT=450;
+    INTEL_GPU_BOOST_FREQ_ON_AC=1300;
+    INTEL_GPU_BOOST_FREQ_ON_BAT=450;
+
+    # instead of this, manually set RAPL values
+    CPU_ENERGY_PERF_POLICY_ON_AC="balance-performance";
+    CPU_ENERGY_PERF_POLICY_ON_BAT="balance-performance";
+
+    PCIE_ASPM_ON_BAT="powersupersave";
+
+    # Do not suspend USB devices
+    # USB_AUTOSUSPEND=0;
+  };
 
   # systemd.services.fw-fanctrl = {
   #   enable = true;
@@ -74,6 +97,10 @@ in
     localuser = null;
   };
 
+  nixpkgs.config.packageOverrides = pkgs: {
+    vaapiIntel = pkgs.vaapiIntel.override { enableHybridCodec = true; };
+  };
+
   hardware.opengl = {
     enable = true;
     extraPackages = with pkgs; [
@@ -81,6 +108,7 @@ in
       vaapiIntel
       vaapiVdpau
       libvdpau-va-gl
+      #mesa_drivers
     ];
   };
 
@@ -225,6 +253,8 @@ in
     lm_sensors
     (import /home/meeri/framework/fw-ectool/default.nix)
     galaxy-buds-client
+
+    intel-gpu-tools  # for verifying HW acceleration with intel_gpu_top
   ];
 
   environment.sessionVariables = {
