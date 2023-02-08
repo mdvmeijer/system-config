@@ -9,6 +9,9 @@ alias conf="cd ~/.system-config"
 
 alias ll="ls -lah"
 
+alias locate="locate -i" # ignore case
+
+
 alias nixos-rebuild="sudo nixos-rebuild switch --flake ~/.system-config#meeri --impure"
 
 alias edit-nixos-conf="vim ~/.system-config/modules/configuration.nix"
