@@ -42,15 +42,15 @@ in
   hardware.pulseaudio.enable = false;
   security.rtkit.enable = true;
 
-  nixpkgs.config.packageOverrides = pkgs: {
-    vaapiIntel = pkgs.vaapiIntel.override { enableHybridCodec = true; };
-  };
+#   nixpkgs.config.packageOverrides = pkgs: {
+#     vaapiIntel = pkgs.vaapiIntel.override { enableHybridCodec = true; };
+#   };
 
   hardware.opengl = {
     enable = true;
     extraPackages = with pkgs; [
       intel-media-driver
-      vaapiIntel
+      # vaapiIntel
       vaapiVdpau
       libvdpau-va-gl
       #mesa_drivers
@@ -103,6 +103,8 @@ in
 
 
   ############# Services ##############
+
+  services.fstrim.enable = true;
 
   services.thermald.enable = true;
 
@@ -236,6 +238,10 @@ in
   home-manager.users.${mainUser} = { pkgs, ... }: {
     home.stateVersion = "22.11";
 
+    home.packages = with pkgs; [
+      lutris
+    ];
+
     home.file.".bash_aliases".source = "/home/meeri/.system-config/legacy-configs/.bash_aliases";
     home.file.".bashrc".source = "/home/meeri/.system-config/legacy-configs/.bashrc";
     home.file.".tmux.conf".source = "/home/meeri/.system-config/legacy-configs/.tmux.conf";
@@ -296,6 +302,7 @@ in
 
     intel-gpu-tools  # for verifying HW acceleration with intel_gpu_top
     spotify
+    smartmontools
   ];
 
   programs.steam = {
