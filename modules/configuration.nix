@@ -324,6 +324,8 @@ in
     home.packages = with pkgs; [
       android-studio
       slack
+      yubikey-manager-qt
+      yubikey-manager
     ];
 
     home.file.".bash_aliases".source = "/home/meeri/.system-config/legacy-configs/.bash_aliases";
