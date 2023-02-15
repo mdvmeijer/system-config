@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
+{ config, pkgs, inputs, ... }:
 
 let
   mainUser="meeri";
@@ -76,6 +76,9 @@ in
     LC_TIME = "nl_NL.UTF-8";
   };
 
+  # https://www.nixos.wiki/wiki/Lutris
+  # hardware.opengl.driSupport32Bit = true;
+
   ######## /Core system stuff ########
 
 
@@ -103,6 +106,41 @@ in
 
 
   ############# Services ##############
+  
+  # https://www.reddit.com/r/NixOS/comments/rkwnj3/comment/hpcps99/
+  # https://discourse.nixos.org/t/start-python-script-from-systemd-unit/4520/3
+  systemd.services.fw-fanctrl = let
+    python = pkgs.python3.withPackages (ps: with ps; [ watchdog ]);
+    script = /etc/fw-fanctrl/fw-fanctrl; # Note this is a path, not a string
+    config = /etc/fw-fanctrl/config.json;
+  in {
+    serviceConfig = {
+      ExecStart = "${python.interpreter} ${script} --config ${config} --no-log";
+    };
+    enable = true;
+    description = "Framework fan controller";
+    wantedBy = [ "multi-user.target" ];
+    after = [ "multi-user.target" ];
+    serviceConfig = {
+      Type = "simple";
+      Restart = "always";
+    };
+  };
+
+  systemd.services.fw-power-profile = let
+    command = /home/meeri/.system-config/legacy-configs/power-management/set-balanced-profile; # Note this is a path, not a string
+  in {
+    serviceConfig = {
+      ExecStart = "${pkgs.bash}/bin/bash ${command}";
+    };
+    enable = true;
+    description = "Sets CPU power profile";
+    wantedBy = [ "multi-user.target" ];
+    after = [ "multi-user.target" ];
+    serviceConfig = {
+      Type = "oneshot";
+    };
+  };
 
   services.fstrim.enable = true;
 
@@ -125,8 +163,8 @@ in
     INTEL_GPU_BOOST_FREQ_ON_BAT=450;
 
     # instead of this, manually set RAPL values
-    CPU_ENERGY_PERF_POLICY_ON_AC="balance-performance";
-    CPU_ENERGY_PERF_POLICY_ON_BAT="balance-performance";
+    #CPU_ENERGY_PERF_POLICY_ON_AC="balance-performance";
+    #CPU_ENERGY_PERF_POLICY_ON_BAT="balance-performance";
 
     PCIE_ASPM_ON_BAT="powersupersave";
 
@@ -134,19 +172,6 @@ in
     # USB_AUTOSUSPEND=0;
   };
 
-  # systemd.services.fw-fanctrl = {
-  #   enable = true;
-  #   description = "Framework fan controller";
-  #   after = [ "default.target" ];
-  #   wantedBy = [ "default.target" ];
-  #   unitConfig = {
-  #     Type = "simple";
-  #   };
-  #   serviceConfig = {
-  #     # ExecStart = "${pkgs.python3}/bin/python3 /home/meeri/bin/fw-fanctrl --config /home/meeri/.config/fw-fanctrl/config.json --no-log";
-  #     ExecStart = "${pkgs.bash}/bin/bash /home/meeri/bin/fw-fanctrl-autostart";
-  #   };
-  # };
 
   # Enable the X11 windowing system.
   services.xserver.enable = true;
@@ -193,6 +218,7 @@ in
 
   # make sure eduroam works
   networking.wireless.iwd.enable = true;
+  networking.wireless.enable = false;
   networking.networkmanager.wifi.backend = "iwd";
   services.connman.wifi.backend = "iwd"; # maybe can be removed?
 
@@ -238,9 +264,52 @@ in
   home-manager.users.${mainUser} = { pkgs, ... }: {
     home.stateVersion = "22.11";
 
+    # construct a list from the output attrset
     home.packages = with pkgs; [
       lutris
+      legendary-gl
     ];
+    #++ builtins.attrValues (inputs.nix-gaming.lib.legendaryBuilder
+    #  {
+    #    inherit (pkgs) system;
+
+    #    games = {
+    #      rocket-league = {
+    #        # find names with `legendary list`
+    #        desktopName = "Rocket League";
+
+    #        # find out on lutris/winedb/protondb
+    #        tricks = ["dxvk" "win10"];
+
+    #        # google "<game name> logo"
+    #        icon = builtins.fetchurl {
+    #          # original url = "https://www.pngkey.com/png/full/16-160666_rocket-league-png.png";
+    #          url = "https://user-images.githubusercontent.com/36706276/203341314-eaaa0659-9b79-4f40-8b4a-9bc1f2b17e45.png";
+    #          name = "rocket-league.png";
+    #          sha256 = "0a9ayr3vwsmljy7dpf8wgichsbj4i4wrmd8awv2hffab82fz4ykb";
+    #        };
+
+    #        # if you don't want winediscordipcbridge running for this game
+    #        discordIntegration = false;
+    #        # if you dont' want to launch the game using gamemode
+    #        gamemodeIntegration = false;
+
+    #        preCommands = ''
+    #          echo "the game will start!"
+    #        '';
+
+    #        postCommands = ''
+    #          echo "the game has stopped!"
+    #        '';
+    #      };
+    #    };
+
+    #    opts = {
+    #      # same options as above can be provided here, and will be applied to all games
+    #      # NOTE: game-specific options take precedence
+    #      wine = inputs.nix-gaming.packages.${pkgs.system}.wine-tkg;
+    #    };
+    #  });
 
     home.file.".bash_aliases".source = "/home/meeri/.system-config/legacy-configs/.bash_aliases";
     home.file.".bashrc".source = "/home/meeri/.system-config/legacy-configs/.bashrc";
@@ -347,6 +416,12 @@ in
   nix = {
     package = pkgs.nixFlakes;
     extraOptions = "experimental-features = nix-command flakes";
+
+    # cachix for nixos-gaming
+    settings = {
+      substituters = [ "https://nix-gaming.cachix.org" ];
+      trusted-public-keys = [ "nix-gaming.cachix.org-1:nbjlureqMbRAxR1gJ/f3hxemL9svXaZF/Ees8vCUUs4=" ];
+    };
   };
 
   # This value determines the NixOS release from which the default

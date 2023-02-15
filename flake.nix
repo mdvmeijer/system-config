@@ -7,9 +7,11 @@
       url = "github:nix-community/home-manager/release-22.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    nix-gaming.url = "github:fufexan/nix-gaming";
   };
 
-  outputs = { self, nixpkgs, home-manager }:
+  outputs = inputs@{ self, nixpkgs, home-manager, nix-gaming }:
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs {
@@ -21,6 +23,7 @@
       nixosConfigurations = {
         meeri = lib.nixosSystem {
           inherit system;
+          specialArgs = { inherit inputs; };
           modules = [ 
             ./modules/configuration.nix
 

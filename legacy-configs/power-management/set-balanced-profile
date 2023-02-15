@@ -9,7 +9,7 @@
 # - fairly responsive
 
 # 3.3GHz clock speed limit
-cpupower --cpu all frequency-set --max 3.3GHz
+/run/current-system/sw/bin/cpupower --cpu all frequency-set --max 3.3GHz
 
 # 12W PL1
 echo 12000000 | tee /sys/class/powercap/intel-rapl/intel-rapl\:0/constraint_0_power_limit_uw
