@@ -374,6 +374,8 @@ in
     intel-gpu-tools  # for verifying HW acceleration with intel_gpu_top
     spotify
     smartmontools
+    bat
+    obsidian
   ];
 
   programs.steam = {
