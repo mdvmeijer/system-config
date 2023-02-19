@@ -55,7 +55,7 @@ in
       # vaapiIntel
       vaapiVdpau
       libvdpau-va-gl
-      #mesa_drivers
+      # mesa_drivers
     ];
   };
 
@@ -154,7 +154,7 @@ in
 
   # services.auto-cpufreq.enable = true;
 
-  services.tlp.enable = false;
+  services.tlp.enable = true;
   services.tlp.settings = {
     # https://community.frame.work/t/guide-linux-battery-life-tuning/6665/204
     INTEL_GPU_MIN_FREQ_ON_AC=100;
@@ -171,7 +171,8 @@ in
     PCIE_ASPM_ON_BAT="powersupersave";
 
     # Do not suspend USB devices
-    # USB_AUTOSUSPEND=0;
+    # setting this option randomly disables my network card
+    USB_AUTOSUSPEND=0;
   };
 
 
@@ -328,6 +329,7 @@ in
       slack
       yubikey-manager-qt
       yubikey-manager
+      jetbrains.rider
     ];
 
     home.file.".bash_aliases".source = ./. + "${dotfiles}/.bash_aliases";
