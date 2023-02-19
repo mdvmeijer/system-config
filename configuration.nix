@@ -20,6 +20,7 @@ in
       (./. + "${modules}/python.nix")
       (./. + "${modules}/vscode.nix")
       (./. + "${modules}/mullvad-vpn.nix")
+      (./. + "${modules}/gaming.nix")
     ];
 
   ######### Core system stuff #########
@@ -159,11 +160,6 @@ in
   home-manager.users.${mainUser} = { pkgs, ... }: {
     home.stateVersion = "22.11";
 
-    home.packages = with pkgs; [
-      lutris
-      legendary-gl
-    ];
-
     home.file.".bash_aliases".source = ./. + "${dotfiles}/.bash_aliases";
     home.file.".bashrc".source = ./. + "${dotfiles}/.bashrc";
     home.file.".tmux.conf".source = ./. + "${dotfiles}/.tmux.conf";
@@ -227,12 +223,6 @@ in
     bat
     obsidian
   ];
-
-  programs.steam = {
-    enable = true;
-    remotePlay.openFirewall = true;
-    dedicatedServer.openFirewall = true;
-  };
 
   programs.dconf.enable = true;
 
