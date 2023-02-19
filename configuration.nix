@@ -13,7 +13,7 @@ let
 in
 {
   imports =
-    [ # Include the results of the hardware scan.
+    [
       (./. + "${modules}/hardware-configuration.nix")
       (./. + "${modules}/vim.nix")
       (./. + "${modules}/python.nix")
@@ -44,18 +44,12 @@ in
   hardware.pulseaudio.enable = false;
   security.rtkit.enable = true;
 
-#   nixpkgs.config.packageOverrides = pkgs: {
-#     vaapiIntel = pkgs.vaapiIntel.override { enableHybridCodec = true; };
-#   };
-
   hardware.opengl = {
     enable = true;
     extraPackages = with pkgs; [
       intel-media-driver
-      # vaapiIntel
       vaapiVdpau
       libvdpau-va-gl
-      # mesa_drivers
     ];
   };
 
@@ -77,9 +71,6 @@ in
     LC_TELEPHONE = "nl_NL.UTF-8";
     LC_TIME = "nl_NL.UTF-8";
   };
-
-  # https://www.nixos.wiki/wiki/Lutris
-  # hardware.opengl.driSupport32Bit = true;
 
   ######## /Core system stuff ########
 
@@ -152,8 +143,6 @@ in
   powerManagement.powertop.enable = false;
   services.power-profiles-daemon.enable = false;
 
-  # services.auto-cpufreq.enable = true;
-
   services.tlp.enable = true;
   services.tlp.settings = {
     # https://community.frame.work/t/guide-linux-battery-life-tuning/6665/204
@@ -164,14 +153,9 @@ in
     INTEL_GPU_BOOST_FREQ_ON_AC=1300;
     INTEL_GPU_BOOST_FREQ_ON_BAT=450;
 
-    # instead of this, manually set RAPL values
-    #CPU_ENERGY_PERF_POLICY_ON_AC="balance-performance";
-    #CPU_ENERGY_PERF_POLICY_ON_BAT="balance-performance";
-
     PCIE_ASPM_ON_BAT="powersupersave";
 
-    # Do not suspend USB devices
-    # setting this option randomly disables my network card
+    # Setting this option randomly disables my network card
     USB_AUTOSUSPEND=0;
   };
 
@@ -229,7 +213,6 @@ in
     enable = true;
     allowedTCPPorts = [
       3000 # localhost React server
-      # 57621 # Spotify: to sync local tracks from your filesystem with mobile devices in the same network
     ];
     allowedTCPPortRanges = [
       { from = 1714; to = 1764; } # KDE Connect
@@ -267,52 +250,10 @@ in
   home-manager.users.${mainUser} = { pkgs, ... }: {
     home.stateVersion = "22.11";
 
-    # construct a list from the output attrset
     home.packages = with pkgs; [
       lutris
       legendary-gl
     ];
-    #++ builtins.attrValues (inputs.nix-gaming.lib.legendaryBuilder
-    #  {
-    #    inherit (pkgs) system;
-
-    #    games = {
-    #      rocket-league = {
-    #        # find names with `legendary list`
-    #        desktopName = "Rocket League";
-
-    #        # find out on lutris/winedb/protondb
-    #        tricks = ["dxvk" "win10"];
-
-    #        # google "<game name> logo"
-    #        icon = builtins.fetchurl {
-    #          # original url = "https://www.pngkey.com/png/full/16-160666_rocket-league-png.png";
-    #          url = "https://user-images.githubusercontent.com/36706276/203341314-eaaa0659-9b79-4f40-8b4a-9bc1f2b17e45.png";
-    #          name = "rocket-league.png";
-    #          sha256 = "0a9ayr3vwsmljy7dpf8wgichsbj4i4wrmd8awv2hffab82fz4ykb";
-    #        };
-
-    #        # if you don't want winediscordipcbridge running for this game
-    #        discordIntegration = false;
-    #        # if you dont' want to launch the game using gamemode
-    #        gamemodeIntegration = false;
-
-    #        preCommands = ''
-    #          echo "the game will start!"
-    #        '';
-
-    #        postCommands = ''
-    #          echo "the game has stopped!"
-    #        '';
-    #      };
-    #    };
-
-    #    opts = {
-    #      # same options as above can be provided here, and will be applied to all games
-    #      # NOTE: game-specific options take precedence
-    #      wine = inputs.nix-gaming.packages.${pkgs.system}.wine-tkg;
-    #    };
-    #  });
 
     home.file.".bash_aliases".source = ./. + "${dotfiles}/.bash_aliases";
     home.file.".bashrc".source = ./. + "${dotfiles}/.bashrc";
@@ -338,7 +279,6 @@ in
     home.file.".alacritty.yml".source = ./. + "${dotfiles}/.alacritty.yml";
   };
 
-  # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
   environment.systemPackages = with pkgs; [
@@ -368,7 +308,7 @@ in
     virt-manager
 
     yakuake
-    # kamoso (using nix-env atm) 
+    # kamoso (using nix-env atm)
     killall
     google-chrome
     lm_sensors
@@ -397,7 +337,7 @@ in
 
   nixpkgs.overlays = [
     (self: super: {
-      # package from nixpkgs is outdated: it prompts for an update and is otherwise unusable
+      # discord package from nixpkgs is outdated: it prompts for an update and is otherwise unusable
       discord = super.discord.overrideAttrs (
         _: { src = builtins.fetchTarball {
           url =
