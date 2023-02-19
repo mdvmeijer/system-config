@@ -7,15 +7,17 @@
 let
   mainUser="meeri";
   workUser="max";
+  modules="/modules";
+  dotfiles="/dotfiles";
+  framework-laptop="/framework-laptop";
 in
 {
   imports =
     [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-      ./vim.nix
-      ./python.nix
-      ./vscode.nix
-      #<home-manager/nixos>
+      (./. + "${modules}/hardware-configuration.nix")
+      (./. + "${modules}/vim.nix")
+      (./. + "${modules}/python.nix")
+      (./. + "${modules}/vscode.nix")
     ];
 
   ######### Core system stuff #########
@@ -111,8 +113,8 @@ in
   # https://discourse.nixos.org/t/start-python-script-from-systemd-unit/4520/3
   systemd.services.fw-fanctrl = let
     python = pkgs.python3.withPackages (ps: with ps; [ watchdog ]);
-    script = /etc/fw-fanctrl/fw-fanctrl; # Note this is a path, not a string
-    config = /etc/fw-fanctrl/config.json;
+    script = ./. + "${framework-laptop}/fw-fanctrl/fw-fanctrl"; # Note this is a path, not a string
+    config = ./. + "${framework-laptop}/fw-fanctrl/config.json";
   in {
     serviceConfig = {
       ExecStart = "${python.interpreter} ${script} --config ${config} --no-log";
@@ -128,7 +130,7 @@ in
   };
 
   systemd.services.fw-power-profile = let
-    command = /home/meeri/.system-config/legacy-configs/power-management/set-balanced-profile; # Note this is a path, not a string
+    command = ./. + "${framework-laptop}/power-management/set-balanced-profile"; # Note this is a path, not a string
   in {
     serviceConfig = {
       ExecStart = "${pkgs.bash}/bin/bash ${command}";
@@ -311,10 +313,10 @@ in
     #    };
     #  });
 
-    home.file.".bash_aliases".source = "/home/meeri/.system-config/legacy-configs/.bash_aliases";
-    home.file.".bashrc".source = "/home/meeri/.system-config/legacy-configs/.bashrc";
-    home.file.".tmux.conf".source = "/home/meeri/.system-config/legacy-configs/.tmux.conf";
-    home.file.".alacritty.yml".source = "/home/meeri/.system-config/legacy-configs/.alacritty.yml";
+    home.file.".bash_aliases".source = ./. + "${dotfiles}/.bash_aliases";
+    home.file.".bashrc".source = ./. + "${dotfiles}/.bashrc";
+    home.file.".tmux.conf".source = ./. + "${dotfiles}/.tmux.conf";
+    home.file.".alacritty.yml".source = ./. + "${dotfiles}/.alacritty.yml";
   };
 
   home-manager.users.${workUser} = { pkgs, ... }: {
@@ -328,10 +330,10 @@ in
       yubikey-manager
     ];
 
-    home.file.".bash_aliases".source = "/home/meeri/.system-config/legacy-configs/.bash_aliases";
-    home.file.".bashrc".source = "/home/meeri/.system-config/legacy-configs/.bashrc";
-    home.file.".tmux.conf".source = "/home/meeri/.system-config/legacy-configs/.tmux.conf";
-    home.file.".alacritty.yml".source = "/home/meeri/.system-config/legacy-configs/.alacritty.yml";
+    home.file.".bash_aliases".source = ./. + "${dotfiles}/.bash_aliases";
+    home.file.".bashrc".source = ./. + "${dotfiles}/.bashrc";
+    home.file.".tmux.conf".source = ./. + "${dotfiles}/.tmux.conf";
+    home.file.".alacritty.yml".source = ./. + "${dotfiles}/.alacritty.yml";
   };
 
   # Allow unfree packages
@@ -368,7 +370,7 @@ in
     killall
     google-chrome
     lm_sensors
-    (import /home/meeri/framework/fw-ectool/default.nix)
+    (import /home/meeri/.system-config/framework-laptop/fw-ectool/default.nix)
     galaxy-buds-client
 
     intel-gpu-tools  # for verifying HW acceleration with intel_gpu_top
