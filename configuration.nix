@@ -19,6 +19,7 @@ in
       (./. + "${modules}/vim.nix")
       (./. + "${modules}/python.nix")
       (./. + "${modules}/vscode.nix")
+      (./. + "${modules}/mullvad-vpn.nix")
     ];
 
   ######### Core system stuff #########
@@ -113,8 +114,6 @@ in
     localuser = null;
   };
 
-  services.mullvad-vpn.enable = true;
-
   ############# /Services #############
 
 
@@ -135,10 +134,6 @@ in
       { from = 1714; to = 1764; } # KDE Connect
     ];
   };
-
-  # mullvad
-  networking.firewall.checkReversePath = "loose";
-  networking.wireguard.enable = true;
 
   ############ /Networking ############
 
