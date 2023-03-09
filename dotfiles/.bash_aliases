@@ -24,3 +24,6 @@ alias set-extreme-profile="sudo ~/.system-config/hosts/framework-laptop/power-ma
 
 alias clock-monitor='watch -n.1 "grep \"^[c]pu MHz\" /proc/cpuinfo"'
 alias temp-monitor='watch "sensors"'
+
+alias st-rapl="cat /sys/class/powercap/intel-rapl/intel-rapl\:0/constraint_1_power_limit_uw"
+alias lt-rapl="cat /sys/class/powercap/intel-rapl/intel-rapl\:0/constraint_0_power_limit_uw"

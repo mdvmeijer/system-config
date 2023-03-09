@@ -1,6 +1,11 @@
 { config, pkgs, ... }:
 
 {
+  #imports =
+  #  [
+  #    /home/meeri/temp/fw-fanctrl-nix/service.nix
+  #  ];
+
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
   services.xserver.videoDrivers = [ "modesetting" ];
@@ -19,9 +24,9 @@
   # NOTE: breaks startup login on KDE
   # services.fprintd.enable = lib.mkDefault true;
 
+  # services.fw-fanctrl.enable = true;
+  # services.fw-fanctrl.configJsonPath = /home/meeri/Projects/fw-fanctrl/fw-fanctrl-nix/config.json;
 
-  # https://www.reddit.com/r/NixOS/comments/rkwnj3/comment/hpcps99/
-  # https://discourse.nixos.org/t/start-python-script-from-systemd-unit/4520/3
   systemd.services.fw-fanctrl = let
     python = pkgs.python3.withPackages (ps: with ps; [ watchdog ]);
     script = ./. + "/fw-fanctrl/fw-fanctrl"; # Note this is a path, not a string
@@ -83,7 +88,7 @@
   networking.wireless.iwd.enable = true;
   networking.wireless.enable = false;
   networking.networkmanager.wifi.backend = "iwd";
-  services.connman.wifi.backend = "iwd"; # maybe can be removed?
+  # services.connman.wifi.backend = "iwd"; # maybe can be removed?
 
 
   environment.systemPackages = with pkgs; [
