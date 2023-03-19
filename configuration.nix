@@ -185,6 +185,10 @@ in
     home.file.".alacritty.yml".source = ./. + "${dotfiles}/.alacritty.yml";
   };
 
+  # why doesn't this work?
+  # environment.etc."inputrc".source = ./. + "/dotfiles/nixos-inputrc";
+  # environment.etc."inputrc".source = /home/meeri/.system-config/dotfiles/nixos-inputrc;
+
   nixpkgs.config.allowUnfree = true;
 
   environment.systemPackages = with pkgs; [
@@ -226,6 +230,15 @@ in
     nicotine-plus
     gimp
     zola
+    lf
+    file
+    feh
+
+    # PDF utils
+    ocrmypdf  # Add OCR layer to PDF file
+    qpdf  # e.g. rotating, splitting, merging, encryption
+
+    tldr
   ];
 
   programs.dconf.enable = true;
