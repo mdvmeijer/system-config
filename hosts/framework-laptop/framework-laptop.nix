@@ -1,5 +1,11 @@
 { config, pkgs, ... }:
 
+let
+  select-power-profile = pkgs.writeShellScriptBin "select-power-profile" (builtins.readFile ./scripts/power-management/select-power-profile);
+  set-powersave-profile = pkgs.writeShellScriptBin "set-powersave-profile" (builtins.readFile ./scripts/power-management/set-powersave-profile);
+  set-balanced-profile = pkgs.writeShellScriptBin "set-balanced-profile" (builtins.readFile ./scripts/power-management/set-balanced-profile);
+  set-performance-profile = pkgs.writeShellScriptBin "set-performance-profile" (builtins.readFile ./scripts/power-management/set-performance-profile);
+in
 {
   #imports =
   #  [
@@ -46,7 +52,7 @@
   };
 
   systemd.services.fw-power-profile = let
-    command = ./. + "/power-management/set-balanced-profile"; # Note this is a path, not a string
+    command = "${set-balanced-profile}/bin/set-balanced-profile";
   in {
     serviceConfig = {
       ExecStart = "${pkgs.bash}/bin/bash ${command}";
@@ -77,7 +83,7 @@
 
     PCIE_ASPM_ON_BAT="powersupersave";
 
-    # Setting this option randomly disables my network card
+    # Setting USB_AUTOSUSPEND messes with my network adapter
     USB_AUTOSUSPEND=0;
   };
 
@@ -94,5 +100,32 @@
   environment.systemPackages = with pkgs; [
     (import /home/meeri/.system-config/hosts/framework-laptop/fw-ectool/default.nix)
     intel-gpu-tools  # for verifying HW acceleration with intel_gpu_top
+
+    # scripts
+    select-power-profile
+    set-powersave-profile
+    set-balanced-profile
+    set-performance-profile
   ];
+
+  security.sudo.extraRules= 
+	[
+  	{  
+			users = [ "meeri" ];
+    	commands = [
+        { 
+          command = "${set-powersave-profile}/bin/set-powersave-profile";
+        	options= [ "NOPASSWD" ]; # "SETENV" # Adding the following could be a good idea
+        }
+        {
+          command = "${set-balanced-profile}/bin/set-balanced-profile";
+        	options= [ "NOPASSWD" ]; # "SETENV" # Adding the following could be a good idea
+        }
+        {
+          command = "${set-performance-profile}/bin/set-performance-profile";
+        	options= [ "NOPASSWD" ]; # "SETENV" # Adding the following could be a good idea
+        }
+    	];
+  	}
+	]; 
 }

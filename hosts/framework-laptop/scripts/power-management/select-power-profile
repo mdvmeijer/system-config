@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+PROFILE_CHOICE=$(echo -e "powersave\nbalanced\nperformance\nextreme" | wofi -d -p "Select desired power profile")
+bash -c "sudo set-${PROFILE_CHOICE}-profile"

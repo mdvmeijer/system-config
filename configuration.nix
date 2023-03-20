@@ -208,7 +208,7 @@ in
     qbittorrent
     dotnet-sdk # for dafny course
     mlocate
-    rofi-wayland
+    wofi
     chromium
     unzip
     powertop
