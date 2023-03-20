@@ -99,7 +99,7 @@ in
 
 
   environment.systemPackages = with pkgs; [
-    (import /home/meeri/.system-config/hosts/framework-laptop/fw-ectool/default.nix)
+    (import (./. + "/fw-ectool/default.nix"))
     intel-gpu-tools  # for verifying HW acceleration with intel_gpu_top
 
     # scripts

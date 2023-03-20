@@ -1,3 +1,0 @@
-[submodule "hosts/framework-laptop/fw-ectool"]
-	path = hosts/framework-laptop/fw-ectool
-	url = https://github.com/ssddq/fw-ectool
