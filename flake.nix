@@ -8,10 +8,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nix-gaming.url = "github:fufexan/nix-gaming";
+    fw-ectool.url = "github:ssddq/fw-ectool";
+    # nix-gaming.url = "github:fufexan/nix-gaming";
   };
 
-  outputs = inputs@{ self, nixpkgs, home-manager, nix-gaming }:
+  outputs = inputs@{ self, nixpkgs, home-manager, fw-ectool }:
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs {
@@ -19,12 +20,17 @@
         config.allowUnfree = true;
       };
       lib = nixpkgs.lib;
+
+      overlay-fw-ectool = final: prev: {
+        fw-ectool = fw-ectool.packages.${prev.system}.default;
+      };
     in {
       nixosConfigurations = {
         meeri = lib.nixosSystem {
           inherit system;
           specialArgs = { inherit inputs; };
-          modules = [ 
+          modules = [
+            ({ config, pkgs, ... }: { nixpkgs.overlays = [ overlay-fw-ectool ]; }) 
             ./configuration.nix
 
             home-manager.nixosModules.home-manager {

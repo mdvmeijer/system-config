@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, inputs, ... }:
 
 let
   select-power-profile = pkgs.writeShellScriptBin "select-power-profile" (builtins.readFile ./scripts/power-management/select-power-profile);
@@ -99,7 +99,7 @@ in
 
 
   environment.systemPackages = with pkgs; [
-    (import (./. + "/fw-ectool/default.nix"))
+    fw-ectool
     intel-gpu-tools  # for verifying HW acceleration with intel_gpu_top
 
     # scripts
