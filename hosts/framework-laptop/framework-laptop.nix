@@ -5,6 +5,7 @@ let
   set-powersave-profile = pkgs.writeShellScriptBin "set-powersave-profile" (builtins.readFile ./scripts/power-management/set-powersave-profile);
   set-balanced-profile = pkgs.writeShellScriptBin "set-balanced-profile" (builtins.readFile ./scripts/power-management/set-balanced-profile);
   set-performance-profile = pkgs.writeShellScriptBin "set-performance-profile" (builtins.readFile ./scripts/power-management/set-performance-profile);
+  set-extreme-profile = pkgs.writeShellScriptBin "set-extreme-profile" (builtins.readFile ./scripts/power-management/set-extreme-profile);
 in
 {
   #imports =
@@ -106,6 +107,7 @@ in
     set-powersave-profile
     set-balanced-profile
     set-performance-profile
+    set-extreme-profile
   ];
 
   security.sudo.extraRules= 
@@ -123,6 +125,10 @@ in
         }
         {
           command = "${set-performance-profile}/bin/set-performance-profile";
+        	options= [ "NOPASSWD" ]; # "SETENV" # Adding the following could be a good idea
+        }
+        {
+          command = "${set-extreme-profile}/bin/set-extreme-profile";
         	options= [ "NOPASSWD" ]; # "SETENV" # Adding the following could be a good idea
         }
     	];
