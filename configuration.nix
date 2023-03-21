@@ -20,8 +20,6 @@ in
       (./. + "${modules}/python.nix")
       (./. + "${modules}/vscode.nix")
       (./. + "${modules}/mullvad-vpn.nix")
-      (./. + "${modules}/gaming.nix")
-      # (./. + "${modules}/sway.nix")
     ];
 
   ######### Core system stuff #########
@@ -205,6 +203,7 @@ in
     alacritty
     kdeconnect
     htop
+    glances
     qbittorrent
     dotnet-sdk # for dafny course
     mlocate
@@ -239,6 +238,11 @@ in
     qpdf  # e.g. rotating, splitting, merging, encryption
 
     tldr
+    zathura
+    libnotify
+    youtube-dl
+    signal-desktop
+    tmuxinator
   ];
 
   programs.dconf.enable = true;
