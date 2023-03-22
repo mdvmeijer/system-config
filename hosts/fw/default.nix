@@ -11,6 +11,7 @@ in
   imports =
     [
       ./hardware-configuration.nix
+      ./base-system-conf.nix
       # /home/meeri/temp/fw-fanctrl-nix/service.nix
     ];
 

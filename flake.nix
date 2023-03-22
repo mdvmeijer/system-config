@@ -26,12 +26,18 @@
       };
     in {
       nixosConfigurations = {
-        meeri = lib.nixosSystem {
+        fw = lib.nixosSystem {
           inherit system;
           specialArgs = { inherit inputs; };
           modules = [
             ({ config, pkgs, ... }: { nixpkgs.overlays = [ overlay-fw-ectool ]; }) 
-            ./configuration.nix
+            ./hosts/fw/default.nix
+            ./modules/base-packages.nix
+            ./modules/vim.nix
+            ./modules/python.nix
+            ./modules/vscode.nix
+            ./modules/mullvad-vpn.nix
+            ./modules/work-user.nix
 
             home-manager.nixosModules.home-manager {
               home-manager.useGlobalPkgs = true;

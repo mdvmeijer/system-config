@@ -7,22 +7,11 @@
 let
   mainUser="meeri";
   workUser="max";
-  modules="/modules";
-  dotfiles="/dotfiles";
-  hosts="/hosts";
+  modules="/../../modules";
+  dotfiles="/../../dotfiles";
+  hosts="/../../hosts";
 in
 {
-  imports =
-    [
-      (./. + "${hosts}/fw/default.nix")
-      (./. + "${modules}/vim.nix")
-      (./. + "${modules}/python.nix")
-      (./. + "${modules}/vscode.nix")
-      (./. + "${modules}/mullvad-vpn.nix")
-      (./. + "${modules}/base-packages.nix")
-      (./. + "${modules}/work-user.nix")
-    ];
-
   ######### Core system stuff #########
 
   # Bootloader.

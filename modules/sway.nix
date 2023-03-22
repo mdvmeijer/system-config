@@ -61,6 +61,7 @@ in
     mako # notification system developed by swaywm maintainer
   ];
 
+  environment.etc."sway/config".source = /home/meeri/sway/config;
 
   services.pipewire = {
     enable = true;
