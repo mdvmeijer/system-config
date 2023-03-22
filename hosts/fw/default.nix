@@ -8,10 +8,11 @@ let
   set-extreme-profile = pkgs.writeShellScriptBin "set-extreme-profile" (builtins.readFile ./scripts/power-management/set-extreme-profile);
 in
 {
-  #imports =
-  #  [
-  #    /home/meeri/temp/fw-fanctrl-nix/service.nix
-  #  ];
+  imports =
+    [
+      ./hardware-configuration.nix
+      # /home/meeri/temp/fw-fanctrl-nix/service.nix
+    ];
 
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
@@ -110,28 +111,27 @@ in
     set-extreme-profile
   ];
 
-  security.sudo.extraRules= 
-	[
-  	{  
-			users = [ "meeri" ];
-    	commands = [
+  security.sudo.extraRules = [
+    {  
+      users = [ "meeri" ];
+      commands = [
         { 
           command = "${set-powersave-profile}/bin/set-powersave-profile";
-        	options= [ "NOPASSWD" ]; # "SETENV" # Adding the following could be a good idea
+          options= [ "NOPASSWD" ]; # "SETENV" # Adding the following could be a good idea
         }
         {
           command = "${set-balanced-profile}/bin/set-balanced-profile";
-        	options= [ "NOPASSWD" ]; # "SETENV" # Adding the following could be a good idea
+          options= [ "NOPASSWD" ]; # "SETENV" # Adding the following could be a good idea
         }
         {
           command = "${set-performance-profile}/bin/set-performance-profile";
-        	options= [ "NOPASSWD" ]; # "SETENV" # Adding the following could be a good idea
+          options= [ "NOPASSWD" ]; # "SETENV" # Adding the following could be a good idea
         }
         {
           command = "${set-extreme-profile}/bin/set-extreme-profile";
-        	options= [ "NOPASSWD" ]; # "SETENV" # Adding the following could be a good idea
+          options= [ "NOPASSWD" ]; # "SETENV" # Adding the following could be a good idea
         }
-    	];
-  	}
-	]; 
+      ];
+    }
+  ]; 
 }

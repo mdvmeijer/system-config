@@ -14,8 +14,7 @@ in
 {
   imports =
     [
-      (./. + "${modules}/hardware-configuration.nix")
-      (./. + "${hosts}/framework-laptop/framework-laptop.nix")
+      (./. + "${hosts}/fw/default.nix")
       (./. + "${modules}/vim.nix")
       (./. + "${modules}/python.nix")
       (./. + "${modules}/vscode.nix")
