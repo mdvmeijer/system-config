@@ -64,6 +64,14 @@
     clock24 = true;
   };
 
+  services.locate = {
+    enable = true;
+    locate = pkgs.mlocate;
+    interval = "daily";
+    # warning: mlocate and plocate do not support the services.locate.localuser option. updatedb will run as root. Silence this warning by setting services.locate.localuser = null
+    localuser = null;
+  };
+
   nixpkgs.overlays = [
     (final: prev: {
       # discord package from nixpkgs is outdated: it prompts for an update and is otherwise unusable
@@ -75,5 +83,10 @@
         }; }
       );
     })
+  ];
+
+  fonts.fonts = with pkgs; [
+    iosevka
+    agave
   ];
 }

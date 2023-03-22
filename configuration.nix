@@ -21,6 +21,7 @@ in
       (./. + "${modules}/vscode.nix")
       (./. + "${modules}/mullvad-vpn.nix")
       (./. + "${modules}/base-packages.nix")
+      (./. + "${modules}/work-user.nix")
     ];
 
   ######### Core system stuff #########
@@ -107,14 +108,6 @@ in
     pulse.enable = true;
   };
 
-  services.locate = {
-    enable = true;
-    locate = pkgs.mlocate;
-    interval = "daily";
-    # warning: mlocate and plocate do not support the services.locate.localuser option. updatedb will run as root. Silence this warning by setting services.locate.localuser = null
-    localuser = null;
-  };
-
   ############# /Services #############
 
 
@@ -149,12 +142,6 @@ in
       extraGroups = [ "networkmanager" "wheel" "libvirtd" "kvm" "mlocate" ];
       initialPassword = "password";
     };
-    ${workUser} = {
-      isNormalUser = true;
-      description = "MYP";
-      extraGroups = [ "networkmanager" "wheel" "libvirtd" "kvm" "mlocate" ];
-      initialPassword = "password";
-    };
   };
 
   home-manager.users.${mainUser} = { pkgs, ... }: {
@@ -166,24 +153,6 @@ in
     home.file.".alacritty.yml".source = ./. + "${dotfiles}/.alacritty.yml";
   };
 
-  nixpkgs.config.allowUnfree = true;
-
-  home-manager.users.${workUser} = { pkgs, ... }: {
-    home.stateVersion = "22.11";
-
-    home.packages = with pkgs; [
-      android-studio
-      slack
-      yubikey-manager-qt
-      yubikey-manager
-      jetbrains.rider
-    ];
-
-    home.file.".bash_aliases".source = ./. + "${dotfiles}/.bash_aliases";
-    home.file.".bashrc".source = ./. + "${dotfiles}/.bashrc";
-    home.file.".tmux.conf".source = ./. + "${dotfiles}/.tmux.conf";
-    home.file.".alacritty.yml".source = ./. + "${dotfiles}/.alacritty.yml";
-  };
 
   # why doesn't this work?
   # environment.etc."inputrc".source = ./. + "/dotfiles/nixos-inputrc";
