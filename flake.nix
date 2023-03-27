@@ -39,6 +39,9 @@
             ./modules/mullvad-vpn.nix
             ./modules/work-user.nix
 
+            ./modules/gaming/emulation.nix
+            ./modules/temp/embedded-AI.nix
+
             home-manager.nixosModules.home-manager {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
