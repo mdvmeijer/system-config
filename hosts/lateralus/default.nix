@@ -94,7 +94,7 @@ in
   };
 
 
-  networking.hostName = "nixos";
+  networking.hostName = "lateralus";
 
   # make sure eduroam works
   networking.wireless.iwd.enable = true;

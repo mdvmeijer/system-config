@@ -31,7 +31,7 @@
           specialArgs = { inherit inputs; };
           modules = [
             ({ config, pkgs, ... }: { nixpkgs.overlays = [ overlay-fw-ectool ]; }) 
-            ./hosts/fw/default.nix
+            ./hosts/lateralus/default.nix
             ./modules/base-packages.nix
             ./modules/vim.nix
             ./modules/python.nix
