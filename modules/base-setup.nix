@@ -3,10 +3,15 @@
 {
   imports =
     [
+      ./main-user.nix
+
+      ./bash.nix
       ./vim.nix
       ./python.nix
       ./vscode.nix
       ./mullvad-vpn.nix
+      ./tmux.nix
+      ./alacritty.nix
     ];
 
   environment.systemPackages = with pkgs; [
@@ -20,7 +25,6 @@
     libreoffice-qt
     openssl
     ffmpeg
-    alacritty
     kdeconnect
     htop
     glances

@@ -12,7 +12,7 @@ alias ll="ls -lah"
 alias locate="locate -i" # ignore case
 
 
-alias nixos-rebuild="sudo nixos-rebuild switch --flake ~/.system-config#fw --impure"
+alias nixos-rebuild="sudo nixos-rebuild switch --flake ~/.system-config#lateralus --impure"
 
 alias clock-monitor='watch -n.1 "grep \"^[c]pu MHz\" /proc/cpuinfo"'
 alias temp-monitor='watch "sensors"'

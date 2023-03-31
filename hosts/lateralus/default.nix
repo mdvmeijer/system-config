@@ -1,9 +1,6 @@
 { config, pkgs, inputs, ... }:
 
 let
-  mainUser="meeri";
-  workUser="max";
-  dotfiles="/../../dotfiles";
   select-power-profile = pkgs.writeShellScriptBin "select-power-profile" (builtins.readFile ./scripts/power-management/select-power-profile);
   set-powersave-profile = pkgs.writeShellScriptBin "set-powersave-profile" (builtins.readFile ./scripts/power-management/set-powersave-profile);
   set-balanced-profile = pkgs.writeShellScriptBin "set-balanced-profile" (builtins.readFile ./scripts/power-management/set-balanced-profile);
@@ -248,26 +245,6 @@ in
 
 
   ######### Users & packages ##########
-
-  # Don't forget to set a password with ‘passwd’.
-  users.users = {
-    ${mainUser} = {
-      isNormalUser = true;
-      description = "Max Meijer";
-      extraGroups = [ "networkmanager" "wheel" "libvirtd" "kvm" "mlocate" ];
-      initialPassword = "password";
-    };
-  };
-
-  home-manager.users.${mainUser} = { pkgs, ... }: {
-    home.stateVersion = "22.11";
-
-    home.file.".bash_aliases".source = ./. + "${dotfiles}/.bash_aliases";
-    home.file.".bashrc".source = ./. + "${dotfiles}/.bashrc";
-    home.file.".tmux.conf".source = ./. + "${dotfiles}/.tmux.conf";
-    home.file.".alacritty.yml".source = ./. + "${dotfiles}/.alacritty.yml";
-  };
-
 
   # why doesn't this work?
   # environment.etc."inputrc".source = ./. + "/dotfiles/nixos-inputrc";

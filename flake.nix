@@ -26,13 +26,13 @@
       };
     in {
       nixosConfigurations = {
-        fw = lib.nixosSystem {
+        lateralus = lib.nixosSystem {
           inherit system;
           specialArgs = { inherit inputs; };
           modules = [
             ({ config, pkgs, ... }: { nixpkgs.overlays = [ overlay-fw-ectool ]; }) 
             ./hosts/lateralus/default.nix
-            ./modules/base-packages.nix
+            ./modules/base-setup.nix
 
             ./modules/work-user.nix
 
