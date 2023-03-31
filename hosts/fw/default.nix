@@ -15,7 +15,6 @@ in
     [
       ./hardware-configuration.nix
       ./no-git.nix
-      # /home/meeri/temp/fw-fanctrl-nix/service.nix
     ];
 
   boot.kernelPackages = pkgs.linuxPackages_latest;
@@ -88,6 +87,7 @@ in
     INTEL_GPU_BOOST_FREQ_ON_BAT=450;
 
     PCIE_ASPM_ON_BAT="powersupersave";
+    RUNTIME_PM_ON_BAT=1;
 
     # Setting USB_AUTOSUSPEND messes with my network adapter
     USB_AUTOSUSPEND=0;

@@ -19,3 +19,5 @@ alias temp-monitor='watch "sensors"'
 
 alias st-rapl="cat /sys/class/powercap/intel-rapl/intel-rapl\:0/constraint_1_power_limit_uw"
 alias lt-rapl="cat /sys/class/powercap/intel-rapl/intel-rapl\:0/constraint_0_power_limit_uw"
+
+alias lfconf="lf ~/.system-config"

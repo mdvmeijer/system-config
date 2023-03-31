@@ -55,14 +55,12 @@
     youtube-dl
     signal-desktop
     tmuxinator
+    mpv
+    neofetch
+    tmux
   ];
 
   programs.dconf.enable = true;
-
-  programs.tmux = {
-    enable = true;
-    clock24 = true;
-  };
 
   services.locate = {
     enable = true;
