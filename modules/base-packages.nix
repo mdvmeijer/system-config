@@ -1,6 +1,14 @@
 { config, pkgs, ... }:
 
 {
+  imports =
+    [
+      ./vim.nix
+      ./python.nix
+      ./vscode.nix
+      ./mullvad-vpn.nix
+    ];
+
   environment.systemPackages = with pkgs; [
     wget
     git

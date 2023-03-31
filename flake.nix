@@ -33,10 +33,7 @@
             ({ config, pkgs, ... }: { nixpkgs.overlays = [ overlay-fw-ectool ]; }) 
             ./hosts/lateralus/default.nix
             ./modules/base-packages.nix
-            ./modules/vim.nix
-            ./modules/python.nix
-            ./modules/vscode.nix
-            ./modules/mullvad-vpn.nix
+
             ./modules/work-user.nix
 
             ./modules/gaming/emulation.nix
