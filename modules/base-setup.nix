@@ -12,6 +12,7 @@
       ./mullvad-vpn.nix
       ./tmux.nix
       ./alacritty.nix
+      ./kdeconnect.nix
     ];
 
   environment.systemPackages = with pkgs; [
@@ -25,7 +26,6 @@
     libreoffice-qt
     openssl
     ffmpeg
-    kdeconnect
     htop
     glances
     qbittorrent
@@ -70,6 +70,7 @@
     mpv
     neofetch
     tmux
+    fzf
   ];
 
   programs.dconf.enable = true;

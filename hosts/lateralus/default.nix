@@ -12,6 +12,7 @@ in
     [
       ./hardware-configuration.nix
       ./no-git.nix
+      ../../modules/temp/abo-stuff.nix
     ];
 
   boot.kernelPackages = pkgs.linuxPackages_latest;
@@ -68,7 +69,6 @@ in
     };
   };
 
-
   # powertop --auto-tune and ppd conflict with tlp
   powerManagement.powertop.enable = false;
   services.power-profiles-daemon.enable = false;
@@ -89,15 +89,6 @@ in
     # Setting USB_AUTOSUSPEND messes with my network adapter
     USB_AUTOSUSPEND=0;
   };
-
-
-  networking.hostName = "lateralus";
-
-  # make sure eduroam works
-  networking.wireless.iwd.enable = true;
-  networking.wireless.enable = false;
-  networking.networkmanager.wifi.backend = "iwd";
-  # services.connman.wifi.backend = "iwd"; # maybe can be removed?
 
 
   environment.systemPackages = with pkgs; [
@@ -225,6 +216,12 @@ in
 
   ############# Networking ############
 
+  networking.hostName = "lateralus";
+
+  # Note: wpa_supplicant is disabled because iwd is temporarily used
+  # See modules/temp/abo-stuff.nix 
+  # networking.wireless.enable = true;
+
   # Enable networking
   networking.networkmanager.enable = true;
 
@@ -232,12 +229,6 @@ in
     enable = true;
     allowedTCPPorts = [
       3000 # localhost React server
-    ];
-    allowedTCPPortRanges = [
-      { from = 1714; to = 1764; } # KDE Connect
-    ];
-    allowedUDPPortRanges = [
-      { from = 1714; to = 1764; } # KDE Connect
     ];
   };
 
