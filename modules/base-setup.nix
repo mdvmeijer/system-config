@@ -37,9 +37,6 @@
     powertop
     easyeffects
 
-    # TODO: include in virtualization module
-    virt-manager
-
     yakuake
     # kamoso (using nix-env atm)
     killall

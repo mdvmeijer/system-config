@@ -33,11 +33,14 @@
             ({ config, pkgs, ... }: { nixpkgs.overlays = [ overlay-fw-ectool ]; }) 
             ./hosts/lateralus/default.nix
             ./modules/base-setup.nix
+            ./modules/virtualization.nix
 
             ./modules/work-user.nix
 
             ./modules/gaming/emulation.nix
+
             ./modules/temp/embedded-AI.nix
+            ./modules/temp/abo-stuff.nix
 
             home-manager.nixosModules.home-manager {
               home-manager.useGlobalPkgs = true;

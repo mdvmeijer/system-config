@@ -12,7 +12,6 @@ in
     [
       ./hardware-configuration.nix
       ./no-git.nix
-      ../../modules/temp/abo-stuff.nix
     ];
 
   boot.kernelPackages = pkgs.linuxPackages_latest;
@@ -159,9 +158,6 @@ in
       libvdpau-va-gl
     ];
   };
-
-  virtualisation.libvirtd.enable = true;
-  virtualisation.spiceUSBRedirection.enable = true;
 
   time.timeZone = "Europe/Helsinki";
 
