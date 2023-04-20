@@ -9,10 +9,11 @@
     };
 
     fw-ectool.url = "github:ssddq/fw-ectool";
+    hyprland.url = "github:hyprwm/Hyprland";
     # nix-gaming.url = "github:fufexan/nix-gaming";
   };
 
-  outputs = inputs@{ self, nixpkgs, home-manager, fw-ectool }:
+  outputs = inputs@{ self, nixpkgs, home-manager, fw-ectool, hyprland }:
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs {
@@ -34,10 +35,14 @@
             ./hosts/lateralus/default.nix
             ./modules/base-setup.nix
             ./modules/virtualization.nix
+            ./modules/hyprland.nix
+            hyprland.nixosModules.default
+            {programs.hyprland.enable = true;}
 
             ./modules/work-user.nix
 
             ./modules/gaming/emulation.nix
+            ./modules/gaming/default.nix
 
             ./modules/temp/embedded-AI.nix
             ./modules/temp/abo-stuff.nix

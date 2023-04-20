@@ -68,6 +68,10 @@
     neofetch
     tmux
     fzf
+    speedtest-cli
+    calibre
+    kitty
+    waybar
   ];
 
   programs.dconf.enable = true;
