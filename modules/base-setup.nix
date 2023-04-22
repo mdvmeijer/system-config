@@ -70,9 +70,8 @@
     fzf
     speedtest-cli
     calibre
-    kitty
-    waybar
   ];
+
 
   programs.dconf.enable = true;
 
@@ -100,5 +99,6 @@
   fonts.fonts = with pkgs; [
     iosevka
     agave
+    font-awesome  # for waybar icons
   ];
 }

@@ -10,7 +10,6 @@
 
     fw-ectool.url = "github:ssddq/fw-ectool";
     hyprland.url = "github:hyprwm/Hyprland";
-    # nix-gaming.url = "github:fufexan/nix-gaming";
   };
 
   outputs = inputs@{ self, nixpkgs, home-manager, fw-ectool, hyprland }:

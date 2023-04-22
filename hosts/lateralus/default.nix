@@ -189,6 +189,7 @@ in
 
   # Enable the KDE Plasma Desktop Environment.
   services.xserver.displayManager.sddm.enable = true;
+  services.xserver.displayManager.defaultSession = "hyprland";
   services.xserver.desktopManager.plasma5.enable = true;
 
   # Configure keymap in X11
@@ -225,6 +226,7 @@ in
     enable = true;
     allowedTCPPorts = [
       3000 # localhost React server
+      8080 # localhost Argon2 server
     ];
   };
 
