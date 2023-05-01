@@ -1,4 +1,4 @@
-{ config, pkgs, inputs, ... }:
+{ config, pkgs, inputs, lib, ... }:
 
 let
   select-power-profile = pkgs.writeShellScriptBin "select-power-profile" (builtins.readFile ./scripts/power-management/select-power-profile);
@@ -23,6 +23,7 @@ in
     # NOTE: Instead of setting the option to 1 as in the linked forum topic,
     # setting it to 0 in combination with the 'modesetting' driver seems to fix the problem for me.
     "i915.enable_psr=0"
+    # "i915.force_probe=46a6"
 
     # sensor hub module conflicts with manual brightness adjustment
     "module_blacklist=hid_sensor_hub"
@@ -150,10 +151,21 @@ in
   hardware.pulseaudio.enable = false;
   security.rtkit.enable = true;
 
+  boot.initrd.kernelModules = [ "i915" ];
+
+  environment.variables = {
+    VDPAU_DRIVER = lib.mkIf config.hardware.opengl.enable (lib.mkDefault "va_gl");
+  };
+
+  nixpkgs.config.packageOverrides = pkgs: {
+    vaapiIntel = pkgs.vaapiIntel.override { enableHybridCodec = true; };
+  };
+
   hardware.opengl = {
     enable = true;
     extraPackages = with pkgs; [
       intel-media-driver
+      vaapiIntel
       vaapiVdpau
       libvdpau-va-gl
     ];
@@ -217,7 +229,7 @@ in
 
   # Note: wpa_supplicant is disabled because iwd is temporarily used
   # See modules/temp/abo-stuff.nix 
-  # networking.wireless.enable = true;
+  networking.wireless.enable = false;
 
   # Enable networking
   networking.networkmanager.enable = true;

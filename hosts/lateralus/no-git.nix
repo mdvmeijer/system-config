@@ -9,6 +9,8 @@
       # very large paths
       "/home/meeri/Torrents"
       "/home/meeri/videos-n-stuff-to-check"
+      "/home/meeri/.cache"
+      "/home/meeri/.mozilla"
     ];
     repo = "eob45owc@eob45owc.repo.borgbase.com:repo";
     encryption = {

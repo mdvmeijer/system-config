@@ -4,6 +4,11 @@ let
   dotfiles="/dotfiles";
 in
 {
+  imports = 
+    [
+      ./work-user/waybar.nix
+  ];
+
   nixpkgs.config.allowUnfree = true;
 
   users.users = {

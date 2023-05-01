@@ -70,6 +70,13 @@
     fzf
     speedtest-cli
     calibre
+
+    gcc
+    gdb
+    bintools
+
+    emacs
+    cmatrix
   ];
 
 

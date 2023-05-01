@@ -10,12 +10,12 @@
     })
   ];
   
-  home-manager.users.meeri = { pkgs, ... }: {
+  home-manager.users.max = { pkgs, ... }: {
     home.stateVersion = "22.11";
 
     programs.waybar = {
       enable = true;
-      style = ../dotfiles/.config/waybar/style.css;
+      style = ../../dotfiles/.config/waybar/style.css;
       settings = {
         mainBar = {
           "layer" = "top";

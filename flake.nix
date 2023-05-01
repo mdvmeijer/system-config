@@ -9,7 +9,10 @@
     };
 
     fw-ectool.url = "github:ssddq/fw-ectool";
-    hyprland.url = "github:hyprwm/Hyprland";
+    hyprland = {
+      url = "github:hyprwm/Hyprland";
+      # inputs.nixpkgs.follows = "nixpkgs"; # MESA/OpenGL HW workaround
+    };
   };
 
   outputs = inputs@{ self, nixpkgs, home-manager, fw-ectool, hyprland }:

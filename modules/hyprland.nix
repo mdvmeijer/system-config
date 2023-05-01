@@ -1,4 +1,4 @@
-{ pkgs, config, ... }:
+{ pkgs, config, inputs, ... }:
 
 {
   imports =
@@ -10,9 +10,10 @@
     hyprpaper
     brightnessctl
     pamixer
+    playerctl
     helvum
     dunst
-    swaylock
+    swaylock-effects
     pavucontrol
     wlr-randr
 
@@ -20,7 +21,6 @@
     grim
     slurp
     swappy
-
 
     # Clipboard manager
     cliphist
@@ -37,5 +37,10 @@
     home.stateVersion = "22.11";
 
     # TODO: define hyprland config; right now this is not managed by Nix.
+  };
+
+  nix.settings = {
+    substituters = ["https://hyprland.cachix.org"];
+    trusted-public-keys = ["hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="];
   };
 }
