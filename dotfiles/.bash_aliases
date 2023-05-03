@@ -1,6 +1,8 @@
 alias clockmon='watch -n.1 "grep \"^[c]pu MHz\" /proc/cpuinfo"'
 alias tempmon='watch -n1 "sensors"'
 
+alias gtop="sudo intel_gpu_top"
+
 # Check power limits
 alias st-rapl="cat /sys/class/powercap/intel-rapl/intel-rapl\:0/constraint_1_power_limit_uw"
 alias lt-rapl="cat /sys/class/powercap/intel-rapl/intel-rapl\:0/constraint_0_power_limit_uw"
