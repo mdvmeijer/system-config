@@ -8,6 +8,6 @@
   home-manager.users.meeri = { pkgs, ... }: {
     home.stateVersion = "22.11";
 
-    home.file.".alacritty.yml".source = ../dotfiles/.alacritty.yml;
+    home.file.".config/alacritty".source = ../dotfiles/.config/alacritty;
   };
 }

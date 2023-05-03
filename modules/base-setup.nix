@@ -77,6 +77,8 @@
 
     emacs
     cmatrix
+    ripgrep
+    neovim
   ];
 
 

@@ -77,8 +77,8 @@ endif
 syntax on
 set termguicolors
 
-set background=dark
-colorscheme one
+# set background=dark
+colorscheme catppuccin_macchiato
 
 " }}}
 

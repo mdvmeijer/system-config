@@ -11,6 +11,9 @@
 #import:
 #  - /path/to/alacritty.yml
 
+import:
+  - ~/.config/alacritty/catppuccin/catppuccin-macchiato.yml
+
 # Any items in the `env` entry below will be added as
 # environment variables. Some entries may override variables
 # set by alacritty itself.
@@ -465,7 +468,7 @@ schemes:
       white:   '0x828791'
 
 # Apply the color scheme.
-colors: *one-dark
+# colors: *one-dark
 
   # Default colors
   # primary:

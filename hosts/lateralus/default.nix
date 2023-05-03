@@ -101,6 +101,8 @@ in
     set-balanced-profile
     set-performance-profile
     set-extreme-profile
+
+    dhcpcd  # eduroam
   ];
 
   security.sudo.extraRules = [
@@ -202,7 +204,7 @@ in
   # Enable the KDE Plasma Desktop Environment.
   services.xserver.displayManager.sddm.enable = true;
   services.xserver.displayManager.defaultSession = "hyprland";
-  services.xserver.desktopManager.plasma5.enable = true;
+  # services.xserver.desktopManager.plasma5.enable = true;
 
   # Configure keymap in X11
   services.xserver = {
@@ -227,12 +229,9 @@ in
 
   networking.hostName = "lateralus";
 
-  # Note: wpa_supplicant is disabled because iwd is temporarily used
-  # See modules/temp/abo-stuff.nix 
-  networking.wireless.enable = false;
-
   # Enable networking
   networking.networkmanager.enable = true;
+  # networking.networkmanager.dhcp = "dhcpcd";
 
   networking.firewall = {
     enable = true;

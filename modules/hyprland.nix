@@ -1,4 +1,4 @@
-{ pkgs, config, inputs, ... }:
+{ pkgs, config, inputs, pkgs-unstable, ... }:
 
 {
   imports =
@@ -17,17 +17,21 @@
     pavucontrol
     wlr-randr
 
+    # Clipboard manager
+    cliphist
+    wl-clipboard
+
     # Screenshot tools
     grim
     slurp
     swappy
 
-    # Clipboard manager
-    cliphist
-    wl-clipboard
-
     libsForQt5.qt5ct  # Setting QT themes
     glib  # Setting GTK themes
+
+    dolphin
+    libsForQt5.breeze-qt5
+    papirus-icon-theme
   ];
 
   # Without this, swaylock will not recognize password
@@ -36,8 +40,34 @@
   home-manager.users.meeri = { pkgs, ... }: {
     home.stateVersion = "22.11";
 
+#     home.packages = with pkgs; [
+#     ];
+
     # TODO: define hyprland config; right now this is not managed by Nix.
+
+		gtk = {
+    	enable = true;
+    	theme = {
+      	name = "Catppuccin-Macchiato-Compact-Pink-Dark";
+      	package = pkgs.catppuccin-gtk.override {  # nixpkgs 22.11 does not have accents and variant params
+          accents = [ "pink" ];
+        	size = "compact";
+        	tweaks = [ "rimless" ];
+          variant = "macchiato";
+      	};
+    	};
+  	};
   };
+
+
+#     gtk = {
+#       enable = true;
+#       theme = {
+#         name = "Materia-dark";
+#         package = pkgs.materia-theme;
+#       };
+#     };
+#   };
 
   nix.settings = {
     substituters = ["https://hyprland.cachix.org"];

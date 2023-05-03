@@ -11,4 +11,14 @@
       initialPassword = "password";
     };
   };
+
+  home-manager.users.meeri = { pkgs, ... }: {
+    home.stateVersion = "22.11";
+
+    xdg.mimeApps.defaultApplications = {
+      "image/png" = "feh.desktop";
+      "image/jpeg" = "feh.desktop";
+      "text/plain" = "gvim";
+    };
+  };
 }

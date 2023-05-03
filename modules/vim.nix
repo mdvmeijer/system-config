@@ -92,8 +92,7 @@
           syntax on
           set termguicolors
 
-          set background=dark
-          colorscheme one
+          colorscheme catppuccin_macchiato
 
           " }}}
 
@@ -172,4 +171,10 @@
         '';
       })
     ];
+
+  home-manager.users.meeri = { pkgs, ... }: {
+    home.stateVersion = "22.11";
+
+    home.file.".vim".source = ../dotfiles/.vim;
+  };
 }

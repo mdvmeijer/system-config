@@ -34,6 +34,8 @@ in
     home.file.".bash_aliases".source = ./. + "/..${dotfiles}/.bash_aliases";
     home.file.".bashrc".source = ./. + "/..${dotfiles}/.bashrc";
     home.file.".tmux.conf".source = ./. + "/..${dotfiles}/.tmux.conf";
-    home.file.".alacritty.yml".source = ./. + "/..${dotfiles}/.alacritty.yml";
+    home.file.".config/alacritty".source = ./. + "/..${dotfiles}/.config/alacritty";
+    home.file.".config/dunst".source = ./. + "/..${dotfiles}/.config/dunst";
+    home.file.".vim".source = ./. + "/..${dotfiles}/.vim";
   };
 }
