@@ -16,22 +16,17 @@ in
 
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
-  services.xserver.videoDrivers = [ "modesetting" ];
   boot.kernelParams = [
+    # For Power consumption
+    # https://kvark.github.io/linux/framework/2021/10/17/framework-nixos.html
+    "mem_sleep_default=deep"
     # disabling psr (panel self-refresh rate) as workaround for iGPU hangs
     # https://discourse.nixos.org/t/intel-12th-gen-igpu-freezes/21768/4
-    # NOTE: Instead of setting the option to 1 as in the linked forum topic,
-    # setting it to 0 in combination with the 'modesetting' driver seems to fix the problem for me.
-    "i915.enable_psr=0"
-    # "i915.force_probe=46a6"
+    "i915.enable_psr=1"
 
     # sensor hub module conflicts with manual brightness adjustment
     "module_blacklist=hid_sensor_hub"
   ];
-
-  # For fingerprint support
-  # NOTE: breaks startup login on KDE
-  # services.fprintd.enable = lib.mkDefault true;
 
   # services.fw-fanctrl.enable = true;
   # services.fw-fanctrl.configJsonPath = /home/meeri/Projects/fw-fanctrl/fw-fanctrl-nix/config.json;
@@ -69,28 +64,6 @@ in
     };
   };
 
-  # powertop --auto-tune and ppd conflict with tlp
-  powerManagement.powertop.enable = false;
-  services.power-profiles-daemon.enable = false;
-
-  services.tlp.enable = true;
-  services.tlp.settings = {
-    # https://community.frame.work/t/guide-linux-battery-life-tuning/6665/204
-    INTEL_GPU_MIN_FREQ_ON_AC=100;
-    INTEL_GPU_MIN_FREQ_ON_BAT=100;
-    INTEL_GPU_MAX_FREQ_ON_AC=1300;
-    INTEL_GPU_MAX_FREQ_ON_BAT=450;
-    INTEL_GPU_BOOST_FREQ_ON_AC=1300;
-    INTEL_GPU_BOOST_FREQ_ON_BAT=450;
-
-    PCIE_ASPM_ON_BAT="powersupersave";
-    RUNTIME_PM_ON_BAT=1;
-
-    # Setting USB_AUTOSUSPEND messes with my network adapter
-    USB_AUTOSUSPEND=0;
-  };
-
-
   environment.systemPackages = with pkgs; [
     fw-ectool
     intel-gpu-tools  # for verifying HW acceleration with intel_gpu_top
@@ -101,8 +74,6 @@ in
     set-balanced-profile
     set-performance-profile
     set-extreme-profile
-
-    dhcpcd  # eduroam
   ];
 
   security.sudo.extraRules = [
@@ -195,66 +166,54 @@ in
 
   ######## /Core system stuff ########
 
+  services = {
+    fstrim.enable = true;
+    thermald.enable = true;
+    printing.enable = true;
 
-  ############# Services ##############
+    pipewire = {
+      enable = true;
+      alsa.enable = true;
+      alsa.support32Bit = true;
+      pulse.enable = true;
+    };
 
-  services.fstrim.enable = true;
+    tlp = {
+      enable = true;
+      settings = {
+        # https://community.frame.work/t/guide-linux-battery-life-tuning/6665/204
+        INTEL_GPU_MIN_FREQ_ON_AC=100;
+        INTEL_GPU_MIN_FREQ_ON_BAT=100;
+        INTEL_GPU_MAX_FREQ_ON_AC=1300;
+        INTEL_GPU_MAX_FREQ_ON_BAT=450;
+        INTEL_GPU_BOOST_FREQ_ON_AC=1300;
+        INTEL_GPU_BOOST_FREQ_ON_BAT=450;
 
-  services.thermald.enable = true;
+        PCIE_ASPM_ON_BAT="powersupersave";
+        RUNTIME_PM_ON_BAT=1;
 
-  # Enable the X11 windowing system.
-  services.xserver.enable = true;
-
-  # Enable the KDE Plasma Desktop Environment.
-  services.xserver.displayManager.sddm.enable = true;
-  services.xserver.displayManager.defaultSession = "hyprland";
-  # services.xserver.desktopManager.plasma5.enable = true;
-
-  # Configure keymap in X11
-  services.xserver = {
-    layout = "us";
-    xkbVariant = "";
+        # Setting USB_AUTOSUSPEND messes with my network adapter
+        USB_AUTOSUSPEND=0;
+      };
+    };
+    power-profiles-daemon.enable = false;
   };
 
-  # Enable CUPS to print documents.
-  services.printing.enable = true;
+  powerManagement.powertop.enable = false;
 
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-  };
-
-  ############# /Services #############
-
-
-  ############# Networking ############
-
-  networking.hostName = "lateralus";
-
-  # Enable networking
-  networking.networkmanager.enable = true;
-  # networking.networkmanager.dhcp = "dhcpcd";
-
-  networking.firewall = {
-    enable = true;
-    allowedTCPPorts = [
-      3000 # localhost React server
-      8080 # localhost Argon2 server
-    ];
+  networking = {
+    hostName = "lateralus";
+    networkmanager.enable = true;
+    firewall = {
+      enable = true;
+      allowedTCPPorts = [
+        3000 # localhost React server
+        8080 # localhost Argon2 server
+      ];
+    };
   };
 
   ############ /Networking ############
-
-
-  ######### Users & packages ##########
-
-  # why doesn't this work?
-  # environment.etc."inputrc".source = ./. + "/dotfiles/nixos-inputrc";
-  # environment.etc."inputrc".source = /home/meeri/.system-config/dotfiles/nixos-inputrc;
-
-  ######### /Users & packages ##########
 
   nix = {
     package = pkgs.nixFlakes;
