@@ -16,6 +16,7 @@
     swaylock-effects
     pavucontrol
     wlr-randr
+    xdg-utils
 
     # Clipboard manager
     cliphist
@@ -40,9 +41,6 @@
   home-manager.users.meeri = { pkgs, ... }: {
     home.stateVersion = "22.11";
 
-#     home.packages = with pkgs; [
-#     ];
-
     # TODO: define hyprland config; right now this is not managed by Nix.
 
 		gtk = {
@@ -58,16 +56,6 @@
     	};
   	};
   };
-
-
-#     gtk = {
-#       enable = true;
-#       theme = {
-#         name = "Materia-dark";
-#         package = pkgs.materia-theme;
-#       };
-#     };
-#   };
 
   nix.settings = {
     substituters = ["https://hyprland.cachix.org"];

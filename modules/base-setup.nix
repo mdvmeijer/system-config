@@ -79,6 +79,8 @@
     cmatrix
     ripgrep
     neovim
+
+    genact
   ];
 
 

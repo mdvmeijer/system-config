@@ -31,7 +31,7 @@
           "wlr/workspaces" = {
             "format" = "{name}: {icon}";
             "format-icons" = {
-              "1" = "";
+              "1" = "";
               "2" = "";
               "3" = "";
               "6" = "";
