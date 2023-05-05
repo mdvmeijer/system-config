@@ -15,4 +15,8 @@
   #   enable = true;
   #   secrets = [ "ipsec.d/ipsec.nm-l2tp.secrets" ];
   # };
+
+  environment.systemPackages = with pkgs; [
+    dotnet-sdk  # For dafny course
+  ];
 }

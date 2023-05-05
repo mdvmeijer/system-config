@@ -19,7 +19,6 @@
     wget
     git
     firefox
-    kate
     discord
     nodejs
     vlc
@@ -29,22 +28,19 @@
     htop
     glances
     qbittorrent
-    dotnet-sdk # for dafny course
     mlocate
     wofi
     chromium
     unzip
     powertop
-    easyeffects
+    easyeffects  # Fix FW speakers
 
-    yakuake
-    # kamoso (using nix-env atm)
     killall
     google-chrome
     lm_sensors
     galaxy-buds-client
     spotify
-    smartmontools
+    smartmontools  # Get SMART data
     bat
     obsidian
     nicotine-plus
@@ -63,7 +59,7 @@
     libnotify
     youtube-dl
     signal-desktop
-    tmuxinator
+    tmuxinator  # TODO: maybe delete
     mpv
     neofetch
     tmux
