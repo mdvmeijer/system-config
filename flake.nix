@@ -10,10 +10,7 @@
     };
 
     fw-ectool.url = "github:ssddq/fw-ectool";
-    hyprland = {
-      url = "github:hyprwm/Hyprland";
-      # inputs.nixpkgs.follows = "nixpkgs"; # MESA/OpenGL HW workaround
-    };
+    hyprland.url = "github:hyprwm/Hyprland";
   };
 
   outputs = inputs@{ self, nixpkgs, nixpkgs-unstable, home-manager, fw-ectool, hyprland }:
@@ -32,8 +29,8 @@
         fw-ectool = fw-ectool.packages.${prev.system}.default;
       };
       overlay-catppuccin = final: prev: {
+        # Get from unstable channel for additional module options
         catppuccin-gtk = nixpkgs-unstable.legacyPackages.${prev.system}.catppuccin-gtk;
-#        catppuccin-cursors = nixpkgs-unstable.legacyPackages.${prev.system}.catppuccin-cursors;
       };
     in {
       nixosConfigurations = {
@@ -47,8 +44,7 @@
             ./modules/virtualization.nix
             ./modules/hyprland.nix
             ./modules/cursor.nix
-            hyprland.nixosModules.default
-            {programs.hyprland.enable = true;}
+            ./modules/qutebrowser.nix
 
             ./modules/work-user.nix
 
@@ -61,9 +57,6 @@
             home-manager.nixosModules.home-manager {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
-              #home-manager.users.meeri = {
-              #  imports = [ ./home.nix ];
-              #}
             }
           ];
         };
