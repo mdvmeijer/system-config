@@ -46,10 +46,10 @@ lfcd () {
     fi
 }
 
-# Ctrl-O to run lfcd command:
+### Ctrl-O to run lfcd command:
 bind '"\C-o":"lfcd\C-m"'
 
-# Edge Impulse CLI (for embedded AI course)
+### Edge Impulse CLI (for embedded AI course)
 export PATH=$PATH:~/.npm-global/bin
 
 if command -v fzf-share >/dev/null; then

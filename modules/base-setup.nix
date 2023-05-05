@@ -13,6 +13,7 @@
       ./tmux.nix
       ./alacritty.nix
       ./kdeconnect.nix
+      ./bat.nix
     ];
 
   environment.systemPackages = with pkgs; [
@@ -41,7 +42,6 @@
     galaxy-buds-client
     spotify
     smartmontools  # Get SMART data
-    bat
     obsidian
     nicotine-plus
     gimp
@@ -49,6 +49,20 @@
     lf
     file
     feh
+    konsole
+    zsh
+
+    # Nice utils written in Rust
+    exa  # ls alternative
+    eva  # bc alternative (calculator)
+    du-dust  # du alternative
+    zoxide  # cd alternative
+    tokei  # Enumerate code files
+    
+    # TODO: Rust tools to check out
+    # hexyl  # hex viewer
+    # nomino  # batch renaming
+    # sd  # string find+replace tool; sed alternative?
 
     # PDF utils
     ocrmypdf  # Add OCR layer to PDF file
