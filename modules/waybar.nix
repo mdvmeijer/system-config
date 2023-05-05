@@ -15,7 +15,6 @@
 
     programs.waybar = {
       enable = true;
-      style = ../dotfiles/.config/waybar/style.css;
       settings = {
         mainBar = {
           "layer" = "top";

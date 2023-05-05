@@ -43,8 +43,9 @@
             ./modules/base-setup.nix
             ./modules/virtualization.nix
             ./modules/hyprland.nix
-            ./modules/cursor.nix
             ./modules/qutebrowser.nix
+
+            ./modules/themes/catppuccin/macchiato-rosewater.nix
 
             ./modules/work-user.nix
 

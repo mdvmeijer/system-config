@@ -314,19 +314,6 @@
         bindm = $mainMod, mouse:273, resizewindow
       '';
     };
-
-		gtk = {
-    	enable = true;
-    	theme = {
-      	name = "Catppuccin-Macchiato-Compact-Pink-Dark";
-      	package = pkgs.catppuccin-gtk.override {  # nixpkgs 22.11 does not have accents and variant params
-          accents = [ "pink" ];
-        	size = "compact";
-        	tweaks = [ "rimless" ];
-          variant = "macchiato";
-      	};
-    	};
-  	};
   };
 
   environment.systemPackages = with pkgs; [
