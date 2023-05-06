@@ -54,6 +54,7 @@
 
             ./modules/temp/embedded-AI.nix
             ./modules/temp/abo-stuff.nix
+            ./modules/obs.nix
 
             home-manager.nixosModules.home-manager {
               home-manager.useGlobalPkgs = true;

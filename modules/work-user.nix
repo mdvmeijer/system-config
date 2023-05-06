@@ -28,7 +28,6 @@ in
       slack
       yubikey-manager-qt
       yubikey-manager
-      jetbrains.rider
     ];
 
     home.file.".bash_aliases".source = ./. + "/..${dotfiles}/.bash_aliases";
