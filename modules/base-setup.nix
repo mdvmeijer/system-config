@@ -15,6 +15,7 @@
       ./kdeconnect.nix
       ./bat.nix
       ./git.nix
+      ./zathura.nix
     ];
 
   environment.sessionVariables = rec {
@@ -82,7 +83,6 @@
     qpdf  # e.g. rotating, splitting, merging, encryption
 
     tldr
-    zathura
     libnotify
     youtube-dl
     signal-desktop
