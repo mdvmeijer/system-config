@@ -4,8 +4,17 @@
   home-manager.users.meeri = { pkgs, ... }: {
     home.stateVersion = "22.11";
 
-    home.file.".bash_aliases".source = ../dotfiles/.bash_aliases;
+    # programs.bash = {
+    #   enable = true;
+    #   bashrcExtra = ''
+    #     . ~/.legacy_bashrc
+    #     . ~/.bash_aliases
+    #   '';
+    # };
+
+    # home.file.".legacy_bashrc".source = ../dotfiles/.bashrc;
     home.file.".bashrc".source = ../dotfiles/.bashrc;
+    home.file.".bash_aliases".source = ../dotfiles/.bash_aliases;
 
     programs.starship = {
       enable = true;

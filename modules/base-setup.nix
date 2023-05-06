@@ -14,11 +14,11 @@
       ./alacritty.nix
       ./kdeconnect.nix
       ./bat.nix
+      ./git.nix
     ];
 
   environment.systemPackages = with pkgs; [
     wget
-    git
     firefox
     discord
     nodejs

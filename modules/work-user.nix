@@ -30,6 +30,26 @@ in
       yubikey-manager
     ];
 
+    programs.git = {
+      enable = true;
+      userName = "M.D.V. Meijer";
+      userEmail = "max.meijer@mindyourpass.com";
+    };
+
+    programs.starship = {
+      enable = true;
+
+      # Below config is written to ~/.config/starship.toml
+      settings = {
+        add_newline = true;
+
+        character = {
+          success_symbol = "[➜](bold green)";
+          error_symbol = "[➜](bold red)";
+        };
+      };
+    };
+
     home.file.".bash_aliases".source = ./. + "/..${dotfiles}/.bash_aliases";
     home.file.".bashrc".source = ./. + "/..${dotfiles}/.bashrc";
     home.file.".tmux.conf".source = ./. + "/..${dotfiles}/.tmux.conf";
