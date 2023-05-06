@@ -4,6 +4,7 @@
   imports =
     [
       ./waybar.nix
+      ./dunst.nix
       inputs.hyprland.nixosModules.default
     ];
 
@@ -322,7 +323,6 @@
     pamixer
     playerctl
     helvum
-    dunst
     swaylock-effects
     pavucontrol
     wlr-randr

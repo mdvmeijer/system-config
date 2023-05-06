@@ -110,10 +110,35 @@ in
       };
     };
 
+    services.dunst = {
+      enable = true;
+      settings = {
+        global = {
+          frame_color = "#8AADF4";
+          separator_color = "frame";
+        };
+
+        urgency_low = {
+          background = "#24273A";
+          foreground = "#CAD3F5";
+        };
+
+        urgency_normal = {
+          background = "#24273A";
+          foreground = "#CAD3F5";
+        };
+
+        urgency_critical = {
+          background = "#24273A";
+          foreground = "#CAD3F5";
+          frame_color = "#F5A97F";
+        };
+      };
+    };
+
     home.file.".bash_aliases".source = ./. + "/..${dotfiles}/.bash_aliases";
     home.file.".bashrc".source = ./. + "/..${dotfiles}/.bashrc";
     home.file.".tmux.conf".source = ./. + "/..${dotfiles}/.tmux.conf";
-    home.file.".config/dunst".source = ./. + "/..${dotfiles}/.config/dunst";
     home.file.".vim".source = ./. + "/..${dotfiles}/.vim";
   };
 }
