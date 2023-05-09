@@ -204,6 +204,8 @@ in
   networking = {
     hostName = "lateralus";
     networkmanager.enable = true;
+    # wireless.enable = true;
+    # wireless.userControlled.enable = true;
     firewall = {
       enable = true;
       allowedTCPPorts = [
@@ -211,6 +213,15 @@ in
         8080 # localhost Argon2 server
       ];
     };
+
+    # wireless.networks.eduroam = {
+    #   auth = ''
+    #     key_mgmt=WPA-EAP
+    #     eap=PWD
+    #     identity="mameijer@abo.fi"
+    #     password="KeazTaYbubzy"
+    #   '';
+    # };
   };
 
   ############ /Networking ############

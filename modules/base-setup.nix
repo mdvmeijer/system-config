@@ -16,6 +16,7 @@
       ./bat.nix
       ./git.nix
       ./zathura.nix
+      ./exa.nix  # ls alternative
     ];
 
   environment.sessionVariables = rec {
@@ -67,13 +68,14 @@
     zsh
 
     # Nice utils written in Rust
-    exa  # ls alternative
     eva  # bc alternative (calculator)
     du-dust  # du alternative
+    duf  # df alternative
     zoxide  # cd alternative
     tokei  # Enumerate code files
     
     # TODO: Rust tools to check out
+    # TODO: https://github.com/ibraheemdev/modern-unix
     # hexyl  # hex viewer
     # nomino  # batch renaming
     # sd  # string find+replace tool; sed alternative?
@@ -86,6 +88,8 @@
     libnotify
     youtube-dl
     signal-desktop
+    whatsapp-for-linux
+    electron-mail
     tmuxinator  # TODO: maybe delete
     mpv
     neofetch
@@ -93,6 +97,7 @@
     fzf
     speedtest-cli
     calibre
+    taskell  # CLI kanban board
 
     gcc
     gdb

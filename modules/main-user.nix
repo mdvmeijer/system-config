@@ -15,10 +15,18 @@
   home-manager.users.meeri = { pkgs, ... }: {
     home.stateVersion = "22.11";
 
-    xdg.mimeApps.defaultApplications = {
-      "image/png" = "feh.desktop";
-      "image/jpeg" = "feh.desktop";
-      "text/plain" = "gvim";
+    # xdg.mimeApps.associations.added = {
+    #   "text/plain" = "GVim.desktop";
+    # };
+
+    xdg.mimeApps = {
+      # enable = true;
+
+      defaultApplications = {
+        "image/png" = "feh.desktop";
+        "image/jpeg" = "feh.desktop";
+        "text/plain" = "GVim.desktop";
+      };
     };
   };
 }

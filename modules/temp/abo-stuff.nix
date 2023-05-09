@@ -9,12 +9,12 @@
 
   # Abo Akademi vpn
   # https://blog.tomontheinternet.com/posts/using-l2tp-vpn-on-nixos/
-  # networking.networkmanager.enableStrongSwan = true;
-  # services.xl2tpd.enable = true;
-  # services.strongswan = {
-  #   enable = true;
-  #   secrets = [ "ipsec.d/ipsec.nm-l2tp.secrets" ];
-  # };
+   networking.networkmanager.enableStrongSwan = true;
+   services.xl2tpd.enable = true;
+  services.strongswan = {
+    enable = true;
+    secrets = [ "ipsec.d/ipsec.nm-l2tp.secrets" ];
+  };
 
   environment.systemPackages = with pkgs; [
     dotnet-sdk  # For dafny course

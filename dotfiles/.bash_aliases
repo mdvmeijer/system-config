@@ -8,14 +8,17 @@ alias st-rapl="cat /sys/class/powercap/intel-rapl/intel-rapl\:0/constraint_1_pow
 alias lt-rapl="cat /sys/class/powercap/intel-rapl/intel-rapl\:0/constraint_0_power_limit_uw"
 
 # Add convenient flags
-alias ll="exa --long --all"
-alias lt="exa --long --tree --level=3"
+alias ll="exa --long --all --group-directories-first"
+alias lt="exa --tree --level=3 --group-directories-first"
 alias less="less -I"  # Ignore case
 alias locate="locate -i"  # Ignore case
 alias cp="cp -i"  # Ask before overwriting existing file
 alias df="df -h"  # Show human-readable
 alias free="free -m"  # SHow in MB
 alias grep="grep --color=auto"  # Highlight matching phrase
+
+alias v="vim"
+alias blt-restart="sudo systemctl restart bluetooth"
 
 # Nix shorthands
 alias rb="sudo nixos-rebuild switch --flake ~/.system-config#lateralus"
@@ -43,3 +46,4 @@ alias status="git status"
 alias cat="bat"
 alias bc="eva"
 alias du="dust"
+alias df="duf"

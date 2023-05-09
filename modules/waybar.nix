@@ -99,7 +99,8 @@
           "backlight" = {
             "device" = "intel_backlight";
             "format" = "{percent}% {icon}";
-            "format-icons" = ["" ""];
+            # "format-icons" = ["" ""];
+            "format-icons" = [""];
           };
           "tray" = {
             "icon-size" = 21;

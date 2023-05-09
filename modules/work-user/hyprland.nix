@@ -6,17 +6,10 @@
       ./waybar.nix
       ./dunst.nix
       ./swaylock.nix
-      inputs.hyprland.nixosModules.default
     ];
 
-  # Module from inputs.hyprland substitutes nixpkgs `programs.hyprland` with its own,
-  # allowing for pulling the latest changes once they are available.
-  # Besides installing the Hyprland package, this module sets some system-wide configuration
-  # (e.g. polkit, xdg-desktop-portal-hyprland)
-  programs.hyprland.enable = true;
-
   # Hyprland config is handled with home-manager
-  home-manager.users.meeri = { pkgs, ... }: {
+  home-manager.users.max = { pkgs, ... }: {
     home.stateVersion = "22.11";
 
     imports = [
@@ -183,6 +176,7 @@
         # windowrulev2 = float,class:^(kitty)$,title:^(kitty)$
         # See https://wiki.hyprland.org/Configuring/Window-Rules/ for more
         
+        
         # See https://wiki.hyprland.org/Configuring/Keywords/ for more
         $mainMod = SUPER
         
@@ -193,8 +187,8 @@
         # On lid close, swaylock and suspend
         # bindl = , switch:on:Lid Switch, exec, $swaylockCmd && systemctl suspend  # swaylockCmd is run synchronously
         # bindl = , switch:on:Lid Switch, exec, $swaylockCmd
-        bindl = , switch:on:Lid Switch, exec, systemctl suspend
-
+        bindl = , switch:on:Lid Switch, exec, systemctl suspend 
+        
         # Control screen brightness with hardware brightness keys
         binde = ,XF86MonbrightnessDown, exec, brightnessctl set 5%-
         binde = ,XF86MonbrightnessUp, exec, brightnessctl set +5%
@@ -327,38 +321,5 @@
         bindm = $mainMod, mouse:273, resizewindow
       '';
     };
-  };
-
-  environment.systemPackages = with pkgs; [
-    hyprpaper
-    brightnessctl
-    pamixer
-    playerctl
-    helvum
-    pavucontrol
-    wlr-randr
-    xdg-utils
-    hyprpicker
-
-    # Clipboard manager
-    cliphist
-    wl-clipboard
-
-    # Screenshot tools
-    grim
-    slurp
-    swappy
-
-    libsForQt5.qt5ct  # Setting QT themes
-    glib  # Setting GTK themes
-
-    dolphin
-    libsForQt5.breeze-qt5
-    papirus-icon-theme
-  ];
-
-  nix.settings = {
-    substituters = ["https://hyprland.cachix.org"];
-    trusted-public-keys = ["hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="];
   };
 }

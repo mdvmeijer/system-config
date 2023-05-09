@@ -15,7 +15,6 @@
 
     programs.waybar = {
       enable = true;
-      style = ../../dotfiles/.config/waybar/style.css;
       settings = {
         mainBar = {
           "layer" = "top";
@@ -31,7 +30,7 @@
           "wlr/workspaces" = {
             "format" = "{name}: {icon}";
             "format-icons" = {
-              "1" = "";
+              "1" = "";
               "2" = "";
               "3" = "";
               "6" = "";
@@ -100,7 +99,7 @@
           "backlight" = {
             "device" = "intel_backlight";
             "format" = "{percent}% {icon}";
-            "format-icons" = ["" ""];
+            "format-icons" = [""];
           };
           "tray" = {
             "icon-size" = 21;

@@ -36,7 +36,7 @@ lfcd () {
     # `command` is needed in case `lfcd` is aliased to `lf`
     command lf -last-dir-path="$tmp" "$@"
     if [ -f "$tmp" ]; then
-        dir="$(cat "$tmp")"
+        dir="$(\cat "$tmp")"  # prefix with backslash to escape cat="bat" alias
         rm -f "$tmp"
         if [ -d "$dir" ]; then
             if [ "$dir" != "$(pwd)" ]; then

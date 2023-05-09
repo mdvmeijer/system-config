@@ -29,8 +29,12 @@
         fw-ectool = fw-ectool.packages.${prev.system}.default;
       };
       overlay-catppuccin = final: prev: {
-        # Get from unstable channel for additional module options
+        # Get from unstable for additional module options
         catppuccin-gtk = nixpkgs-unstable.legacyPackages.${prev.system}.catppuccin-gtk;
+      };
+      overlay-hyprpicker = final: prev: {
+        # Get from unstable because package not in nixpkgs 22.11
+        hyprpicker = nixpkgs-unstable.legacyPackages.${prev.system}.hyprpicker;
       };
     in {
       nixosConfigurations = {
@@ -38,7 +42,7 @@
           inherit system;
           specialArgs = { inherit inputs; };
           modules = [
-            ({ config, pkgs, ... }: { nixpkgs.overlays = [ overlay-fw-ectool overlay-catppuccin ]; }) 
+            ({ config, pkgs, ... }: { nixpkgs.overlays = [ overlay-fw-ectool overlay-catppuccin overlay-hyprpicker ]; }) 
             ./hosts/lateralus/default.nix
             ./modules/base-setup.nix
             ./modules/virtualization.nix

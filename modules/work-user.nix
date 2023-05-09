@@ -7,6 +7,8 @@ in
   imports = 
     [
       ./work-user/waybar.nix
+      ./work-user/hyprland.nix
+      ./work-user/themes/catppuccin/macchiato-rosewater.nix
   ];
 
   nixpkgs.config.allowUnfree = true;
@@ -107,32 +109,6 @@ in
             action = "ScrollToBottom";
           }
         ];
-      };
-    };
-
-    services.dunst = {
-      enable = true;
-      settings = {
-        global = {
-          frame_color = "#8AADF4";
-          separator_color = "frame";
-        };
-
-        urgency_low = {
-          background = "#24273A";
-          foreground = "#CAD3F5";
-        };
-
-        urgency_normal = {
-          background = "#24273A";
-          foreground = "#CAD3F5";
-        };
-
-        urgency_critical = {
-          background = "#24273A";
-          foreground = "#CAD3F5";
-          frame_color = "#F5A97F";
-        };
       };
     };
 
