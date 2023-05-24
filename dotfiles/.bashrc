@@ -73,3 +73,5 @@ PROMPT_COMMAND="history -a; $PROMPT_COMMAND"
 shopt -s histappend
 
 eval "$(starship init bash)"
+
+neofetch

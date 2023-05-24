@@ -14,7 +14,7 @@
         env.TERM = "xterm-256color";
 
         window = {
-          opacity = 0.90;
+          opacity = 1.00;
           dynamic_title = true;
         };
 

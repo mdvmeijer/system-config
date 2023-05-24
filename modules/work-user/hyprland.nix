@@ -54,6 +54,7 @@
         # exec-once = [workspace 9 silent] alacritty
         
         # windowrule = workspace 9 silent,^(alacritty)$
+        windowrulev2 = noborder,fullscreen:1
         
         # Spotify ignores window rules and stuff
         # exec-once = [workspace 6 silent;fullscreen] spotify
@@ -71,11 +72,12 @@
         # env = XDG_CURRENT_DESKTOP,Hyprland
         # env = XDG_SESSION_TYPE,wayland
         # env = XDG_SESSION_DESKTOP,Hyprland
-        # 
+       
         # env = GDK_BACKEND,wayland,x11
         # env = QT_QPA_PLATFORM,wayland;xcb
         # env = SDL_VIDEODRIVER,wayland
         # env = CLUTTER_BACKEND,wayland
+        # env = LIBGL_ALWAYS_SOFTWARE,1
         
         # Source a file (multi-file configs)
         # source = ~/.config/hypr/myColors.conf
@@ -107,8 +109,8 @@
         general {
             # See https://wiki.hyprland.org/Configuring/Variables/ for more
         
-            gaps_in = 3
-            gaps_out = 8
+            gaps_in = 0
+            gaps_out = 0
             border_size = 3
             # col.active_border = rgba(33ccffee) rgba(00ff99ee) 45deg
             # col.active_border = rgba(710193cc)
@@ -176,7 +178,6 @@
         # windowrulev2 = float,class:^(kitty)$,title:^(kitty)$
         # See https://wiki.hyprland.org/Configuring/Window-Rules/ for more
         
-        
         # See https://wiki.hyprland.org/Configuring/Keywords/ for more
         $mainMod = SUPER
         
@@ -187,7 +188,12 @@
         # On lid close, swaylock and suspend
         # bindl = , switch:on:Lid Switch, exec, $swaylockCmd && systemctl suspend  # swaylockCmd is run synchronously
         # bindl = , switch:on:Lid Switch, exec, $swaylockCmd
-        bindl = , switch:on:Lid Switch, exec, systemctl suspend 
+        bindl = , switch:on:Lid Switch, exec, systemctl suspend
+
+        # Special workspace / scratchpad stuff
+        bind = $mainMod, A, togglespecialworkspace
+        bind = $mainMod, Q, movetoworkspace, special
+        exec-once = [workspace special silent] alacritty
         
         # Control screen brightness with hardware brightness keys
         binde = ,XF86MonbrightnessDown, exec, brightnessctl set 5%-
@@ -231,23 +237,23 @@
         bind = ,Print, exec, grim -g "$(slurp)" - | wl-copy -t image/png
         bind = SHIFT, Print, exec, grim -g "$(slurp)" - | swappy -f -
         
-        # will switch to a submap called resize
-        bind=ALT,R,submap,resize
+
+        # will switch to a submap called fzf-menus
+        bind=$mainMod,E,submap,fzf-menus
+
+        # will start a submap called "fzf-menus"
+        submap=fzf-menus
         
-        # will start a submap called "resize"
-        submap=resize
-        
-        # sets repeatable binds for resizing the active window
-        binde=,right,resizeactive,10 0
-        binde=,left,resizeactive,-10 0
-        binde=,up,resizeactive,0 -10
-        binde=,down,resizeactive,0 10
+        # Open movie menu and exit submap
+        bind=,m,exec,~/scripts/fzf/menu-movie.sh
+        bind=,m,submap,reset
         
         # use reset to go back to the global submap
         bind=,escape,submap,reset 
         
         # will reset the submap, meaning end the current one and return to the global one
         submap=reset
+
         
         bind = $mainMod, D, exec, alacritty
         bind = $mainMod,S,exec,pidof firefox && hyprctl dispatch focuswindow firefox || firefox
@@ -256,7 +262,7 @@
         # Example binds, see https://wiki.hyprland.org/Configuring/Binds/ for more
         bind = $mainMod, C, killactive, 
         bind = $mainMod CTRL, M, exit, 
-        bind = $mainMod, E, exec, dolphin
+        bind = $mainMod, O, exec, dolphin
         bind = $mainMod SHIFT, F, togglefloating, 
         bind = $mainMod, R, exec, wofi --show drun
         bind = $mainMod, P, pseudo, # dwindle

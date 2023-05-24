@@ -98,6 +98,8 @@
     speedtest-cli
     calibre
     taskell  # CLI kanban board
+    termdown  # terminal countdown timer
+    espeak-classic  # speech synthesizer
 
     gcc
     gdb

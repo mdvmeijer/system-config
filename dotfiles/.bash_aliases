@@ -21,12 +21,12 @@ alias v="vim"
 alias blt-restart="sudo systemctl restart bluetooth"
 
 # Nix shorthands
-alias rb="sudo nixos-rebuild switch --flake ~/.system-config#lateralus"
+alias rb="sudo nixos-rebuild switch --flake ~/projects/system-config#lateralus"
 alias flu="nix flake update"
 alias try="nix-shell -p"
 
 # FS navigation shorthands
-alias gc="cd ~/.system-config"
+alias gc="cd ~/projects/system-config"
 alias gs="cd ~/scripts"
 alias gdoc="cd ~/Documents"
 alias gdow="cd ~/Downloads"
@@ -47,3 +47,6 @@ alias cat="bat"
 alias bc="eva"
 alias du="dust"
 alias df="duf"
+
+alias break-pomodoro="termdown 5m -b"
+alias work-pomodoro="termdown 25m -b"

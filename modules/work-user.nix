@@ -117,4 +117,8 @@ in
     home.file.".tmux.conf".source = ./. + "/..${dotfiles}/.tmux.conf";
     home.file.".vim".source = ./. + "/..${dotfiles}/.vim";
   };
+
+  nixpkgs.config.permittedInsecurePackages = [
+    "electron-21.4.0"
+  ];
 }
