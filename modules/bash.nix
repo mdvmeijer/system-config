@@ -15,6 +15,7 @@
     # home.file.".legacy_bashrc".source = ../dotfiles/.bashrc;
     home.file.".bashrc".source = ../dotfiles/.bashrc;
     home.file.".bash_aliases".source = ../dotfiles/.bash_aliases;
+    home.file.".bash_profile".source = ../dotfiles/.bash_profile;
 
     programs.starship = {
       enable = true;

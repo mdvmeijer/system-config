@@ -112,8 +112,10 @@ in
       };
     };
 
-    home.file.".bash_aliases".source = ./. + "/..${dotfiles}/.bash_aliases";
     home.file.".bashrc".source = ./. + "/..${dotfiles}/.bashrc";
+    home.file.".bash_aliases".source = ./. + "/..${dotfiles}/.bash_aliases";
+    home.file.".bash_profile".source = ./. + "/..${dotfiles}/.bash_profile";
+
     home.file.".tmux.conf".source = ./. + "/..${dotfiles}/.tmux.conf";
     home.file.".vim".source = ./. + "/..${dotfiles}/.vim";
   };

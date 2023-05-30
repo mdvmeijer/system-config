@@ -74,8 +74,4 @@ shopt -s histappend
 
 eval "$(starship init bash)"
 
-if [ "$(tty)" == "/dev/tty1" ]; then
-    pgrep Hyprland || Hyprland
-fi
-
 neofetch
