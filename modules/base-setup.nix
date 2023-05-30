@@ -34,7 +34,6 @@
 
   environment.systemPackages = with pkgs; [
     wget
-    firefox
     discord
     nodejs
     vlc
@@ -51,8 +50,12 @@
     powertop
     easyeffects  # Fix FW speakers
 
-    killall
     google-chrome
+    firefox
+    tor-browser-bundle-bin
+    mullvad-browser
+
+    killall
     lm_sensors
     galaxy-buds-client
     spotify
@@ -98,6 +101,7 @@
     speedtest-cli
     calibre
     taskell  # CLI kanban board
+    calcurse  # TUI calendar
     termdown  # terminal countdown timer
     espeak-classic  # speech synthesizer
 
@@ -111,6 +115,9 @@
     neovim
 
     genact
+    geeqie
+
+    rhythmbox
   ];
 
 

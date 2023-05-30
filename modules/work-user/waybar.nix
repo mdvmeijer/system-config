@@ -28,6 +28,7 @@
             "separate-outputs" = true;  # have the window title be per-monitor
           };
           "wlr/workspaces" = {
+            "on-click" = "activate";
             "format" = "{name}: {icon}";
             "format-icons" = {
               "1" = "";

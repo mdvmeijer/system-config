@@ -124,6 +124,12 @@
 
           let mapleader = ","
 
+          " Shortcut to rapidly toggle `set list`
+          nnoremap <leader>l :set list!<CR>
+          
+          " Use the same symbols as TextMate for tabstops and EOLs
+          set listchars=tab:▸\ ,eol:¬
+
           cnoremap sudow w !sudo tee % >/dev/null
 
           nnoremap <leader>n :NERDTreeFocus<CR>

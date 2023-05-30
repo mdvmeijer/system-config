@@ -6,6 +6,7 @@ let
   set-balanced-profile = pkgs.writeShellScriptBin "set-balanced-profile" (builtins.readFile ./scripts/power-management/set-balanced-profile);
   set-performance-profile = pkgs.writeShellScriptBin "set-performance-profile" (builtins.readFile ./scripts/power-management/set-performance-profile);
   set-extreme-profile = pkgs.writeShellScriptBin "set-extreme-profile" (builtins.readFile ./scripts/power-management/set-extreme-profile);
+  taskell-manager = pkgs.writeShellScriptBin "taskell-manager" (builtins.readFile ../../scripts/fzf/taskell-manager.sh);
 in
 {
   imports =
@@ -74,6 +75,7 @@ in
     set-balanced-profile
     set-performance-profile
     set-extreme-profile
+    taskell-manager
   ];
 
   security.sudo.extraRules = [

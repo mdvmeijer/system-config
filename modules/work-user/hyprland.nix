@@ -112,10 +112,14 @@
             gaps_in = 0
             gaps_out = 0
             border_size = 3
-            # col.active_border = rgba(33ccffee) rgba(00ff99ee) 45deg
-            # col.active_border = rgba(710193cc)
+
+            # For non-group windows (i.e. non-tabbed windows)
             col.active_border = $surface2
             col.inactive_border = rgba(000000aa)
+
+            # For group windows (i.e. tabbed windows)
+            col.group_border_active = $surface2
+            col.group_border = rgba(000000aa)
         
             layout = dwindle
         }
@@ -125,14 +129,8 @@
         
             rounding = 0
             blur = no
-            blur_size = 3
-            blur_passes = 1
-            blur_new_optimizations = on
         
             drop_shadow = no
-            shadow_range = 4
-            shadow_render_power = 3
-            col.shadow = rgba(1a1a1aee)
         }
         
         animations {
@@ -148,6 +146,15 @@
             animation = borderangle, 1, 8, default
             animation = fade, 1, 7, default
             animation = workspaces, 1, 6, default
+        }
+
+        misc {
+            # For group windows (i.e. tabbed windows)
+            render_titles_in_groupbar = true
+            groupbar_gradients = false
+
+            enable_swallow = true
+            swallow_regex = ^(Alacritty)$
         }
         
         dwindle {
@@ -190,11 +197,23 @@
         # bindl = , switch:on:Lid Switch, exec, $swaylockCmd
         bindl = , switch:on:Lid Switch, exec, systemctl suspend
 
-        # Special workspace / scratchpad stuff
-        bind = $mainMod, A, togglespecialworkspace
-        bind = $mainMod, Q, movetoworkspace, special
-        exec-once = [workspace special silent] alacritty
+        # Special workspace -- scratchpad
+        bind = $mainMod, S, togglespecialworkspace, scratchpad
+        bind = $mainMod SHIFT, S, movetoworkspace, special:scratchpad
+
+        # Special workspace -- hover terminal
+        bind = $mainMod, A, togglespecialworkspace, hover
+        exec-once = [workspace special:hover silent] alacritty
+
+        # Special workspace -- kanban w/ taskell
+        bind = $mainMod, T, togglespecialworkspace, kanban
+        exec-once = [workspace special:kanban silent] alacritty -e taskell-manager
         
+        # Special workspace -- music
+        windowrule = workspace special:music, ^(rhythmbox)$
+        bind = $mainMod, M, togglespecialworkspace, music
+        bind = $mainMod SHIFT, M, exec, rhythmbox
+
         # Control screen brightness with hardware brightness keys
         binde = ,XF86MonbrightnessDown, exec, brightnessctl set 5%-
         binde = ,XF86MonbrightnessUp, exec, brightnessctl set +5%
@@ -244,8 +263,12 @@
         # will start a submap called "fzf-menus"
         submap=fzf-menus
         
-        # Open movie menu and exit submap
-        bind=,m,exec,~/scripts/fzf/menu-movie.sh
+        # Open select-power-profile wofi menu and exit submap
+        bind=,p,exec,select-power-profile
+        bind=,p,submap,reset
+
+        # Open movie fzf menu and exit submap
+        bind=,m,exec,~/scripts/fzf/hyprland-movie-menu-scratchpad-wrapper.sh
         bind=,m,submap,reset
         
         # use reset to go back to the global submap
@@ -253,22 +276,28 @@
         
         # will reset the submap, meaning end the current one and return to the global one
         submap=reset
-
         
         bind = $mainMod, D, exec, alacritty
-        bind = $mainMod,S,exec,pidof firefox && hyprctl dispatch focuswindow firefox || firefox
+
+        # If program is open, move focus to it; otherwise, launch program
+        # bind = $mainMod,S,exec,pidof firefox && hyprctl dispatch focuswindow firefox || firefox
         # bind = $mainMod SHIFT,J,exec,pidof obsidian && hyprctl dispatch focuswindow obsidian || obsidian
         
         # Example binds, see https://wiki.hyprland.org/Configuring/Binds/ for more
         bind = $mainMod, C, killactive, 
-        bind = $mainMod CTRL, M, exit, 
-        bind = $mainMod, O, exec, dolphin
-        bind = $mainMod SHIFT, F, togglefloating, 
+        bind = $mainMod CTRL, M, exit,
+
+        bind = $mainMod, O, exec, alacritty -e lf 
+        bind = $mainMod SHIFT, O, exec, dolphin
+
+        bind = $mainMod CTRL, F, togglefloating, 
+        bind = $mainMod CTRL, S, togglesplit,
+        bind = $mainMod CTRL, P, pseudo,
+
         bind = $mainMod, R, exec, wofi --show drun
-        bind = $mainMod, P, pseudo, # dwindle
-        bind = $mainMod, T, togglesplit, # dwindle
         
         bind = $mainMod, F, fullscreen, 1
+        bind = $mainMod SHIFT, F, fullscreen, 0
         
         # Move focus with mainMod + arrow keys
         bind = $mainMod, left, movefocus, l
@@ -327,5 +356,38 @@
         bindm = $mainMod, mouse:273, resizewindow
       '';
     };
+  };
+
+  environment.systemPackages = with pkgs; [
+    hyprpaper
+    brightnessctl
+    pamixer
+    playerctl
+    helvum
+    pavucontrol
+    wlr-randr
+    xdg-utils
+    hyprpicker
+
+    # Clipboard manager
+    cliphist
+    wl-clipboard
+
+    # Screenshot tools
+    grim
+    slurp
+    swappy
+
+    libsForQt5.qt5ct  # Setting QT themes
+    glib  # Setting GTK themes
+
+    dolphin
+    libsForQt5.breeze-qt5
+    papirus-icon-theme
+  ];
+
+  nix.settings = {
+    substituters = ["https://hyprland.cachix.org"];
+    trusted-public-keys = ["hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="];
   };
 }

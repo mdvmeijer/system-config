@@ -7,7 +7,14 @@
     meeri = {
       isNormalUser = true;
       description = "Max Meijer";
-      extraGroups = [ "networkmanager" "wheel" "libvirtd" "kvm" "mlocate" ];
+      extraGroups = [ 
+        "networkmanager"
+        "wheel"
+        "libvirtd"
+        "kvm"
+        "mlocate"
+        "dialout"  # Access to serial ports, e.g. for Arduino
+      ];
       initialPassword = "password";
     };
   };

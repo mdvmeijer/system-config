@@ -50,3 +50,10 @@ alias df="duf"
 
 alias break-pomodoro="termdown 5m -b"
 alias work-pomodoro="termdown 25m -b"
+
+alias vpns="mullvad status"
+alias vpnu="mullvad connect"
+alias vpnd="mullvad disconnect"
+
+alias ..="cd .."
+alias ...="cd ../.."
