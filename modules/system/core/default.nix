@@ -3,20 +3,14 @@
 {
   imports =
     [
-      ./main-user.nix
-
-      ./bash.nix
       ./vim.nix
       ./python.nix
       ./vscode.nix
       ./mullvad-vpn.nix
-      ./tmux.nix
-      ./alacritty.nix
       ./kdeconnect.nix
-      ./bat.nix
-      ./git.nix
-      ./zathura.nix
-      ./exa.nix  # ls alternative
+      ./virtualization.nix
+
+      ./hyprland.nix
     ];
 
   environment.sessionVariables = rec {

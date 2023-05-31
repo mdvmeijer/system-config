@@ -1,22 +1,15 @@
-{ pkgs, config, inputs, ... }:
+args@{ config, pkgs, lib, username, inputs, ... }:
 
 {
   imports =
     [
-      ./waybar.nix
-      ./dunst.nix
-      ./swaylock.nix
-      inputs.hyprland.nixosModules.default
+      (import ./waybar.nix args)
+      (import ./dunst.nix args)
+      (import ./swaylock.nix args)
     ];
 
-  # Module from inputs.hyprland substitutes nixpkgs `programs.hyprland` with its own,
-  # allowing for pulling the latest changes once they are available.
-  # Besides installing the Hyprland package, this module sets some system-wide configuration
-  # (e.g. polkit, xdg-desktop-portal-hyprland)
-  programs.hyprland.enable = true;
-
   # Hyprland config is handled with home-manager
-  home-manager.users.meeri = { pkgs, ... }: {
+  home-manager.users.${username} = { pkgs, ... }: {
     home.stateVersion = "22.11";
 
     imports = [
@@ -363,38 +356,5 @@
         bindm = $mainMod, mouse:273, resizewindow
       '';
     };
-  };
-
-  environment.systemPackages = with pkgs; [
-    hyprpaper
-    brightnessctl
-    pamixer
-    playerctl
-    helvum
-    pavucontrol
-    wlr-randr
-    xdg-utils
-    hyprpicker
-
-    # Clipboard manager
-    cliphist
-    wl-clipboard
-
-    # Screenshot tools
-    grim
-    slurp
-    swappy
-
-    libsForQt5.qt5ct  # Setting QT themes
-    glib  # Setting GTK themes
-
-    dolphin
-    libsForQt5.breeze-qt5
-    papirus-icon-theme
-  ];
-
-  nix.settings = {
-    substituters = ["https://hyprland.cachix.org"];
-    trusted-public-keys = ["hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="];
   };
 }

@@ -36,29 +36,37 @@
         # Get from unstable because package not in nixpkgs 22.11
         hyprpicker = nixpkgs-unstable.legacyPackages.${prev.system}.hyprpicker;
       };
+      overlay-waybar = final: prev: {
+        # Enable experimental options such that wlr/overlays works
+        waybar = prev.waybar.overrideAttrs (oldAttrs: {
+          mesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true" ];
+        });
+      };
+
+      username-main = "meeri";
+      username-work = "max";
     in {
       nixosConfigurations = {
         lateralus = lib.nixosSystem {
           inherit system;
-          specialArgs = { inherit inputs; };
+          specialArgs = { inherit inputs; inherit username-main; inherit username-work; };
           modules = [
-            ({ config, pkgs, ... }: { nixpkgs.overlays = [ overlay-fw-ectool overlay-catppuccin overlay-hyprpicker ]; }) 
+            ({ config, pkgs, ... }: { nixpkgs.overlays = [ overlay-fw-ectool overlay-catppuccin overlay-hyprpicker overlay-waybar]; }) 
+
+            # Host-specific config
             ./hosts/lateralus/default.nix
-            ./modules/base-setup.nix
-            ./modules/virtualization.nix
-            ./modules/hyprland.nix
-            ./modules/qutebrowser.nix
 
-            ./modules/themes/catppuccin/macchiato-rosewater.nix
+            # System-level config
+            ./modules/system/core/default.nix
 
-            ./modules/work-user.nix
+            ./modules/system/extra/gaming/default.nix
+            ./modules/system/extra/gaming/emulation.nix
+            ./modules/system/extra/temp/embedded-AI.nix
+            ./modules/system/extra/temp/abo-stuff.nix
 
-            ./modules/gaming/emulation.nix
-            ./modules/gaming/default.nix
-
-            ./modules/temp/embedded-AI.nix
-            ./modules/temp/abo-stuff.nix
-            ./modules/obs.nix
+            # Home-manager config
+            ./modules/home-manager/main-user.nix
+            ./modules/home-manager/work-user.nix
 
             home-manager.nixosModules.home-manager {
               home-manager.useGlobalPkgs = true;
