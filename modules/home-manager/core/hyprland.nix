@@ -346,6 +346,10 @@ args@{ config, pkgs, lib, username, inputs, ... }:
         bind = $mainMod SHIFT, 8, movetoworkspace, 8
         bind = $mainMod SHIFT, 9, movetoworkspace, 9
         bind = $mainMod SHIFT, 0, movetoworkspace, 10
+
+        # Yeet current workspace to primary or secondary monitor
+        bind = $mainMod ALT, 1, movecurrentworkspacetomonitor, eDP-1
+        bind = $mainMod ALT, 2, movecurrentworkspacetomonitor, DP-4
         
         # Scroll through existing workspaces with mainMod + scroll
         bind = $mainMod, mouse_down, workspace, e+1

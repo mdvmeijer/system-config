@@ -7,6 +7,7 @@ let
   set-performance-profile = pkgs.writeShellScriptBin "set-performance-profile" (builtins.readFile ./scripts/power-management/set-performance-profile);
   set-extreme-profile = pkgs.writeShellScriptBin "set-extreme-profile" (builtins.readFile ./scripts/power-management/set-extreme-profile);
   taskell-manager = pkgs.writeShellScriptBin "taskell-manager" (builtins.readFile ../../scripts/fzf/taskell-manager.sh);
+  system-config-file-opener = pkgs.writeShellScriptBin "system-config-file-opener" (builtins.readFile ../../scripts/fzf/system-config-file-opener.sh);
 in
 {
   imports =
@@ -76,6 +77,7 @@ in
     set-performance-profile
     set-extreme-profile
     taskell-manager
+    system-config-file-opener
   ];
 
   security.sudo.extraRules = [

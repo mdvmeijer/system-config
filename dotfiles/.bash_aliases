@@ -34,6 +34,9 @@ alias gpic="cd ~/Pictures"
 alias gtor="cd ~/Torrents"
 alias gcou="cd ~/Documents/exchange/courses"
 
+# Edit file shorthands
+alias ec="system-config-file-opener"
+
 # Git shorthands
 alias branch="git branch"
 alias checkout="git checkout"
