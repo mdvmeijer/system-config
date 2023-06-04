@@ -1,6 +1,10 @@
 { config, pkgs, ... }:
 
 {
+  imports = [
+    ./emulation.nix
+  ];
+
   programs.steam = {
     enable = true;
     remotePlay.openFirewall = true;

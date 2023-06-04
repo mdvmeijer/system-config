@@ -53,16 +53,12 @@
           modules = [
             ({ config, pkgs, ... }: { nixpkgs.overlays = [ overlay-fw-ectool overlay-catppuccin overlay-hyprpicker overlay-waybar]; }) 
 
-            # Host-specific config
+            # Hardware-specific config
             ./hosts/lateralus/default.nix
 
             # System-level config
             ./modules/system/core/default.nix
-
             ./modules/system/extra/gaming/default.nix
-            ./modules/system/extra/gaming/emulation.nix
-            ./modules/system/extra/temp/embedded-AI.nix
-            ./modules/system/extra/temp/abo-stuff.nix
 
             # Home-manager config
             ./modules/home-manager/main-user.nix
