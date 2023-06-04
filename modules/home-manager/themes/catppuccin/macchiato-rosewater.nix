@@ -1,7 +1,7 @@
-{ pkgs, config, ... }:
+{ pkgs, config, lib, username, ... }:
 
 {
-  home-manager.users.meeri = { pkgs, ... }: {
+  home-manager.users.${username} = { pkgs, ... }: {
     # TODO: Some themes are embedded in dotfiles (e.g. alacritty, dunst); this needs refactoring
 
     home.pointerCursor = {
@@ -24,6 +24,6 @@
       };
     };
 
-    programs.waybar.style = ../../../dotfiles/.config/waybar/style.css;
+    programs.waybar.style = ../../../../dotfiles/.config/waybar/style.css;
   };
 }

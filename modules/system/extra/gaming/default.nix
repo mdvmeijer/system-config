@@ -1,25 +1,10 @@
 { config, pkgs, ... }:
 
-let
-  mainUser="meeri";
-in
 {
   programs.steam = {
     enable = true;
     remotePlay.openFirewall = true;
     dedicatedServer.openFirewall = true;
-  };
-
-
-
-  home-manager.users.${mainUser} = { pkgs, ... }: {
-    home.packages = with pkgs; [
-      # lutris
-      # legendary-gl
-      dwarf-fortress
-      superTux
-      superTuxKart
-    ];
   };
 
   nix = {

@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 ### Summary:
-### - Allow the user to select a Kanban board contained in TASKELL_DIR
+### - Allow the user to select a Kanban board contained in `taskell_dir`
 ### - Loop after closing taskell, i.e. allow the user to select a Kanban board again
 ###
 ### TODO:

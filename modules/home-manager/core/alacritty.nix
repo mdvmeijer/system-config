@@ -1,14 +1,14 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, username, ... }:
 
 {
-  home-manager.users.meeri = { pkgs, ... }: {
+  home-manager.users.${username} = { pkgs, ... }: {
     home.stateVersion = "22.11";
 
     programs.alacritty = {
       enable = true;
       settings = {
         import = [
-          ../dotfiles/.config/alacritty/catppuccin/catppuccin-macchiato.yml
+          ../../../dotfiles/.config/alacritty/catppuccin/catppuccin-macchiato.yml
         ];
 
         env.TERM = "xterm-256color";

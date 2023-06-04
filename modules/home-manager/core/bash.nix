@@ -1,7 +1,7 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, username, ... }:
 
 { 
-  home-manager.users.meeri = { pkgs, ... }: {
+  home-manager.users.${username} = { pkgs, ... }: {
     home.stateVersion = "22.11";
 
     # programs.bash = {
@@ -12,10 +12,10 @@
     #   '';
     # };
 
-    # home.file.".legacy_bashrc".source = ../dotfiles/.bashrc;
-    home.file.".bashrc".source = ../dotfiles/.bashrc;
-    home.file.".bash_aliases".source = ../dotfiles/.bash_aliases;
-    home.file.".bash_profile".source = ../dotfiles/.bash_profile;
+    # home.file.".legacy_bashrc".source = ../../../dotfiles/.bashrc;
+    home.file.".bashrc".source = ../../../dotfiles/.bashrc;
+    home.file.".bash_aliases".source = ../../../dotfiles/.bash_aliases;
+    home.file.".bash_profile".source = ../../../dotfiles/.bash_profile;
 
     programs.starship = {
       enable = true;

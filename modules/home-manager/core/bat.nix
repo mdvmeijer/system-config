@@ -1,7 +1,7 @@
-{ pkgs, config, ... }:
+{ config, pkgs, lib, username, ... }:
 
 { 
-  home-manager.users.meeri = {pkgs, ...}: {
+  home-manager.users.${username} = { pkgs, ... }: {
     home.stateVersion = "22.11";
 
     home.packages = with pkgs; [

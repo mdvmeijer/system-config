@@ -27,10 +27,12 @@
           " Load an indent file for the detected file type.
           filetype indent on
 
+          " TODO: Point to correct dir
           set undofile
           set undodir=$HOME/.vim/undos
 
           set number
+          set relativenumber
 
           " Highlight cursor line underneath the cursor horizontally.
           set cursorline
@@ -195,10 +197,4 @@
         '';
       })
     ];
-
-  home-manager.users.meeri = { pkgs, ... }: {
-    home.stateVersion = "22.11";
-
-    home.file.".vim".source = ../dotfiles/.vim;
-  };
 }

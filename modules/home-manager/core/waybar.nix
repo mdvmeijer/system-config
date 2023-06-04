@@ -1,16 +1,7 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, username, ... }:
 
 {
-  # Enable experimental options such that wlr/overlays works
-  nixpkgs.overlays = [
-    (self: super: {
-      waybar = super.waybar.overrideAttrs (oldAttrs: {
-        mesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true" ];
-      });
-    })
-  ];
-  
-  home-manager.users.meeri = { pkgs, ... }: {
+  home-manager.users.${username} = { pkgs, ... }: {
     home.stateVersion = "22.11";
 
     programs.waybar = {

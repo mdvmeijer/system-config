@@ -1,7 +1,7 @@
-{ pkgs, config, ... }:
+{ config, pkgs, lib, username, ... }:
 
 {
-  home-manager.users.meeri = {
+  home-manager.users.${username} = {
     programs.zathura = {
       enable = true;
       options = {

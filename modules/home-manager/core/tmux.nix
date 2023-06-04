@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, username, ... }:
 
 {
   #programs.tmux = {
@@ -20,13 +20,11 @@
   #  '';
   #};
 
-  environment.systemPackages = with pkgs; [
-    tmux
-  ];
-
-  home-manager.users.meeri = { pkgs, ... }: {
+  home-manager.users.${username} = { pkgs, ... }: {
     home.stateVersion = "22.11";
 
-    home.file.".tmux.conf".source = ../dotfiles/.tmux.conf;
+    programs.tmux.enable = true;
+
+    home.file.".tmux.conf".source = ../../../dotfiles/.tmux.conf;
   };
 }

@@ -7,6 +7,20 @@ alias gtop="sudo intel_gpu_top"
 alias st-rapl="cat /sys/class/powercap/intel-rapl/intel-rapl\:0/constraint_1_power_limit_uw"
 alias lt-rapl="cat /sys/class/powercap/intel-rapl/intel-rapl\:0/constraint_0_power_limit_uw"
 
+# Control screen backlight
+alias brightness-up="brightnessctl set 5%+"
+alias brightness-down="brightnessctl set 5%-"
+
+# Control output volume
+alias mute="pamixer -t"
+alias volume-up="pamixer -d 5"
+alias volume-down="pamixer -i 5"
+
+# Control media playback
+alias media-pause="playerctl play-pause"
+alias media-next="playerctl next"
+alias media-previous="playerctl previous"
+
 # Add convenient flags
 alias ll="exa --long --all --group-directories-first"
 alias lt="exa --tree --level=3 --group-directories-first"
@@ -33,6 +47,9 @@ alias gdow="cd ~/Downloads"
 alias gpic="cd ~/Pictures"
 alias gtor="cd ~/Torrents"
 alias gcou="cd ~/Documents/exchange/courses"
+
+# Edit file shorthands
+alias ec="system-config-file-opener"
 
 # Git shorthands
 alias branch="git branch"
