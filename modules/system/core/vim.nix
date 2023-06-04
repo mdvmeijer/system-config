@@ -7,7 +7,7 @@
       (pkgs.vim_configurable.customize {
         name = "vim";
         vimrcConfig.packages.myplugins = with pkgs.vimPlugins; {
-          start = [ delimitMate ]; # vim-autoclose is not packaged
+          start = [ delimitMate nerdtree catppuccin-vim ]; # vim-autoclose is not packaged
         };
         vimrcConfig.customRC = ''
           " GENERAL BEHAVIOR ---------------------------------------------------------------- {{{
