@@ -24,6 +24,6 @@
       };
     };
 
-    programs.waybar.style = ../../../../dotfiles/.config/waybar/style.css;
+    programs.waybar.style = ../../core/waybar/dotfiles/style.css;
   };
 }

@@ -8,7 +8,7 @@
       enable = true;
       settings = {
         import = [
-          ../../../dotfiles/.config/alacritty/catppuccin/catppuccin-macchiato.yml
+          ./dotfiles/catppuccin/catppuccin-macchiato.yml
         ];
 
         env.TERM = "xterm-256color";

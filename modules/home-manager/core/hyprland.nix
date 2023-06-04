@@ -3,9 +3,9 @@ args@{ config, pkgs, lib, username, inputs, ... }:
 {
   imports =
     [
-      (import ./waybar.nix args)
+      (import ./waybar/default.nix args)
       (import ./dunst.nix args)
-      (import ./swaylock.nix args)
+      (import ./swaylock/default.nix args)
     ];
 
   # Hyprland config is handled with home-manager
