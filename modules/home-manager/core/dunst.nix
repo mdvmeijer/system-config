@@ -4,7 +4,6 @@
   home-manager.users.${username} = { pkgs, ... }: {
     home.stateVersion = "22.11";
 
-    # home.file.".config/dunst".source = ../../../dotfiles/.config/dunst";
     services.dunst = {
       enable = true;
       settings = {
