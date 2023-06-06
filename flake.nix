@@ -21,19 +21,18 @@
         config = {
           allowUnfree = true;
         };
+        overlays = [ 
+          overlay-fw-ectool
+          overlay-hyprpicker
+          overlay-waybar
+        ];
       };
-
-      lib = nixpkgs.lib;
 
       overlay-fw-ectool = final: prev: {
         fw-ectool = fw-ectool.packages.${prev.system}.default;
       };
-      overlay-catppuccin = final: prev: {
-        # Get from unstable for additional module options
-        catppuccin-gtk = nixpkgs-unstable.legacyPackages.${prev.system}.catppuccin-gtk;
-      };
       overlay-hyprpicker = final: prev: {
-        # Get from unstable because package not in nixpkgs 22.11
+        # Get from unstable for latest version
         hyprpicker = nixpkgs-unstable.legacyPackages.${prev.system}.hyprpicker;
       };
       overlay-waybar = final: prev: {
@@ -47,12 +46,11 @@
       username-work = "max";
     in {
       nixosConfigurations = {
-        lateralus = lib.nixosSystem {
+        lateralus = nixpkgs.lib.nixosSystem {
           inherit system;
+          inherit pkgs;
           specialArgs = { inherit inputs; inherit username-main; inherit username-work; };
           modules = [
-            ({ config, pkgs, ... }: { nixpkgs.overlays = [ overlay-fw-ectool overlay-catppuccin overlay-hyprpicker overlay-waybar]; }) 
-
             # Hardware-specific config
             ./hosts/lateralus/default.nix
 

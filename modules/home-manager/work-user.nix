@@ -10,8 +10,6 @@ in {
     (import ./themes/catppuccin/macchiato-rosewater.nix args-with-username)
   ];
 
-  nixpkgs.config.allowUnfree = true;
-
   users.users.${username} = {
     isNormalUser = true;
     description = "MYP";

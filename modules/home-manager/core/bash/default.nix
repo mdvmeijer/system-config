@@ -123,8 +123,10 @@
         grep = "grep --color=auto";  # Highlight matching phrase
         
         v = "vim";
-        blt-restart = "sudo systemctl restart bluetooth";
-        
+
+        bt-restart = "sudo systemctl restart bluetooth";
+        btctl = "bluetoothctl";
+
         # Nix shorthands
         rb = "sudo nixos-rebuild switch --flake ~/projects/system-config#lateralus";
         flu = "nix flake update";
