@@ -139,8 +139,10 @@
   ];
 
   fonts.fonts = with pkgs; [
-    iosevka
     agave
+    iosevka
+    roboto-mono
+    jetbrains-mono
     font-awesome  # for waybar icons
   ];
 }

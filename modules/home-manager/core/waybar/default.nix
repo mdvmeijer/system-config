@@ -9,11 +9,11 @@
       settings = {
         mainBar = {
           "layer" = "top";
-          "height" = 24;
+          "height" = 32;
           "spacing" = 4;  # Gaps between modules
           "modules-left" = ["wlr/workspaces" "network" "bluetooth"];
           "modules-center" = ["hyprland/window"];
-          "modules-right" = ["backlight" "pulseaudio" "battery" "clock"];
+          "modules-right" = ["tray" "backlight" "pulseaudio" "battery" "clock"];
           "hyprland/window" = {
             "max-length" =  50;
             "separate-outputs" = true;  # have the window title be per-monitor
@@ -99,7 +99,7 @@
           };
           "tray" = {
             "icon-size" = 21;
-            "spacing" = 10;
+            # "spacing" = 10;
           };
         };
       };

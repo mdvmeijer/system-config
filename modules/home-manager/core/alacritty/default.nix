@@ -27,8 +27,9 @@
         tabspaces = 4;
 
         font.normal = {
-          family = "agave";
-          style = "Regular";
+          # family = "Jetbrains Mono";
+          family = "iosevka";
+          style = "Medium";
         };
 
         key_bindings = [

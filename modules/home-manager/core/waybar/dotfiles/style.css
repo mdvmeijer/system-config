@@ -52,21 +52,14 @@
 * {
   transition: none;
   box-shadow: none;
-  font-family: 'agave';
+  font-family: 'Jetbrains Mono';
+  font-weight: 600;
   color: @text;
 }
 
 window#waybar {
   background-color: shade(@base, 0.9);
   border: 2px solid alpha(@crust, 0.3);
-}
-
-#waybar {
-	font-family: 'agave';
-	font-size: 1.1em;
-	font-weight: 400;
-/*   color: @base04; */
-/*   background: @base01; */
 }
 
 #workspaces {
@@ -130,10 +123,4 @@ window#waybar {
 
 #temperature.critical {
   color: @base0F;
-}
-
-#window {
-  font-size: 0.9em;
-	font-weight: 400;
-	font-family: 'agave';
 }
