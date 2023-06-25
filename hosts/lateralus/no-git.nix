@@ -7,11 +7,12 @@
     ];
     exclude = [
       # very large paths
-      "/home/meeri/Torrents"
-      "/home/meeri/videos-n-stuff-to-check"
+      "/home/meeri/home-media"
+      "/home/meeri/media/torrents"
+      "/home/meeri/documents/working-dir"
       "/home/meeri/.cache"
       "/home/meeri/.mozilla"
-      "/home/meeri/temp"
+      "/home/meeri/tmp"
     ];
     repo = "eob45owc@eob45owc.repo.borgbase.com:repo";
     encryption = {

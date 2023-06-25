@@ -27,8 +27,8 @@
         tabspaces = 4;
 
         font.normal = {
-          # family = "Jetbrains Mono";
-          family = "iosevka";
+          family = "Jetbrains Mono";
+          # family = "iosevka";
           style = "Medium";
         };
 

@@ -10,7 +10,9 @@
         global = {
           frame_color = "#8AADF4";
           separator_color = "frame";
+          font = "iosevka";
         };
+
 
         urgency_low = {
           background = "#24273A";

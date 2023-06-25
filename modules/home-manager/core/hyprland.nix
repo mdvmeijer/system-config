@@ -32,9 +32,14 @@ args@{ config, pkgs, lib, username, inputs, ... }:
         
         # See https://wiki.hyprland.org/Configuring/Monitors/
         monitor=,preferred,auto,auto
-        monitor=eDP-1, 2256x1504, 592x1440, 1.25
+
+        # Config for 3440x1440 monitor
+        # monitor=eDP-1, 2256x1504, 592x1440, 1.25
+        # monitor=DP-3, 3440x1440@144, 0x0, 1.00
+
+        # Config for 1920x1080 monitor
+        monitor=eDP-1, 2256x1504, 0x1080, 1.25
         monitor=DP-4, 1920x1080, 0x0, 1.00
-        monitor=DP-3, 3440x1440@144, 0x0, 1.00
         
         # See https://wiki.hyprland.org/Configuring/Keywords/ for more
         
@@ -196,6 +201,10 @@ args@{ config, pkgs, lib, username, inputs, ... }:
         # bindl = , switch:on:Lid Switch, exec, $swaylockCmd
         bindl = , switch:on:Lid Switch, exec, systemctl suspend
 
+        # Yeet current workspace to primary or secondary monitor
+        bind = $mainMod ALT, 1, movecurrentworkspacetomonitor, eDP-1
+        bind = $mainMod ALT, 2, movecurrentworkspacetomonitor, DP-4
+
         # Special workspace -- scratchpad
         bind = $mainMod, S, togglespecialworkspace, scratchpad
         bind = $mainMod SHIFT, S, movetoworkspace, special:scratchpad
@@ -272,9 +281,9 @@ args@{ config, pkgs, lib, username, inputs, ... }:
         bind=,p,submap,reset
 
         # Open movie fzf menu and exit submap
-        bind=,m,exec,~/scripts/fzf/hyprland-movie-menu-scratchpad-wrapper.sh
+        bind=,m,exec,~/projects/scripts/fzf/hyprland-movie-menu-scratchpad-wrapper.sh
         bind=,m,submap,reset
-        
+
         # use reset to go back to the global submap
         bind=,escape,submap,reset 
         
@@ -298,7 +307,7 @@ args@{ config, pkgs, lib, username, inputs, ... }:
         bind = $mainMod CTRL, S, togglesplit,
         bind = $mainMod CTRL, P, pseudo,
 
-        bind = $mainMod, R, exec, wofi --show drun
+        bind = $mainMod, R, exec, wofi --show drun --matching=fuzzy
         
         bind = $mainMod, F, fullscreen, 1
         bind = $mainMod SHIFT, F, fullscreen, 0
@@ -351,11 +360,6 @@ args@{ config, pkgs, lib, username, inputs, ... }:
         bind = $mainMod SHIFT, 9, movetoworkspace, 9
         bind = $mainMod SHIFT, 0, movetoworkspace, 10
 
-        # Yeet current workspace to primary or secondary monitor
-        bind = $mainMod ALT, 1, movecurrentworkspacetomonitor, eDP-1
-        # bind = $mainMod ALT, 2, movecurrentworkspacetomonitor, DP-4
-        bind = $mainMod ALT, 2, movecurrentworkspacetomonitor, DP-3
-        
         # Scroll through existing workspaces with mainMod + scroll
         bind = $mainMod, mouse_down, workspace, e+1
         bind = $mainMod, mouse_up, workspace, e-1

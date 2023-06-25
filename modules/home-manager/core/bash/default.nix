@@ -86,8 +86,6 @@
         shopt -s histappend
         
         eval "$(starship init bash)"
-        
-        neofetch
       '';
       shellAliases = {
         clockmon = ''watch -n.1 "grep \"^[c]pu MHz\" /proc/cpuinfo"'';
@@ -114,6 +112,8 @@
         media-previous = "playerctl previous";
         
         # Add convenient flags
+        ls = "exa";
+        lm = "exa --long --group-directories-first";
         ll = "exa --long --all --group-directories-first";
         lt = "exa --tree --level=3 --group-directories-first";
         less = "less -I";  # Ignore case
@@ -134,7 +134,7 @@
         
         # FS navigation shorthands
         gc = "cd ~/projects/system-config";
-        gs = "cd ~/scripts";
+        gs = "cd ~/projects/scripts";
         gdoc = "cd ~/Documents";
         gdow = "cd ~/Downloads";
         gpic = "cd ~/Pictures";

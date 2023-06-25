@@ -9,6 +9,7 @@
       ./mullvad-vpn.nix
       ./kdeconnect.nix
       ./virtualization.nix
+      ./tailscale.nix
 
       ./hyprland.nix
     ];
@@ -98,6 +99,7 @@
     calcurse  # TUI calendar
     termdown  # terminal countdown timer
     espeak-classic  # speech synthesizer
+    rhythmbox
 
     gcc
     gdb
@@ -111,7 +113,11 @@
     genact
     geeqie
 
-    rhythmbox
+    element-desktop
+    fractal
+    remmina
+    testdisk  # Data recovery
+    libguestfs  # For accessing VHDx files
   ];
 
 
