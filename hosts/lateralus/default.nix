@@ -8,6 +8,7 @@ let
   set-extreme-profile = pkgs.writeShellScriptBin "set-extreme-profile" (builtins.readFile ./scripts/power-management/set-extreme-profile);
   taskell-manager = pkgs.writeShellScriptBin "taskell-manager" (builtins.readFile ../../scripts/fzf/taskell-manager.sh);
   system-config-file-opener = pkgs.writeShellScriptBin "system-config-file-opener" (builtins.readFile ../../scripts/fzf/system-config-file-opener.sh);
+  wofi-key-value-store = pkgs.writeShellScriptBin "wofi-key-value-store" (builtins.readFile ../../scripts/wofi/wofi-key-value-store.sh);
 in
 {
   imports =
@@ -78,6 +79,7 @@ in
     set-extreme-profile
     taskell-manager
     system-config-file-opener
+    wofi-key-value-store
   ];
 
   security.sudo.extraRules = [
@@ -152,7 +154,7 @@ in
     ];
   };
 
-  time.timeZone = "Europe/Helsinki";
+  time.timeZone = "Europe/Amsterdam";
 
   i18n.defaultLocale = "en_US.UTF-8";
 

@@ -34,12 +34,12 @@ args@{ config, pkgs, lib, username, inputs, ... }:
         monitor=,preferred,auto,auto
 
         # Config for 3440x1440 monitor
-        # monitor=eDP-1, 2256x1504, 592x1440, 1.25
-        # monitor=DP-3, 3440x1440@144, 0x0, 1.00
+        monitor=eDP-1, 2256x1504, 0x237, 1.25
+        monitor=DP-3, 3440x1440@144, 1804x0, 1.00
 
         # Config for 1920x1080 monitor
-        monitor=eDP-1, 2256x1504, 0x1080, 1.25
-        monitor=DP-4, 1920x1080, 0x0, 1.00
+        # monitor=eDP-1, 2256x1504, 0x1080, 1.25
+        # monitor=DP-4, 1920x1080, 0x0, 1.00
         
         # See https://wiki.hyprland.org/Configuring/Keywords/ for more
         
@@ -194,16 +194,24 @@ args@{ config, pkgs, lib, username, inputs, ... }:
         
         # Custom stuff
         
-        $swaylockCmd = swaylock --clock --indicator --screenshots --effect-scale 0.4 --effect-vignette 0.2:0.5 --effect-blur 4x2 --datestr "%a %e.%m.%Y" --timestr "%k:%M"
+        $screenLockCmd = swaylock --clock --indicator --screenshots --effect-scale 0.4 --effect-vignette 0.2:0.5 --effect-blur 4x2 --datestr "%a %e.%m.%Y" --timestr "%k:%M"
+        $suspendCmd = systemctl suspend
+        $lockAndSuspendCmd = $screenLockCmd & sleep 1; $suspendCmd &
         
-        # On lid close, swaylock and suspend
-        # bindl = , switch:on:Lid Switch, exec, $swaylockCmd && systemctl suspend  # swaylockCmd is run synchronously
-        # bindl = , switch:on:Lid Switch, exec, $swaylockCmd
-        bindl = , switch:on:Lid Switch, exec, systemctl suspend
+        # On lid close, lock screen and suspend
+        bindl = , switch:on:Lid Switch, exec, $lockAndSuspendCmd
+
+        # Keybind to lock screen
+        bind = $mainMod ALT, L, exec, $screenLockCmd
+
+        # Keybind to lock screen and suspend
+        bind = $mainMod ALT CTRL, L, exec, $lockAndSuspendCmd
+
+        bind=, XF86PowerOff, exec, systemctl suspend
 
         # Yeet current workspace to primary or secondary monitor
         bind = $mainMod ALT, 1, movecurrentworkspacetomonitor, eDP-1
-        bind = $mainMod ALT, 2, movecurrentworkspacetomonitor, DP-4
+        bind = $mainMod ALT, 2, movecurrentworkspacetomonitor, DP-3
 
         # Special workspace -- scratchpad
         bind = $mainMod, S, togglespecialworkspace, scratchpad
@@ -241,9 +249,6 @@ args@{ config, pkgs, lib, username, inputs, ... }:
         bind=, XF86AudioPause, exec, playerctl play-pause
         bind=, XF86AudioNext, exec, playerctl next
         bind=, XF86AudioPrev, exec, playerctl previous
-        
-        bind=, XF86PowerOff, exec, systemctl suspend
-        bind = $mainMod ALT, L, exec, $swaylockCmd
         
         bind = $mainMod CTRL, G, togglegroup
         bind = $mainMod, G, changegroupactive, f
@@ -283,6 +288,14 @@ args@{ config, pkgs, lib, username, inputs, ... }:
         # Open movie fzf menu and exit submap
         bind=,m,exec,~/projects/scripts/fzf/hyprland-movie-menu-scratchpad-wrapper.sh
         bind=,m,submap,reset
+
+        # Open key-value store with 'set' argument and exit submap
+        bind=,s,exec,wofi-key-value-store set
+        bind=,s,submap,reset
+        
+        # Open key-value store with 'get' argument and exit submap
+        bind=,g,exec,wofi-key-value-store get
+        bind=,g,submap,reset
 
         # use reset to go back to the global submap
         bind=,escape,submap,reset 
