@@ -199,7 +199,7 @@ args@{ config, pkgs, lib, username, inputs, ... }:
         $lockAndSuspendCmd = $screenLockCmd & sleep 1; $suspendCmd &
         
         # On lid close, lock screen and suspend
-        bindl = , switch:on:Lid Switch, exec, $lockAndSuspendCmd
+        # bindl = , switch:on:Lid Switch, exec, $lockAndSuspendCmd
 
         # Keybind to lock screen
         bind = $mainMod ALT, L, exec, $screenLockCmd
