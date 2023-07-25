@@ -44,19 +44,34 @@ in {
       };
     };
 
-    # TODO: Fix MIME stuff
-    # xdg.mimeApps.associations.added = {
-    #   "text/plain" = "GVim.desktop";
-    # };
+    xdg.mimeApps = {
+      enable = true;
 
-    # xdg.mimeApps = {
-    #   enable = true;
+      associations.added = {
+        "text/plain" = "vim.desktop";
+        "application/pdf" = "org.pwmt.zathura-pdf-mupdf.desktop";
+        "image/jpeg" = "org.kde.gwenview.desktop";
+        "image/png" = "org.kde.gwenview.desktop";
 
-    #   defaultApplications = {
-    #     "image/png" = "feh.desktop";
-    #     "image/jpeg" = "feh.desktop";
-    #     "text/plain" = "GVim.desktop";
-    #   };
-    # };
+        "x-scheme-handler/chrome" = "firefox.desktop";
+        "x-scheme-handler/http" = "firefox.desktop";
+        "x-scheme-handler/https" = "firefox.desktop";
+
+        "x-scheme-handler/signalcaptcha" = "signal-desktop.desktop";
+      };
+
+      defaultApplications = {
+        "text/plain" = "vim.desktop";
+        "application/pdf" = "org.pwmt.zathura-pdf-mupdf.desktop";
+        "image/jpeg" = "org.kde.gwenview.desktop";
+        "image/png" = "org.kde.gwenview.desktop";
+
+        "x-scheme-handler/chrome" = "firefox.desktop";
+        "x-scheme-handler/http" = "firefox.desktop";
+        "x-scheme-handler/https" = "firefox.desktop";
+
+        "x-scheme-handler/signalcaptcha" = "signal-desktop.desktop";
+      };
+    };
   };
 }

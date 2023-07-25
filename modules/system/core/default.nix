@@ -40,15 +40,14 @@
     qbittorrent
     mlocate
     wofi
-    chromium
     unzip
     powertop
     easyeffects  # Fix FW speakers
 
-    google-chrome
     firefox
     tor-browser-bundle-bin
     mullvad-browser
+    brave
 
     killall
     lm_sensors
@@ -111,7 +110,8 @@
     neovim
 
     genact
-    geeqie
+
+    gwenview
 
     element-desktop
     fractal
