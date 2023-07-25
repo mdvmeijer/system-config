@@ -21,8 +21,6 @@ in
       ./no-git.nix
     ];
 
-  boot.kernelPackages = pkgs.linuxPackages_latest;
-
   boot.kernelParams = [
     # For Power consumption
     # https://kvark.github.io/linux/framework/2021/10/17/framework-nixos.html
@@ -116,6 +114,8 @@ in
 
   ######### Core system stuff #########
 
+  boot.kernelPackages = pkgs.linuxPackages_latest;
+
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -144,20 +144,15 @@ in
     VDPAU_DRIVER = lib.mkIf config.hardware.opengl.enable (lib.mkDefault "va_gl");
   };
 
-  nixpkgs.config.packageOverrides = pkgs: {
-    vaapiIntel = pkgs.vaapiIntel.override { enableHybridCodec = true; };
-  };
-
   hardware.opengl = {
     enable = true;
     driSupport = true;
     driSupport32Bit = true;
     setLdLibraryPath = true;
     extraPackages = with pkgs; [
-      intel-media-driver
       vaapiIntel
-      vaapiVdpau
       libvdpau-va-gl
+      intel-media-driver
       mesa
     ];
   };
