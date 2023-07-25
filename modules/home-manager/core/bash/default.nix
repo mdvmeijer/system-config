@@ -135,6 +135,7 @@
         # FS navigation shorthands
         gc = "cd ~/projects/system-config";
         gs = "cd ~/projects/scripts";
+        gp = "cd ~/projects";
         gdoc = "cd ~/Documents";
         gdow = "cd ~/Downloads";
         gpic = "cd ~/Pictures";

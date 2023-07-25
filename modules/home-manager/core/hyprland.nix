@@ -34,7 +34,7 @@ args@{ config, pkgs, lib, username, inputs, ... }:
         monitor=,preferred,auto,auto
 
         # Config for 3440x1440 monitor
-        monitor=eDP-1, 2256x1504, 0x237, 1.25
+        monitor=eDP-1, 2256x1504, 0x237, 1.50
         monitor=DP-3, 3440x1440@144, 1804x0, 1.00
 
         # Config for 1920x1080 monitor
@@ -223,7 +223,7 @@ args@{ config, pkgs, lib, username, inputs, ... }:
 
         # Special workspace -- kanban w/ taskell
         bind = $mainMod, T, togglespecialworkspace, kanban
-        exec-once = [workspace special:kanban silent] alacritty -e ~/scripts/fzf/taskell-manager.sh
+        exec-once = [workspace special:kanban silent] alacritty -e taskell-manager
         
         # Special workspace -- music
         windowrule = workspace special:music, ^(rhythmbox)$
