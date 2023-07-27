@@ -9,7 +9,6 @@ args@{ config, pkgs, lib, username, ... }:
     (import ./exa.nix args)
     (import ./tmux/default.nix args)
     (import ./zathura.nix args)
-    (import ./chromium.nix args)
 
     (import ./hyprland.nix args)
   ];

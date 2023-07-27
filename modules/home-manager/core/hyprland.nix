@@ -30,6 +30,8 @@ args@{ config, pkgs, lib, username, inputs, ... }:
       XDG_CURRENT_DESKTOP = "Hyprland";
       XDG_SESSION_TYPE = "wayland";
       XDG_SESSION_DESKTOP = "Hyprland";
+
+      GRIM_DEFAULT_DIR = "$HOME/80-tmp/02-screenshots";
     };
 
     wayland.windowManager.hyprland = {
@@ -39,10 +41,11 @@ args@{ config, pkgs, lib, username, inputs, ... }:
       extraConfig = ''
         # Catppuccin theme
         source=~/.config/hypr/macchiato.conf
-        
+
         # Config for 3440x1440 monitor
         monitor=eDP-1, 2256x1504, 0x237, 1.50
         monitor=DP-3, 3440x1440@144, 1504x0, 1.00
+        workspace=1,monitor:DP-3  # Bind workspace 1 to external monitor
 
         # Config for 1920x1080 monitor
         # monitor=eDP-1, 2256x1504, 0x1080, 1.25
@@ -61,6 +64,8 @@ args@{ config, pkgs, lib, username, inputs, ... }:
         # VS Code file and folder picker
         windowrule = float,title:^(Open File)$
         windowrule = float,title:^(Open Folder)$
+
+        windowrule = float,title:^(Friends List)$
         
         # Spotify ignores window rules and stuff
         # exec-once = [workspace 6 silent;fullscreen] spotify
@@ -250,7 +255,6 @@ args@{ config, pkgs, lib, username, inputs, ... }:
         bind = $mainMod, V, exec, cliphist list | wofi -dmenu | cliphist decode | wl-copy
         
         # Screenshots
-        env = GRIM_DEFAULT_DIR=$HOME/Pictures/Screenshots
         bind = ,Print, exec, grim -g "$(slurp)" - | wl-copy -t image/png
         bind = SHIFT, Print, exec, grim -g "$(slurp)" - | swappy -f -
         
