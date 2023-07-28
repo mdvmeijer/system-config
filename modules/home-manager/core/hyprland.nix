@@ -16,6 +16,12 @@ args@{ config, pkgs, lib, username, inputs, ... }:
       inputs.hyprland.homeManagerModules.default
     ];
 
+    # XWayland stuff
+    home.packages = with pkgs.xorg; [
+      xprop
+      xhost
+    ];
+
     home.sessionVariables = {
       # Ensure QT apps use theme selected in qt5ct
       QT_QPA_PLATFORMTHEME = "qt5ct";

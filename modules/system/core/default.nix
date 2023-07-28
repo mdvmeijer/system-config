@@ -10,6 +10,7 @@
       ./kdeconnect.nix
       ./virtualization.nix
       ./tailscale.nix
+      ./usb-automount/default.nix
 
       ./hyprland.nix
     ];
@@ -118,6 +119,7 @@
     remmina
     testdisk  # Data recovery
     libguestfs  # For accessing VHDx files
+    gparted
   ];
 
 
