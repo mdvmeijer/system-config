@@ -7,7 +7,7 @@
       (pkgs.vim_configurable.customize {
         name = "vim";
         vimrcConfig.packages.myplugins = with pkgs.vimPlugins; {
-          start = [ delimitMate nerdtree catppuccin-vim ]; # vim-autoclose is not packaged
+          start = [ delimitMate nerdtree catppuccin-vim gruvbox-material ]; # vim-autoclose is not packaged
         };
         vimrcConfig.customRC = ''
           " GENERAL BEHAVIOR ---------------------------------------------------------------- {{{
@@ -94,7 +94,8 @@
           syntax on
           set termguicolors
 
-          colorscheme catppuccin_macchiato
+          " colorscheme catppuccin_macchiato
+          colorscheme gruvbox-material
 
           " }}}
 

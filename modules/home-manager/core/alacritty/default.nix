@@ -7,10 +7,6 @@
     programs.alacritty = {
       enable = true;
       settings = {
-        import = [
-          ./dotfiles/catppuccin/catppuccin-macchiato.yml
-        ];
-
         env.TERM = "xterm-256color";
 
         window = {

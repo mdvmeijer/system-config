@@ -12,7 +12,8 @@ in {
     (import ./extra/gaming.nix args-with-username)
     (import ./extra/work.nix args-with-username)
 
-    (import ./themes/catppuccin/macchiato-rosewater.nix args-with-username)
+    # (import ./themes/catppuccin/macchiato-rosewater.nix args-with-username)
+    (import ./themes/gruvbox/gruvbox-material.nix args-with-username)
   ];
 
   users.users.${username} = {
