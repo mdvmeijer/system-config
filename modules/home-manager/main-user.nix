@@ -50,6 +50,7 @@ in {
 
       associations.added = {
         "text/plain" = "vim.desktop";
+        "text/html" = "firefox.desktop";
         "application/pdf" = "org.pwmt.zathura-pdf-mupdf.desktop";
         "image/jpeg" = "org.kde.gwenview.desktop";
         "image/png" = "org.kde.gwenview.desktop";
@@ -59,10 +60,17 @@ in {
         "x-scheme-handler/https" = "firefox.desktop";
 
         "x-scheme-handler/signalcaptcha" = "signal-desktop.desktop";
+
+        # .docx files
+        "application/vnd.openxmlformats-officedocument.wordprocessingml.document" = "writer.desktop";
+
+        # .odt files
+        "application/vnd.oasis.opendocument.text" = "writer.desktop";
       };
 
       defaultApplications = {
         "text/plain" = "vim.desktop";
+        "text/html" = "firefox.desktop";
         "application/pdf" = "org.pwmt.zathura-pdf-mupdf.desktop";
         "image/jpeg" = "org.kde.gwenview.desktop";
         "image/png" = "org.kde.gwenview.desktop";
@@ -78,6 +86,12 @@ in {
         # "x-scheme-handler/https" = "chromium.desktop";
 
         "x-scheme-handler/signalcaptcha" = "signal-desktop.desktop";
+
+        # .docx files
+        "application/vnd.openxmlformats-officedocument.wordprocessingml.document" = "writer.desktop";
+
+        # .odt files
+        "application/vnd.oasis.opendocument.text" = "writer.desktop";
       };
     };
   };

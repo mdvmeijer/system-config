@@ -11,9 +11,12 @@
 
     fw-ectool.url = "github:ssddq/fw-ectool";
     hyprland.url = "github:hyprwm/Hyprland";
+
+    nix-doom-emacs.url = "github:nix-community/nix-doom-emacs";
+    # emacs-overlay.url = "github:nix-community/emacs-overlay";
   };
 
-  outputs = inputs@{ self, nixpkgs, nixpkgs-unstable, home-manager, fw-ectool, hyprland }:
+  outputs = inputs@{ self, nixpkgs, nixpkgs-unstable, home-manager, fw-ectool, hyprland, nix-doom-emacs, emacs-overlay }:
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs {
@@ -25,6 +28,8 @@
           overlay-fw-ectool
           overlay-hyprpicker
           overlay-waybar
+          #overlay-emacs
+          # emacs-overlay.overlays.default
         ];
       };
 
@@ -41,6 +46,12 @@
           mesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true" ];
         });
       };
+     #  overlay-emacs = final: prev: {
+     #    # Enable experimental options such that wlr/overlays works
+     #    emacs28 = prev.emacs28.overrideAttrs (oldAttrs: {
+     #      withPgtk = true;
+     #    });
+     #  };
 
       username-main = "meeri";
       username-work = "max";

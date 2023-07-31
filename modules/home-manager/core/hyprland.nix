@@ -20,6 +20,8 @@ args@{ config, pkgs, lib, username, inputs, ... }:
     home.packages = with pkgs.xorg; [
       xprop
       xhost
+      xeyes  # To test for XWayland apps
+      xlsclients  # To test for XWayland apps
     ];
 
     home.sessionVariables = {
@@ -27,7 +29,8 @@ args@{ config, pkgs, lib, username, inputs, ... }:
       QT_QPA_PLATFORMTHEME = "qt5ct";
       QT_QPA_PLATFORM = "wayland;xcb";
       
-      GDK_BACKEND = "wayland,x11";
+      #GDK_BACKEND = "wayland,x11";
+      GDK_BACKEND = "wayland";
       CLUTTER_BACKEND = "wayland";
 
       SDL_VIDEODRIVER = "wayland";
@@ -49,7 +52,7 @@ args@{ config, pkgs, lib, username, inputs, ... }:
         source=~/.config/hypr/macchiato.conf
 
         # Config for 3440x1440 monitor
-        monitor=eDP-1, 2256x1504, 0x237, 1.50
+        monitor=eDP-1, 2256x1504, 0x237, 1.5
         monitor=DP-3, 3440x1440@144, 1504x0, 1.00
         workspace=1,monitor:DP-3  # Bind workspace 1 to external monitor
 
@@ -302,6 +305,11 @@ args@{ config, pkgs, lib, username, inputs, ... }:
         # Example binds, see https://wiki.hyprland.org/Configuring/Binds/ for more
         bind = $mainMod, C, killactive, 
         bind = $mainMod CTRL, M, exit,
+
+        # For use with emacs daemon
+        # bind = $mainMod, Space, exec, emacsclient --create-frame
+
+        bind = $mainMod, Space, exec, emacs
 
         bind = $mainMod, O, exec, alacritty -e lf 
         bind = $mainMod SHIFT, O, exec, dolphin

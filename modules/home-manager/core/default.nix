@@ -11,5 +11,6 @@ args@{ config, pkgs, lib, username, ... }:
     (import ./zathura.nix args)
 
     (import ./hyprland.nix args)
+    ./doom-emacs/default.nix
   ];
 }

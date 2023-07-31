@@ -41,7 +41,9 @@
     qbittorrent
     mlocate
     wofi
+    zip
     unzip
+    texlive.combined.scheme-full  # LaTeX stuff
     powertop
     easyeffects  # Fix FW speakers
 
@@ -71,6 +73,7 @@
     duf  # df alternative
     zoxide  # cd alternative
     tokei  # Enumerate code files
+    fd  # find alternative
     
     # TODO: Rust tools to check out
     # TODO: https://github.com/ibraheemdev/modern-unix
@@ -105,7 +108,6 @@
     gdb
     bintools
 
-    emacs
     cmatrix
     ripgrep
     neovim
@@ -152,5 +154,6 @@
     roboto-mono
     jetbrains-mono
     font-awesome  # for waybar icons
+    overpass
   ];
 }
