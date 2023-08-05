@@ -128,7 +128,9 @@ args@{ config, pkgs, lib, username, inputs, ... }:
             # See https://wiki.hyprland.org/Configuring/Variables/ for more
         
             rounding = 0
-            blur = no
+            blur {
+                 enabled = no;
+            }
         
             drop_shadow = no
         }
