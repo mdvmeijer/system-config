@@ -1,9 +1,9 @@
-{ config, pkgs, username, ... }:
+{ config, pkgs, ... }:
 
 {
-  home-manager.users.${username} = {
+  home-manager.users.meeri = {
     home.packages = with pkgs; [
-      android-studio
+      unstable.android-studio
       slack
     ];
 
@@ -15,5 +15,4 @@
       ];
     };
   };
-
 }

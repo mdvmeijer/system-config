@@ -51,6 +51,7 @@
     tor-browser-bundle-bin
     mullvad-browser
     brave
+    google-chrome
 
     killall
     lm_sensors
@@ -67,7 +68,7 @@
     konsole
     zsh
 
-    # Nice utils written in Rust
+    #
     eva  # bc alternative (calculator)
     du-dust  # du alternative
     duf  # df alternative
@@ -103,7 +104,9 @@
     termdown  # terminal countdown timer
     espeak-classic  # speech synthesizer
     rhythmbox
+    emacs
 
+    clang
     gcc
     gdb
     bintools
@@ -122,6 +125,14 @@
     testdisk  # Data recovery
     libguestfs  # For accessing VHDx files
     gparted
+    ventoy-full
+    nmap
+
+    rpi-imager
+
+    simple-mtpfs  # To transfer files to/from Android phone
+    graphviz  # To generate org-roam graphs
+    psmisc  # For fuser command
   ];
 
 
@@ -155,5 +166,7 @@
     jetbrains-mono
     font-awesome  # for waybar icons
     overpass
+    paratype-pt-serif
+    emacs-all-the-icons-fonts
   ];
 }

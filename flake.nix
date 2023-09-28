@@ -12,11 +12,11 @@
     fw-ectool.url = "github:ssddq/fw-ectool";
     hyprland.url = "github:hyprwm/Hyprland";
 
-    nix-doom-emacs.url = "github:nix-community/nix-doom-emacs";
+    # nix-doom-emacs.url = "github:nix-community/nix-doom-emacs";
     # emacs-overlay.url = "github:nix-community/emacs-overlay";
   };
 
-  outputs = inputs@{ self, nixpkgs, nixpkgs-unstable, home-manager, fw-ectool, hyprland, nix-doom-emacs, emacs-overlay }:
+  outputs = inputs@{ self, nixpkgs, nixpkgs-unstable, home-manager, fw-ectool, hyprland, emacs-overlay }:
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs {
@@ -28,10 +28,13 @@
           overlay-fw-ectool
           overlay-hyprpicker
           overlay-waybar
-          #overlay-emacs
-          # emacs-overlay.overlays.default
+          # overlay-android-studio
+          overlay-unstable
+          # overlay-swayosd
         ];
       };
+
+      # nixpkgs-unstable.config.allowUnfree = true;
 
       overlay-fw-ectool = final: prev: {
         fw-ectool = fw-ectool.packages.${prev.system}.default;
@@ -42,16 +45,24 @@
       };
       overlay-waybar = final: prev: {
         # Enable experimental options such that wlr/overlays works
-        waybar = prev.waybar.overrideAttrs (oldAttrs: {
+        waybar = nixpkgs-unstable.legacyPackages.${prev.system}.waybar.overrideAttrs (oldAttrs: {
           mesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true" ];
         });
       };
-     #  overlay-emacs = final: prev: {
-     #    # Enable experimental options such that wlr/overlays works
-     #    emacs28 = prev.emacs28.overrideAttrs (oldAttrs: {
-     #      withPgtk = true;
-     #    });
-     #  };
+      overlay-swayosd = final: prev: {
+        # Get from unstable for latest version
+        swayosd = nixpkgs-unstable.legacyPackages.${prev.system}.swayosd;
+      };
+      # overlay-android-studio = final: prev: {
+      #   # Get from unstable for latest version
+      #   android-studio = nixpkgs-unstable.legacyPackages.${prev.system}.android-studio;
+      # };
+      overlay-unstable = final: prev: {
+        unstable = import nixpkgs-unstable {
+          system = "x86_64-linux";
+          config.allowUnfree = true; # snake eyes!
+        };
+      };
 
       username-main = "meeri";
       username-work = "max";
@@ -62,6 +73,7 @@
           inherit pkgs;
           specialArgs = { inherit inputs; inherit username-main; inherit username-work; };
           modules = [
+            # ({ config, pkgs, ... }: { inputs.nixpkgs-unstable.config.allowUnfree = true; })
             # Hardware-specific config
             ./hosts/lateralus/default.nix
 

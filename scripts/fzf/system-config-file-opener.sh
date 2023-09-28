@@ -11,11 +11,11 @@
 root_dir=/home/meeri/projects/system-config
 ###
 
-selected_path=$(find $root_dir -type f -not -path '*.git*' -not -path '*.vim*' | fzf)
+selected_path=$(find $root_dir -type f -not -path '*.git*' | fzf)
 
 if [ -z "$selected_path" ]; then
   echo "No file was selected"
   exit 1
 fi
 
-vim $selected_path
+emacs -nw $selected_path

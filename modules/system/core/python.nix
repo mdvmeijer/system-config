@@ -5,6 +5,7 @@
     let 
       myPythonPackages = pythonPackages: with pythonPackages; [
         watchdog
+        cbor2
       ];
     in [
       (python3.withPackages myPythonPackages)

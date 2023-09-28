@@ -30,10 +30,12 @@ args@{ config, pkgs, lib, username, inputs, ... }:
       QT_QPA_PLATFORM = "wayland;xcb";
       
       #GDK_BACKEND = "wayland,x11";
-      GDK_BACKEND = "wayland";
+      GDK_BACKEND = "wayland,x11";
       CLUTTER_BACKEND = "wayland";
 
-      SDL_VIDEODRIVER = "wayland";
+      # Setting SDL_VIDEODRIVER to "wayland" prevents many Steam games from launching (as of 19-08-2023)
+      # SDL_VIDEODRIVER = "wayland";
+      SDL_VIDEODRIVER = "x11";
       # LIBGL_ALWAYS_SOFTWARE = "1";
 
       XDG_CURRENT_DESKTOP = "Hyprland";
@@ -52,40 +54,45 @@ args@{ config, pkgs, lib, username, inputs, ... }:
         source=~/.config/hypr/macchiato.conf
 
         # Config for 3440x1440 monitor
-        monitor=eDP-1, 2256x1504, 0x237, 1.5
-        monitor=DP-3, 3440x1440@144, 1504x0, 1.00
+        # monitor=eDP-1, 2256x1504, 0x237, 1.25
+        # monitor=DP-3, 3440x1440@144, 1504x0, 1.00
+        # workspace=1,monitor:DP-3  # Bind workspace 1 to external monitor
+
+        # Work config for 3440x1440 monitor
+        monitor=eDP-1, 2256x1504, 800x1440, 1.25
+        monitor=DP-3, 3440x1440@60, 0x0, 1.00
         workspace=1,monitor:DP-3  # Bind workspace 1 to external monitor
 
         # Config for 1920x1080 monitor
         # monitor=eDP-1, 2256x1504, 0x1080, 1.25
-        # monitor=DP-4, 1920x1080, 0x0, 1.00
+        # monitor=DP-3, 1920x1080, 0x0, 1.00
         
         # Default catch-all monitor config
         monitor=,preferred,auto,auto
 
-        # Execute your favorite apps at launch
-        exec-once = waybar
-        exec-once = dunst
-        exec-once = hyprpaper
-        
-        windowrulev2 = noborder,fullscreen:1
+        xwayland {
+            force_zero_scaling = true
+        }
+
+        # Daemons for various desktop environment functions
+        exec-once = waybar  # Status bar
+        exec-once = dunst  # Notifications
+        exec-once = hyprpaper  # Wallpaper
+        exec-once = swayosd  # Volume & brightness indicator
+
+        windowrule = workspace 2 silent,^(code)$
 
         # VS Code file and folder picker
         windowrule = float,title:^(Open File)$
         windowrule = float,title:^(Open Folder)$
 
+        # Steam friends list
         windowrule = float,title:^(Friends List)$
-        
-        # Spotify ignores window rules and stuff
-        # exec-once = [workspace 6 silent;fullscreen] spotify
-        # windowrule = workspace 6 silent,^(spotify)$
-        
-        windowrule = workspace 2 silent,^(code)$
-        
+
         # For cliphist
         exec-once = wl-paste --type text --watch cliphist store #Stores only text data
         exec-once = wl-paste --type image --watch cliphist store #Stores only image data
-        
+
         # For all categories, see https://wiki.hyprland.org/Configuring/Variables/
         input {
             kb_layout = us
@@ -114,11 +121,13 @@ args@{ config, pkgs, lib, username, inputs, ... }:
             border_size = 3
 
             # For non-group windows (i.e. non-tabbed windows)
-            col.active_border = $surface2
+            # col.active_border = $surface2
+            col.active_border = rgba(F9F5D788)
             col.inactive_border = rgba(000000aa)
 
             # For group windows (i.e. tabbed windows)
-            col.group_border_active = $surface2
+            # col.group_border_active = $surface2
+            col.group_border_active = rgba(F9F5D788)
             col.group_border = rgba(000000aa)
         
             layout = dwindle
@@ -157,12 +166,16 @@ args@{ config, pkgs, lib, username, inputs, ... }:
 
             enable_swallow = true
             swallow_regex = ^(Alacritty)$
+
+            disable_hyprland_logo = true
         }
         
         dwindle {
             # See https://wiki.hyprland.org/Configuring/Dwindle-Layout/ for more
             pseudotile = yes # master switch for pseudotiling. Enabling is bound to mainMod + P in the keybinds section below
             preserve_split = yes # you probably want this
+
+            no_gaps_when_only = yes  # Remove border when just 1 window is present on a workspace
         }
         
         master {
@@ -209,12 +222,17 @@ args@{ config, pkgs, lib, username, inputs, ... }:
         bind = $mainMod ALT, 1, movecurrentworkspacetomonitor, eDP-1
         bind = $mainMod ALT, 2, movecurrentworkspacetomonitor, DP-3
 
+        # Go to previous workspace
+
+        bind = $mainMod, n, workspace, previous
+
         # Special workspace -- scratchpad
         bind = $mainMod, S, togglespecialworkspace, scratchpad
         bind = $mainMod SHIFT, S, movetoworkspace, special:scratchpad
 
         # Special workspace -- hover terminal
         bind = $mainMod, A, togglespecialworkspace, hover
+        bind = $mainMod SHIFT, A, exec, [workspace special:hover] alacritty
         exec-once = [workspace special:hover silent] alacritty
 
         # Special workspace -- kanban w/ taskell
@@ -225,20 +243,27 @@ args@{ config, pkgs, lib, username, inputs, ... }:
         windowrule = workspace special:music, ^(rhythmbox)$
         bind = $mainMod, M, togglespecialworkspace, music
         bind = $mainMod SHIFT, M, exec, rhythmbox
+        exec-once = rhythmbox
         
         # Special workspace -- slack
         windowrule = workspace special:slack, ^(Slack)$
         bind = $mainMod, Y, togglespecialworkspace, slack
         bind = $mainMod SHIFT, Y, exec, slack
 
+        bind = $mainMod, period, exec, wl-copy bertbmyp@gmail.com | wl-paste --type text
+        bind = $mainMod, comma, exec, wl-copy kabouter1234 | wl-paste --type text
+
         # Control screen brightness with hardware brightness keys
+        # binde = ,XF86MonbrightnessDown, exec, swayosd --brightness lower
+        # binde = ,XF86MonbrightnessUp, exec, swayosd --brightness raise
+
         binde = ,XF86MonbrightnessDown, exec, brightnessctl set 5%-
         binde = ,XF86MonbrightnessUp, exec, brightnessctl set +5%
-        
+
         # Control audio volume with hardware volume keys
-        bind = ,XF86AudioMute, exec, pamixer -t
-        binde = ,XF86AudioLowerVolume, exec, pamixer -d 5
-        binde = ,XF86AudioRaiseVolume, exec, pamixer -i 5
+        bind = ,XF86AudioMute, exec, swayosd --output-volume mute-toggle
+        binde = ,XF86AudioLowerVolume, exec, swayosd --output-volume lower
+        binde = ,XF86AudioRaiseVolume, exec, swayosd --output-volume raise
         
         # Control audio playback with hardware playback keys
         bind=, XF86AudioPlay, exec, playerctl play-pause
@@ -313,8 +338,8 @@ args@{ config, pkgs, lib, username, inputs, ... }:
 
         bind = $mainMod, Space, exec, emacs
 
-        bind = $mainMod, O, exec, alacritty -e lf 
-        bind = $mainMod SHIFT, O, exec, dolphin
+        # bind = $mainMod, O, exec, alacritty -e lf
+        bind = $mainMod, O, exec, dolphin
 
         bind = $mainMod CTRL, F, togglefloating, 
         bind = $mainMod CTRL, S, togglesplit,

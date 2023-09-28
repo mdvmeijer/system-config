@@ -2,7 +2,7 @@
       user-mail-address "mdvmeijer@protonmail.com")
 
 (setq doom-font (font-spec :family "JetBrains Mono" :size 18 :weight 'semi-light)
-      doom-variable-pitch-font (font-spec :family "PT Serif" :size 20))
+      doom-variable-pitch-font (font-spec :family "Overpass" :size 22))
 
 (setq display-line-numbers-type 'relative)
 
@@ -13,7 +13,7 @@
 
 ;; Org configuration
 ;; Must be set before org loads!
-(setq org-directory "~/06-org/")
+(setq org-directory "~/01-personal/06-org/")
 
 (after! org
   ;(setq org-hide-emphasis-markers t)
@@ -32,7 +32,7 @@
 ;; (setq org-directory "~/01-personal/01-MAIN")
 
 (after! org
-  (setq org-agenda-files '("~/06-org/agenda"))
+  (setq org-agenda-files '("~/01-personal/01-MAIN/agenda.org"))
   (setq org-todo-keywords        ; This overwrites the default Doom org-todo-keywords
           '((sequence
              "TODO(t)"           ; A task that is ready to be tackled

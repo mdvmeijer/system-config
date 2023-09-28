@@ -11,14 +11,14 @@
           "layer" = "top";
           "height" = 32;
           "spacing" = 4;  # Gaps between modules
-          "modules-left" = ["wlr/workspaces" "network" "bluetooth"];
+          "modules-left" = ["hyprland/workspaces" "network" "bluetooth"];
           "modules-center" = ["hyprland/window"];
           "modules-right" = ["tray" "backlight" "pulseaudio" "battery" "clock"];
           "hyprland/window" = {
             "max-length" =  50;
             "separate-outputs" = true;  # have the window title be per-monitor
           };
-          "wlr/workspaces" = {
+          "hyprland/workspaces" = {
             "on-click" = "activate";
             "format" = "{name}: {icon}";
             "format-icons" = {

@@ -23,6 +23,7 @@
     wlr-randr
     xdg-utils
     hyprpicker
+    swayosd
 
     # Clipboard manager
     cliphist
@@ -37,6 +38,7 @@
     glib  # Setting GTK themes
 
     dolphin
+    gnome.nautilus
     libsForQt5.breeze-qt5
     papirus-icon-theme
   ];
