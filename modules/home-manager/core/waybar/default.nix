@@ -11,7 +11,7 @@
           "layer" = "top";
           "height" = 32;
           "spacing" = 4;  # Gaps between modules
-          "modules-left" = ["hyprland/workspaces" "network" "bluetooth"];
+          "modules-left" = ["hyprland/workspaces" "network" "custom/mullvad" "bluetooth"];
           "modules-center" = ["hyprland/window"];
           "modules-right" = ["tray" "backlight" "pulseaudio" "battery" "clock"];
           "hyprland/window" = {
@@ -100,6 +100,13 @@
           "tray" = {
             "icon-size" = 21;
             # "spacing" = 10;
+          };
+          "custom/mullvad" = {
+            "format" = "{}";
+            "interval" = 5;
+            "exec" = ./scripts/waybar-mullvad-status.sh;
+            "on-click" = ./scripts/waybar-mullvad-toggle.sh;
+            "return-type" = "json";
           };
         };
       };

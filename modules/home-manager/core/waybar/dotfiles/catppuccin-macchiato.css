@@ -99,12 +99,20 @@ window#waybar {
   border-left: none;
 }
 
-#mode, #bluetooth, #battery, #cpu, #memory, #network, #pulseaudio, #idle_inhibitor, #backlight, #custom-storage, #custom-updates, #custom-weather, #custom-mail, #clock, #temperature {
+#mode, #bluetooth, #custom-vpn, #custom-mullvad, #battery, #cpu, #memory, #network, #pulseaudio, #idle_inhibitor, #backlight, #custom-storage, #custom-updates, #custom-weather, #custom-mail, #clock, #temperature {
   margin: 4px 2px;
   padding: 0 6px;
   background-color: @base02;
   border-radius: 4px;
   min-width: 20px;
+}
+
+#custom-mullvad.connected {
+  color: @base0C;
+}
+
+#custom-mullvad.disconnected {
+  color: @base0F;
 }
 
 #pulseaudio.muted {
