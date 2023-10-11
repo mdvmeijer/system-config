@@ -91,6 +91,13 @@
             }
           ];
         };
+        ayame = nixpkgs.lib.nixosSystem {
+          inherit system;
+          inherit pkgs;
+          modules = [
+            ./hosts/ayame/configuration.nix
+          ];
+        };
       }; 
     };
 }
