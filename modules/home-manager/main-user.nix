@@ -27,6 +27,7 @@ in {
       "mlocate"
       "dialout"  # Access to serial ports, e.g. for Arduino
       "plugdev"
+      "adbusers"
     ];
     initialPassword = "password";
   };

@@ -1,9 +1,12 @@
 { config, pkgs, ... }:
 
 {
+  programs.adb.enable = true;
+
   home-manager.users.meeri = {
     home.packages = with pkgs; [
       unstable.android-studio
+      # unstable.androidStudioPackages.beta
       slack
     ];
 

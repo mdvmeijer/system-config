@@ -86,6 +86,8 @@
         shopt -s histappend
         
         eval "$(starship init bash)"
+
+        eval "$(direnv hook bash)"
       '';
       shellAliases = {
         clockmon = ''watch -n.1 "grep \"^[c]pu MHz\" /proc/cpuinfo"'';

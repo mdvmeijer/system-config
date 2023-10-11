@@ -240,7 +240,7 @@ args@{ config, pkgs, lib, username, inputs, ... }:
         exec-once = [workspace special:kanban silent] alacritty -e taskell-manager
         
         # Special workspace -- music
-        windowrule = workspace special:music, ^(rhythmbox)$
+        windowrule = workspace special:music silent, ^(rhythmbox)$
         bind = $mainMod, M, togglespecialworkspace, music
         bind = $mainMod SHIFT, M, exec, rhythmbox
         exec-once = rhythmbox
