@@ -69,6 +69,11 @@ in
     };
   };
 
+  meeriModules.hyprland = {
+    res_horizontal = "2256";
+    res_vertical = "1504";
+  };
+
   environment.systemPackages = with pkgs; [
     fw-ectool
     intel-gpu-tools  # for verifying HW acceleration with intel_gpu_top

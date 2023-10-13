@@ -1,5 +1,9 @@
 args@{ config, pkgs, lib, username, inputs, ... }:
 
+with lib;
+let
+  cfg = config.meeriModules.hyprland;
+in
 {
   imports =
     [
@@ -8,10 +12,17 @@ args@{ config, pkgs, lib, username, inputs, ... }:
       (import ./swaylock/default.nix args)
     ];
 
-  # Hyprland config is handled with home-manager
-  home-manager.users.${username} = { pkgs, ... }: {
-    home.stateVersion = "22.11";
+  options.meeriModules.hyprland = {
+    res_horizontal = mkOption {
+      type = types.str;
+    };
+    res_vertical = mkOption {
+      type = types.str;
+    };
+  };
 
+  # Hyprland config is handled with home-manager
+  config.home-manager.users.${username} = { pkgs, ... }: {
     imports = [
       inputs.hyprland.homeManagerModules.default
     ];
@@ -54,12 +65,12 @@ args@{ config, pkgs, lib, username, inputs, ... }:
         source=~/.config/hypr/macchiato.conf
 
         # Config for 3440x1440 monitor
-        # monitor=eDP-1, 2256x1504, 0x237, 1.25
+        # monitor=eDP-1, ${cfg.res_horizontal}x${cfg.res_vertical}, 0x237, 1.25
         # monitor=DP-3, 3440x1440@144, 1504x0, 1.00
         # workspace=1,monitor:DP-3  # Bind workspace 1 to external monitor
 
         # Work config for 3440x1440 monitor
-        monitor=eDP-1, 2256x1504, 800x1440, 1.25
+        monitor=eDP-1, ${cfg.res_horizontal}x${cfg.res_vertical}, 800x1440, 1.25
         monitor=DP-3, 3440x1440@60, 0x0, 1.00
         workspace=1,monitor:DP-3  # Bind workspace 1 to external monitor
 
