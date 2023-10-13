@@ -10,6 +10,7 @@ in
       (import ./waybar/default.nix args)
       (import ./dunst.nix args)
       (import ./swaylock/default.nix args)
+      (import ./hyprpaper/default.nix args)
     ];
 
   options.meeriModules.hyprland = {
