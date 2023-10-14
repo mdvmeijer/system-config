@@ -10,7 +10,6 @@
       ./kdeconnect.nix
       ./virtualization.nix
       ./tailscale.nix
-      ./usb-automount/default.nix
 
       ./hyprland.nix
     ];
@@ -137,10 +136,12 @@
     rustup
     direnv
     lsof
+    udiskie
   ];
 
-
   programs.dconf.enable = true;
+
+  services.udisks2.enable = true;
 
   services.locate = {
     enable = true;

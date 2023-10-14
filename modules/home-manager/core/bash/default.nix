@@ -167,6 +167,8 @@
         vpns = "mullvad status";
         vpnu = "mullvad connect";
         vpnd = "mullvad disconnect";
+
+        eject = "udiskie-umount";
         
         ".." = "cd ..";
         "..." = "cd ../..";
