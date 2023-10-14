@@ -20,6 +20,9 @@ in
     res_vertical = mkOption {
       type = types.str;
     };
+    scaling_factor = mkOption {
+      type = types.str;
+    };
   };
 
   # Hyprland config is handled with home-manager
@@ -62,16 +65,13 @@ in
       package = null;  # Use system-wide package instead
 
       extraConfig = ''
-        # Catppuccin theme
-        source=~/.config/hypr/macchiato.conf
-
         # Config for 3440x1440 monitor
-        # monitor=eDP-1, ${cfg.res_horizontal}x${cfg.res_vertical}, 0x237, 1.25
+        # monitor=eDP-1, ${cfg.res_horizontal}x${cfg.res_vertical}, 0x237, ${cfg.scaling_factor}
         # monitor=DP-3, 3440x1440@144, 1504x0, 1.00
         # workspace=1,monitor:DP-3  # Bind workspace 1 to external monitor
 
         # Work config for 3440x1440 monitor
-        monitor=eDP-1, ${cfg.res_horizontal}x${cfg.res_vertical}, 800x1440, 1.25
+        monitor=eDP-1, ${cfg.res_horizontal}x${cfg.res_vertical}, 800x1440, ${cfg.scaling_factor}
         monitor=DP-3, 3440x1440@60, 0x0, 1.00
         workspace=1,monitor:DP-3  # Bind workspace 1 to external monitor
 

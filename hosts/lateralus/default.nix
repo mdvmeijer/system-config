@@ -72,6 +72,7 @@ in
   meeriModules.hyprland = {
     res_horizontal = "2256";
     res_vertical = "1504";
+    scaling_factor = "1.25";
   };
 
   environment.systemPackages = with pkgs; [

@@ -130,7 +130,7 @@
         btctl = "bluetoothctl";
 
         # Nix shorthands
-        rb = "sudo nixos-rebuild switch --flake ~/projects/system-config#lateralus";
+        rb = "sudo nixos-rebuild switch --flake ~/projects/system-config";
         flu = "nix flake update";
         try = "nix-shell -p";
         

@@ -94,8 +94,22 @@
         ayame = nixpkgs.lib.nixosSystem {
           inherit system;
           inherit pkgs;
+          specialArgs = { inherit inputs; inherit username-main; };
           modules = [
             ./hosts/ayame/configuration.nix
+
+            # System-level config
+            ./modules/system/core/default.nix
+            # ./modules/system/extra/gaming/default.nix
+
+            # Home-manager config
+            ./modules/home-manager/main-user.nix
+            # ./modules/home-manager/work-user.nix
+
+            home-manager.nixosModules.home-manager {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+            }
           ];
         };
       }; 
