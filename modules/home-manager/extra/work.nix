@@ -12,10 +12,9 @@
 
     programs.chromium = {
       enable = true;
-      commandLineArgs = [
-        # TODO: change when native wayland chromium works better
-        "--ozone-platform=x11"
-      ];
+        commandLineArgs = [
+          "--ozone-platform=wayland"
+        ];
     };
   };
 }

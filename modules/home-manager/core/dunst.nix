@@ -11,11 +11,12 @@
         global = {
           frame_color = "#A6A6A6";
           separator_color = "frame";
-          font = "Jetbrains Mono";
+          font = "PT Serif";
           monitor = "0";  # Initially appear on primary monitor
           follow = "mouse";  # But do follow the cursor
           geometry = "0x0-30+20";
           corner_radius = "6";
+          frame_width = "2";
         };
 
         urgency_low = {
