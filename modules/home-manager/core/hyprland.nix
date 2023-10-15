@@ -137,11 +137,6 @@ in
             col.active_border = rgba(F9F5D788)
             col.inactive_border = rgba(000000aa)
 
-            # For group windows (i.e. tabbed windows)
-            # col.group_border_active = $surface2
-            col.group_border_active = rgba(F9F5D788)
-            col.group_border = rgba(000000aa)
-        
             layout = dwindle
         }
         
@@ -171,11 +166,19 @@ in
             animation = workspaces, 1, 3, default
         }
 
-        misc {
-            # For group windows (i.e. tabbed windows)
-            render_titles_in_groupbar = true
-            groupbar_gradients = false
+        group {
+            # col.group_border_active = $surface2
+            col.border_active = rgba(F9F5D788)
+            col.border_inactive = rgba(000000aa)
 
+            groupbar {
+                font_size = 10
+                render_titles = true
+                gradients = false
+            }
+        }
+
+        misc {
             enable_swallow = true
             swallow_regex = ^(Alacritty)$
 
@@ -286,7 +289,7 @@ in
         bind = $mainMod CTRL, G, togglegroup
         bind = $mainMod, G, changegroupactive, f
         bind = $mainMod SHIFT, G, changegroupactive, b
-        bind = $mainMod CTRL SHIFT, G, moveoutofgroup
+        bind = $mainMod ALT, G, moveoutofgroup
         
         bind = $mainMod CTRL SHIFT, H, moveintogroup, l
         bind = $mainMod CTRL SHIFT, L, moveintogroup, r
