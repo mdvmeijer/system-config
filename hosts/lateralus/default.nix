@@ -70,9 +70,22 @@ in
   };
 
   meeriModules.hyprland = {
-    res_horizontal = "2256";
-    res_vertical = "1504";
-    scaling_factor = "1.25";
+    monitorConfig = ''
+      # Config for 3440x1440 monitor
+      # monitor=eDP-1, 2256x1504, 0x0, 1.25
+      # monitor=DP-3, 3440x1440@144, 1504x-237, 1.00
+      # workspace=1,monitor:DP-3  # Bind workspace 1 to external monitor
+
+      # Work config for 3440x1440 monitor
+      # monitor=eDP-1, 2256x1504, 0x0, 1.25
+      # monitor=DP-3, 3440x1440@60, -800x-1440, 1.00
+      # workspace=1,monitor:eDP-1  # Bind workspace 1 to external monitor
+      # workspace=2,monitor:DP-3  # Bind workspace 1 to external monitor
+
+      # Config for 1920x1080 monitor
+      monitor=eDP-1, 2256x1504, 0x0, 1.25
+      monitor=DP-1, 1920x1080, -60x-1080, 1.00
+    '';
   };
 
   environment.systemPackages = with pkgs; [

@@ -18,9 +18,22 @@
   hardware.bluetooth.enable = true;
 
   meeriModules.hyprland = {
-    res_horizontal = "1920";
-    res_vertical = "1080";
-    scaling_factor = "1.00";
+    monitorConfig = ''
+      # Config for 3440x1440 monitor
+      # monitor=eDP-1, 1920x1080, 0x0, 1.00
+      # monitor=HDMI-A-1, 3440x1440@144, 1920x0, 1.00
+      # workspace=1,monitor:HDMI-A-1  # Bind workspace 1 to external monitor
+
+      # Work config for 3440x1440 monitor
+      monitor=eDP-1, 1920x1080, 0x0, 1.00
+      monitor=HDMI-A-1, 3440x1440@60, -800x-1440, 1.00
+      workspace=1,monitor:eDP-1  # Bind workspace 1 to external monitor
+      workspace=2,monitor:HDMI-A-1  # Bind workspace 1 to external monitor
+
+      # Config for 1920x1080 monitor
+      # monitor=eDP-1, 1920x1080, 0x0, 1.00
+      # monitor=HDMI-A-1, 1920x1080, 0x-1080, 1.00
+    '';
   };
 
   # Enable networking
