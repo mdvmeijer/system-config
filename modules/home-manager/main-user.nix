@@ -45,6 +45,12 @@ in {
         ci = "commit";
         co = "checkout";
         s = "status";
+        sw = "switch";
+        p = "pull";
+        f = "fetch";
+        d = "diff";
+        mg = "merge";
+        rb = "rebase";
       };
     };
 
