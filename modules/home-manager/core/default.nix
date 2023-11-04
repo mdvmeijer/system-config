@@ -13,4 +13,8 @@ args@{ config, pkgs, lib, username, ... }:
     (import ./hyprland.nix args)
     ./doom-emacs/default.nix
   ];
+
+  home-manager.users.meeri = {
+    services.batsignal.enable = true;
+  };
 }

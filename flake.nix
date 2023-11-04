@@ -10,7 +10,7 @@
     };
 
     fw-ectool.url = "github:ssddq/fw-ectool";
-    hyprland.url = "github:hyprwm/Hyprland";
+    hyprland.url = "github:hyprwm/Hyprland/v0.31.0";
 
     # nix-doom-emacs.url = "github:nix-community/nix-doom-emacs";
     # emacs-overlay.url = "github:nix-community/emacs-overlay";
@@ -23,6 +23,9 @@
         inherit system;
         config = {
           allowUnfree = true;
+          permittedInsecurePackages = [
+              "electron-24.8.6"
+          ];
         };
         overlays = [ 
           overlay-fw-ectool

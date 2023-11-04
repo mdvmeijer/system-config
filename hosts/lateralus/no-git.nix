@@ -8,7 +8,7 @@
     exclude = [
       # very large paths
       "/home/meeri/home-media"
-      "/home/meeri/media/torrents"
+      "/home/meeri/04-media/00-inbox/01-torrents"
       "/home/meeri/documents/working-dir"
       "/home/meeri/.cache"
       "/home/meeri/.mozilla"
