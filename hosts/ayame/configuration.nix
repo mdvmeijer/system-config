@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 
 {
   imports =
@@ -35,6 +35,10 @@
       # monitor=HDMI-A-1, 1920x1080, 0x-1080, 1.00
     '';
   };
+
+  environment.systemPackages = with pkgs; [
+    intel-gpu-tools
+  ];
 
   # Enable networking
   networking.networkmanager.enable = true;
@@ -75,6 +79,26 @@
     # use the example session manager (no others are packaged yet so this is enabled by default,
     # no need to redefine it in your config for now)
     #media-session.enable = true;
+  };
+
+  boot.initrd.kernelModules = [ "i915" ];
+
+  environment.variables = {
+    VDPAU_DRIVER = lib.mkIf config.hardware.opengl.enable (lib.mkDefault "va_gl");
+  };
+
+  hardware.opengl = {
+    enable = true;
+    driSupport = true;
+    driSupport32Bit = true;
+    setLdLibraryPath = true;
+    extraPackages = with pkgs; [
+      vaapiIntel
+      libvdpau-va-gl
+      intel-media-driver
+      mesa
+      mesa.drivers
+    ];
   };
 
   # Allow unfree packages

@@ -218,7 +218,7 @@ in
 
         # Yeet current workspace to primary or secondary monitor
         bind = $mainMod ALT, 1, movecurrentworkspacetomonitor, eDP-1
-        bind = $mainMod ALT, 2, movecurrentworkspacetomonitor, DP-3
+        bind = $mainMod ALT, 2, movecurrentworkspacetomonitor, HDMI-A-1
 
         # Go to previous workspace
 
