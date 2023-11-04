@@ -1,5 +1,12 @@
 { config, pkgs, ... }:
 
+let
+  system-config-file-opener = pkgs.writeShellScriptBin "system-config-file-opener" (builtins.readFile ../../../scripts/fzf/system-config-file-opener.sh);
+  # wofi-key-value-store = pkgs.writeShellScriptBin "wofi-key-value-store" (builtins.readFile ../../scripts/wofi/wofi-key-value-store.sh);
+
+#   enable-internal-monitor = pkgs.writeShellScriptBin "enable-internal-monitor" (builtins.readFile ./scripts/monitor-selection/enable-internal-monitor.sh);
+#   disable-internal-monitor = pkgs.writeShellScriptBin "disable-internal-monitor" (builtins.readFile ./scripts/monitor-selection/disable-internal-monitor.sh);
+in
 {
   imports =
     [
@@ -28,6 +35,8 @@
   };
 
   environment.systemPackages = with pkgs; [
+    system-config-file-opener
+
     wget
     discord
     nodejs
@@ -174,4 +183,17 @@
     paratype-pt-serif
     emacs-all-the-icons-fonts
   ];
+
+  nix = {
+    package = pkgs.nixFlakes;
+    extraOptions = "experimental-features = nix-command flakes";
+    gc = {
+      automatic = true;
+      dates = "weekly";
+      options = "--delete-older-than 14d";
+    };
+    settings = {
+      auto-optimise-store = true;
+    };
+  };
 }

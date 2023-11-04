@@ -18,4 +18,4 @@ if [ -z "$selected_path" ]; then
   exit 1
 fi
 
-emacs -nw $selected_path
+vim $selected_path
