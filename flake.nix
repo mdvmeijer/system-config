@@ -10,7 +10,7 @@
     };
 
     fw-ectool.url = "github:ssddq/fw-ectool";
-    hyprland.url = "github:hyprwm/Hyprland/v0.31.0";
+    hyprland.url = "github:hyprwm/Hyprland/v0.32.0";
 
     # nix-doom-emacs.url = "github:nix-community/nix-doom-emacs";
     # emacs-overlay.url = "github:nix-community/emacs-overlay";
