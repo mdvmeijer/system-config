@@ -91,7 +91,8 @@
     enable = true;
     driSupport = true;
     driSupport32Bit = true;
-    setLdLibraryPath = true;
+    # Setting the LD_LIBRARY_PATH globally like this in NixOS can cause problems, e.g. with nodejs
+    # setLdLibraryPath = true;
     extraPackages = with pkgs; [
       vaapiIntel
       libvdpau-va-gl

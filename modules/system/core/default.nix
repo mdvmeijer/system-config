@@ -39,7 +39,7 @@ in
 
     wget
     discord
-    nodejs
+    unstable.nodejs
     vlc
     libreoffice-qt
     openssl
