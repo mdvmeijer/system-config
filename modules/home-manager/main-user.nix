@@ -52,6 +52,10 @@ in {
         mg = "merge";
         rb = "rebase";
       };
+
+      extraConfig = {
+        push.autoSetupRemote = true;
+      };
     };
 
     xdg.mimeApps = {
