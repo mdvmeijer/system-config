@@ -79,6 +79,9 @@ in {
 
         # .odt files
         "application/vnd.oasis.opendocument.text" = "writer.desktop";
+
+        "video/mp4" = "mpv.desktop";
+        "video/x-matroska" = "mpv.desktop";
       };
 
       defaultApplications = {
@@ -89,14 +92,14 @@ in {
         "image/png" = "org.kde.gwenview.desktop";
 
         # For personal stuff
-        # "x-scheme-handler/chrome" = "firefox.desktop";
-        # "x-scheme-handler/http" = "firefox.desktop";
-        # "x-scheme-handler/https" = "firefox.desktop";
+        "x-scheme-handler/chrome" = "firefox.desktop";
+        "x-scheme-handler/http" = "firefox.desktop";
+        "x-scheme-handler/https" = "firefox.desktop";
 
         # For work
-        "x-scheme-handler/chrome" = "chromium.desktop";
-        "x-scheme-handler/http" = "chromium.desktop";
-        "x-scheme-handler/https" = "chromium.desktop";
+        # "x-scheme-handler/chrome" = "chromium.desktop";
+        # "x-scheme-handler/http" = "chromium.desktop";
+        # "x-scheme-handler/https" = "chromium.desktop";
 
         "x-scheme-handler/signalcaptcha" = "signal-desktop.desktop";
 
@@ -105,6 +108,9 @@ in {
 
         # .odt files
         "application/vnd.oasis.opendocument.text" = "writer.desktop";
+
+        "video/mp4" = "mpv.desktop";
+        "video/x-matroska" = "mpv.desktop";
       };
     };
   };

@@ -8,7 +8,6 @@ let
   set-extreme-profile = pkgs.writeShellScriptBin "set-extreme-profile" (builtins.readFile ./scripts/power-management/set-extreme-profile);
 
   taskell-manager = pkgs.writeShellScriptBin "taskell-manager" (builtins.readFile ../../scripts/fzf/taskell-manager.sh);
-  # system-config-file-opener = pkgs.writeShellScriptBin "system-config-file-opener" (builtins.readFile ../../scripts/fzf/system-config-file-opener.sh);
   wofi-key-value-store = pkgs.writeShellScriptBin "wofi-key-value-store" (builtins.readFile ../../scripts/wofi/wofi-key-value-store.sh);
 
   enable-internal-monitor = pkgs.writeShellScriptBin "enable-internal-monitor" (builtins.readFile ./scripts/monitor-selection/enable-internal-monitor.sh);
@@ -72,8 +71,8 @@ in
   meeriModules.hyprland = {
     monitorConfig = ''
       # Config for 3440x1440 monitor
-      # monitor=eDP-1, 2256x1504, 0x0, 1.25
-      # monitor=DP-3, 3440x1440@144, 1504x-237, 1.00
+      # monitor=eDP-1, 2256x1504, 0x0, 1.5
+      # monitor=DP-4, 3440x1440@144, 1504x-237, 1.00
       # workspace=1,monitor:DP-3  # Bind workspace 1 to external monitor
 
       # Work config for 3440x1440 monitor
@@ -84,7 +83,7 @@ in
 
       # Config for 1920x1080 monitor
       monitor=eDP-1, 2256x1504, 0x0, 1.25
-      monitor=DP-1, 1920x1080, -60x-1080, 1.00
+      monitor=DP-4, 1920x1080, -60x-1080, 1.00
     '';
   };
 
@@ -100,7 +99,6 @@ in
     set-extreme-profile
 
     taskell-manager
-    system-config-file-opener
     wofi-key-value-store
 
     enable-internal-monitor

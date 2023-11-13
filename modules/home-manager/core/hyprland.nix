@@ -46,6 +46,9 @@ in
       XDG_SESSION_TYPE = "wayland";
       XDG_SESSION_DESKTOP = "Hyprland";
 
+      # TODO: Change back when support is better. Right now some applications (e.g. vscode) misbehave in Wayland mode
+      # NIXOS_OZONE_WL = "1";
+
       GRIM_DEFAULT_DIR = "$HOME/80-tmp/02-screenshots";
     };
 
