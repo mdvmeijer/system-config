@@ -107,7 +107,7 @@ in
     fzf
     speedtest-cli
     calibre
-    taskell  # CLI kanban board
+    # taskell  # CLI kanban board
     calcurse  # TUI calendar
     termdown  # terminal countdown timer
     espeak-classic  # speech synthesizer
@@ -154,7 +154,7 @@ in
 
   services.locate = {
     enable = true;
-    locate = pkgs.mlocate;
+    package = pkgs.mlocate;
     interval = "daily";
     # warning: mlocate and plocate do not support the services.locate.localuser option. updatedb will run as root. Silence this warning by setting services.locate.localuser = null
     localuser = null;
@@ -167,13 +167,13 @@ in
         _: { src = builtins.fetchTarball {
           url =
           "https://discord.com/api/download?platform=linux&format=tar.gz";
-          sha256 = "087p8z538cyfa9phd4nvzjrvx4s9952jz1azb2k8g6pggh1vxwm8";
+          sha256 = "1091nv1lwqlcs890vcil8frx6j87n4mig1xdrfxi606cxkfirfbh";
         }; }
       );
     })
   ];
 
-  fonts.fonts = with pkgs; [
+  fonts.packages = with pkgs; [
     agave
     iosevka
     roboto-mono
