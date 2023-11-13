@@ -42,11 +42,6 @@ in
       GDK_BACKEND = "wayland,x11";
       CLUTTER_BACKEND = "wayland";
 
-      # Setting SDL_VIDEODRIVER to "wayland" prevents many Steam games from launching (as of 19-08-2023)
-      # SDL_VIDEODRIVER = "wayland";
-      SDL_VIDEODRIVER = "x11";
-      # LIBGL_ALWAYS_SOFTWARE = "1";
-
       XDG_CURRENT_DESKTOP = "Hyprland";
       XDG_SESSION_TYPE = "wayland";
       XDG_SESSION_DESKTOP = "Hyprland";
