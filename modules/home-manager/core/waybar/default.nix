@@ -57,7 +57,7 @@
               "default" = ["" ""];
             };
             "scroll-step" = 1;
-            # "on-click" = "pavucontrol",
+            "on-click-middle" = "swayosd --output-volume mute-toggle";
             "ignored-sinks" = ["Easy Effects Sink"];
           };
           "battery" = {

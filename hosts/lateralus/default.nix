@@ -165,7 +165,6 @@ in
     enable = true;
     driSupport = true;
     driSupport32Bit = true;
-    setLdLibraryPath = true;
     extraPackages = with pkgs; [
       vaapiIntel
       libvdpau-va-gl

@@ -10,13 +10,10 @@
     };
 
     fw-ectool.url = "github:ssddq/fw-ectool";
-    hyprland.url = "github:hyprwm/Hyprland/v0.32.0";
-
-    # nix-doom-emacs.url = "github:nix-community/nix-doom-emacs";
-    # emacs-overlay.url = "github:nix-community/emacs-overlay";
+    hyprland.url = "github:hyprwm/Hyprland";
   };
 
-  outputs = inputs@{ self, nixpkgs, nixpkgs-unstable, home-manager, fw-ectool, hyprland, emacs-overlay }:
+  outputs = inputs@{ self, nixpkgs, nixpkgs-unstable, home-manager, fw-ectool, hyprland }:
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs {
@@ -31,9 +28,7 @@
           overlay-fw-ectool
           overlay-hyprpicker
           overlay-waybar
-          # overlay-android-studio
           overlay-unstable
-          # overlay-swayosd
         ];
       };
 
@@ -56,10 +51,6 @@
         # Get from unstable for latest version
         swayosd = nixpkgs-unstable.legacyPackages.${prev.system}.swayosd;
       };
-      # overlay-android-studio = final: prev: {
-      #   # Get from unstable for latest version
-      #   android-studio = nixpkgs-unstable.legacyPackages.${prev.system}.android-studio;
-      # };
       overlay-unstable = final: prev: {
         unstable = import nixpkgs-unstable {
           system = "x86_64-linux";

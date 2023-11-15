@@ -146,6 +146,9 @@ in
     direnv
     lsof
     udiskie
+
+    jetbrains.rust-rover
+    gnuradio
   ];
 
   programs.dconf.enable = true;
@@ -167,7 +170,7 @@ in
         _: { src = builtins.fetchTarball {
           url =
           "https://discord.com/api/download?platform=linux&format=tar.gz";
-          sha256 = "1091nv1lwqlcs890vcil8frx6j87n4mig1xdrfxi606cxkfirfbh";
+          sha256 = "1xjk77g9lj5b78c1w3fj42by9b483pkbfb41yzxrg4p36mnd2hkn";
         }; }
       );
     })
