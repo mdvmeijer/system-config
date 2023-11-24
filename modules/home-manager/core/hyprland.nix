@@ -109,8 +109,8 @@ in
         general {
             # See https://wiki.hyprland.org/Configuring/Variables/ for more
         
-            gaps_in = 0
-            gaps_out = 0
+            gaps_in = 4
+            gaps_out = 4
             border_size = 3
 
             # For non-group windows (i.e. non-tabbed windows)
@@ -124,7 +124,7 @@ in
         decoration {
             # See https://wiki.hyprland.org/Configuring/Variables/ for more
         
-            rounding = 0
+            rounding = 4
             blur {
                  enabled = no;
             }
@@ -183,18 +183,6 @@ in
             # See https://wiki.hyprland.org/Configuring/Variables/ for more
             workspace_swipe = true
         }
-        
-        # Example per-device config
-        # See https://wiki.hyprland.org/Configuring/Keywords/#executing for more
-        device:epic-mouse-v1 {
-            sensitivity = -0.5
-        }
-        
-        # Example windowrule v1
-        # windowrule = float, ^(kitty)$
-        # Example windowrule v2
-        # windowrulev2 = float,class:^(kitty)$,title:^(kitty)$
-        # See https://wiki.hyprland.org/Configuring/Window-Rules/ for more
         
         # See https://wiki.hyprland.org/Configuring/Keywords/ for more
         $mainMod = SUPER
