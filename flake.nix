@@ -32,8 +32,6 @@
         ];
       };
 
-      # nixpkgs-unstable.config.allowUnfree = true;
-
       overlay-fw-ectool = final: prev: {
         fw-ectool = fw-ectool.packages.${prev.system}.default;
       };
@@ -67,15 +65,11 @@
           inherit pkgs;
           specialArgs = { inherit inputs; inherit username-main; inherit username-work; };
           modules = [
-            # ({ config, pkgs, ... }: { inputs.nixpkgs-unstable.config.allowUnfree = true; })
-            # Hardware-specific config
             ./hosts/lateralus/default.nix
 
-            # System-level config
             ./modules/system/core/default.nix
             ./modules/system/extra/gaming/default.nix
 
-            # Home-manager config
             ./modules/home-manager/main-user.nix
             ./modules/home-manager/work-user.nix
 
@@ -92,13 +86,9 @@
           modules = [
             ./hosts/ayame/configuration.nix
 
-            # System-level config
             ./modules/system/core/default.nix
-            # ./modules/system/extra/gaming/default.nix
 
-            # Home-manager config
             ./modules/home-manager/main-user.nix
-            # ./modules/home-manager/work-user.nix
 
             home-manager.nixosModules.home-manager {
               home-manager.useGlobalPkgs = true;
