@@ -5,8 +5,7 @@
 
   home-manager.users.meeri = {
     home.packages = with pkgs; [
-      unstable.android-studio
-      # unstable.androidStudioPackages.beta
+      android-studio
       slack
     ];
 

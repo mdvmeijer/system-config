@@ -3,7 +3,6 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     home-manager = {
       url = "github:nix-community/home-manager/master";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -13,7 +12,7 @@
     hyprland.url = "github:hyprwm/Hyprland";
   };
 
-  outputs = inputs@{ self, nixpkgs, nixpkgs-unstable, home-manager, fw-ectool, hyprland }:
+  outputs = inputs@{ self, nixpkgs, home-manager, fw-ectool, hyprland }:
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs {
@@ -26,34 +25,11 @@
         };
         overlays = [ 
           overlay-fw-ectool
-          overlay-hyprpicker
-          overlay-waybar
-          overlay-unstable
         ];
       };
 
       overlay-fw-ectool = final: prev: {
         fw-ectool = fw-ectool.packages.${prev.system}.default;
-      };
-      overlay-hyprpicker = final: prev: {
-        # Get from unstable for latest version
-        hyprpicker = nixpkgs-unstable.legacyPackages.${prev.system}.hyprpicker;
-      };
-      overlay-waybar = final: prev: {
-        # Enable experimental options such that wlr/overlays works
-        waybar = nixpkgs-unstable.legacyPackages.${prev.system}.waybar.overrideAttrs (oldAttrs: {
-          mesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true" ];
-        });
-      };
-      overlay-swayosd = final: prev: {
-        # Get from unstable for latest version
-        swayosd = nixpkgs-unstable.legacyPackages.${prev.system}.swayosd;
-      };
-      overlay-unstable = final: prev: {
-        unstable = import nixpkgs-unstable {
-          system = "x86_64-linux";
-          config.allowUnfree = true; # snake eyes!
-        };
       };
 
       username-main = "meeri";

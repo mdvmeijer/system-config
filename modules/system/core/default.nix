@@ -39,7 +39,7 @@ in
 
     wget
     discord
-    unstable.nodejs
+    nodejs
     vlc
     libreoffice-qt
     openssl
@@ -128,7 +128,7 @@ in
     gwenview
 
     element-desktop
-    fractal
+    # fractal
     remmina
     testdisk  # Data recovery
     libguestfs  # For accessing VHDx files

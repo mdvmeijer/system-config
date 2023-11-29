@@ -2,7 +2,7 @@
 
 {
   environment.systemPackages = with pkgs; [
-    unstable.vscode.fhs
+    vscode.fhs
     xdg-user-dirs
   ];
 }
