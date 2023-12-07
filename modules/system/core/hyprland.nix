@@ -34,12 +34,8 @@
     slurp
     swappy
 
-    libsForQt5.qt5ct  # Setting QT themes
-    glib  # Setting GTK themes
-
     dolphin
     gnome.nautilus
-    libsForQt5.breeze-qt5
     papirus-icon-theme
   ];
 

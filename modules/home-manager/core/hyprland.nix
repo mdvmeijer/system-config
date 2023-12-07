@@ -34,8 +34,6 @@ in
     ];
 
     home.sessionVariables = {
-      # Ensure QT apps use theme selected in qt5ct
-      QT_QPA_PLATFORMTHEME = "qt5ct";
       QT_QPA_PLATFORM = "wayland;xcb";
       
       #GDK_BACKEND = "wayland,x11";
@@ -323,7 +321,7 @@ in
         bind = $mainMod, Space, exec, emacs
 
         # bind = $mainMod, O, exec, alacritty -e lf
-        bind = $mainMod, O, exec, dolphin
+        bind = $mainMod, O, exec, nautilus
 
         bind = $mainMod CTRL, F, togglefloating, 
         bind = $mainMod CTRL, S, togglesplit,
