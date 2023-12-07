@@ -13,6 +13,11 @@
   # (e.g. polkit, xdg-desktop-portal-hyprland)
   programs.hyprland.enable = true;
 
+  # Required because of deprecation in 24.05
+  # This config corresponds to the old behavior
+  # TODO: Find proper config
+  xdg.portal.config.common.default = "*";
+
   environment.systemPackages = with pkgs; [
     hyprpaper
     brightnessctl
