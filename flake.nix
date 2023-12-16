@@ -1,5 +1,5 @@
 {
-  description = "Automatic system configuration for Framework laptop";
+  description = "NixOS configs for my systems";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
@@ -9,7 +9,7 @@
     };
 
     fw-ectool.url = "github:ssddq/fw-ectool";
-    hyprland.url = "github:hyprwm/Hyprland";
+    hyprland.url = "github:hyprwm/Hyprland/v0.33.1";
   };
 
   outputs = inputs@{ self, nixpkgs, home-manager, fw-ectool, hyprland }:
@@ -20,7 +20,7 @@
         config = {
           allowUnfree = true;
           permittedInsecurePackages = [
-              "electron-24.8.6"
+              "electron-25.9.0"
           ];
         };
         overlays = [ 

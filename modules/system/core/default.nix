@@ -14,7 +14,6 @@ in
       ./python.nix
       ./vscode.nix
       ./mullvad-vpn.nix
-      ./kdeconnect.nix
       ./virtualization.nix
       ./tailscale.nix
 
@@ -58,12 +57,10 @@ in
     firefox
     tor-browser-bundle-bin
     mullvad-browser
-    brave
     google-chrome
 
     killall
     lm_sensors
-    galaxy-buds-client
     spotify
     smartmontools  # Get SMART data
     obsidian
@@ -98,9 +95,6 @@ in
     libnotify
     youtube-dl
     signal-desktop
-    whatsapp-for-linux
-    electron-mail
-    tmuxinator  # TODO: maybe delete
     mpv
     neofetch
     tmux
@@ -119,10 +113,10 @@ in
     gdb
     bintools
 
-    cmatrix
     ripgrep
     neovim
 
+    cmatrix
     genact
 
     gwenview
@@ -145,10 +139,12 @@ in
     rustup
     direnv
     lsof
-    udiskie
+    udiskie  # Auto mount external drives
 
     jetbrains.rust-rover
     gnuradio
+    android-tools  # fastboot, adb
+    scrcpy  # Mirror phone screen
   ];
 
   programs.dconf.enable = true;

@@ -36,7 +36,6 @@ in
     home.sessionVariables = {
       QT_QPA_PLATFORM = "wayland;xcb";
       
-      #GDK_BACKEND = "wayland,x11";
       GDK_BACKEND = "wayland,x11";
       CLUTTER_BACKEND = "wayland";
 

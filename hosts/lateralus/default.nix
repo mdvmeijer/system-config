@@ -73,7 +73,7 @@ in
       # Config for 3440x1440 monitor
       # monitor=eDP-1, 2256x1504, 0x0, 1.5
       # monitor=DP-4, 3440x1440@144, 1504x-237, 1.00
-      # workspace=1,monitor:DP-3  # Bind workspace 1 to external monitor
+      # workspace=1,monitor:DP-4  # Bind workspace 1 to external monitor
 
       # Work config for 3440x1440 monitor
       # monitor=eDP-1, 2256x1504, 0x0, 1.25
@@ -229,24 +229,14 @@ in
   networking = {
     hostName = "lateralus";
     networkmanager.enable = true;
-    # wireless.enable = true;
-    # wireless.userControlled.enable = true;
     firewall = {
-      enable = true;
-      allowedTCPPorts = [
-        3000 # localhost React server
-        8080 # localhost Argon2 server
-      ];
+      enable = false;
+      # allowedTCPPorts = [
+      #   3000 # localhost React server
+      #   8080 # localhost Argon2 server
+      # ];
     };
 
-    # wireless.networks.eduroam = {
-    #   auth = ''
-    #     key_mgmt=WPA-EAP
-    #     eap=PWD
-    #     identity="mameijer@abo.fi"
-    #     password="KeazTaYbubzy"
-    #   '';
-    # };
   };
   ############ /Networking ############
 
