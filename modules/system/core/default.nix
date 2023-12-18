@@ -72,8 +72,8 @@ in
     feh
     konsole
     zsh
+    polkit_gnome
 
-    #
     eva  # bc alternative (calculator)
     du-dust  # du alternative
     duf  # df alternative
@@ -146,6 +146,8 @@ in
     android-tools  # fastboot, adb
     scrcpy  # Mirror phone screen
   ];
+
+  security.polkit.enable = true;
 
   programs.dconf.enable = true;
 

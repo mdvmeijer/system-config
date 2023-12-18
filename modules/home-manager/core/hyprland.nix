@@ -69,6 +69,7 @@ in
         exec-once = hyprpaper  # Wallpaper
         exec-once = swayosd  # Volume & brightness indicator
         exec-once = udiskie  # USB automounter
+        exec-once = ${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1
 
         windowrule = workspace 2 silent,^(code)$
 
