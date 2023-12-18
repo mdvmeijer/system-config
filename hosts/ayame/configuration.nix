@@ -38,6 +38,10 @@
     '';
   };
 
+  meeriModules.mimeApps = {
+    defaultBrowser = "chromium.desktop";
+  };
+
   environment.systemPackages = with pkgs; [
     intel-gpu-tools
   ];
