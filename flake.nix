@@ -10,9 +10,10 @@
 
     fw-ectool.url = "github:ssddq/fw-ectool";
     hyprland.url = "github:hyprwm/Hyprland/v0.33.1";
+    nixos-hardware.url = "github:nixos/nixos-hardware/master";
   };
 
-  outputs = inputs@{ self, nixpkgs, home-manager, fw-ectool, hyprland }:
+  outputs = inputs@{ self, nixpkgs, home-manager, fw-ectool, hyprland, nixos-hardware }:
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs {
@@ -78,6 +79,7 @@
           specialArgs = { inherit inputs; inherit username-main; };
           modules = [
             ./hosts/zenith/configuration.nix
+            nixos-hardware.nixosModules.framework-13-7040-amd
 
             ./modules/system/core/default.nix
             ./modules/system/extra/gaming/default.nix
