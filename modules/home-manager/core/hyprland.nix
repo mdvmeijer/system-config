@@ -51,7 +51,7 @@ in
 
     wayland.windowManager.hyprland = {
       enable = true;
-      package = null;  # Use system-wide package instead
+      # package = null;  # Use system-wide package instead
 
       extraConfig = ''
         ${cfg.monitorConfig}
