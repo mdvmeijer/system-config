@@ -1,7 +1,7 @@
 { config, pkgs, ... }:
 
 let
-  system-config-file-opener = pkgs.writeShellScriptBin "system-config-file-opener" (builtins.readFile ../../../scripts/fzf/system-config-file-opener.sh);
+  system-config-file-opener = pkgs.writeShellScriptBin "system-config-file-opener" (builtins.readFile ../../scripts/fzf/system-config-file-opener.sh);
   # wofi-key-value-store = pkgs.writeShellScriptBin "wofi-key-value-store" (builtins.readFile ../../scripts/wofi/wofi-key-value-store.sh);
 
 #   enable-internal-monitor = pkgs.writeShellScriptBin "enable-internal-monitor" (builtins.readFile ./scripts/monitor-selection/enable-internal-monitor.sh);
@@ -168,7 +168,7 @@ in
         _: { src = builtins.fetchTarball {
           url =
           "https://discord.com/api/download?platform=linux&format=tar.gz";
-          sha256 = "1xjk77g9lj5b78c1w3fj42by9b483pkbfb41yzxrg4p36mnd2hkn";
+          sha256 = "1091nv1lwqlcs890vcil8frx6j87n4mig1xdrfxi606cxkfirfbh";
         }; }
       );
     })

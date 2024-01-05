@@ -42,11 +42,11 @@
           inherit pkgs;
           specialArgs = { inherit inputs; inherit username-main; inherit username-work; };
           modules = [
-            ./hosts/lateralus/default.nix
+            ./hosts/lateralus
 
-            ./modules/system/core/default.nix
+            ./modules/core
 
-            ./modules/home-manager/main-user.nix
+            ./home/main-user.nix
 
             home-manager.nixosModules.home-manager {
               home-manager.useGlobalPkgs = true;
@@ -61,9 +61,9 @@
           modules = [
             ./hosts/ayame/configuration.nix
 
-            ./modules/system/core/default.nix
+            ./modules/core
 
-            ./modules/home-manager/main-user.nix
+            ./home/main-user.nix
 
             home-manager.nixosModules.home-manager {
               home-manager.useGlobalPkgs = true;
@@ -79,10 +79,10 @@
             ./hosts/zenith/configuration.nix
             nixos-hardware.nixosModules.framework-13-7040-amd
 
-            ./modules/system/core/default.nix
-            ./modules/system/extra/gaming/default.nix
+            ./modules/core
+            ./modules/extra/gaming/default.nix
 
-            ./modules/home-manager/main-user.nix
+            ./home/main-user.nix
 
             home-manager.nixosModules.home-manager {
               home-manager.useGlobalPkgs = true;
