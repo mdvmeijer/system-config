@@ -45,10 +45,8 @@
             ./hosts/lateralus/default.nix
 
             ./modules/system/core/default.nix
-            ./modules/system/extra/gaming/default.nix
 
             ./modules/home-manager/main-user.nix
-            ./modules/home-manager/work-user.nix
 
             home-manager.nixosModules.home-manager {
               home-manager.useGlobalPkgs = true;
