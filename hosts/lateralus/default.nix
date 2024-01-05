@@ -196,6 +196,12 @@ in
     thermald.enable = true;
     printing.enable = true;
 
+    openssh = {
+      enable = true;
+      settings.PasswordAuthentication = true;
+      settings.KbdInteractiveAuthentication = false;
+    };
+
     pipewire = {
       enable = true;
       alsa.enable = true;
