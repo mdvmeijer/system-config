@@ -66,7 +66,7 @@
             ./modules/core
 
             ./home/core
-            ./home/extra/work.nix
+            ./home/work.nix
             ./home/hyprland
 
             home-manager.nixosModules.home-manager {
@@ -86,12 +86,12 @@
             nixos-hardware.nixosModules.framework-13-7040-amd
 
             ./modules/core
-            ./modules/extra/gaming
+            ./modules/gaming
 
             ./home/core
-            ./home/extra/work.nix
+            ./home/work.nix
             ./home/hyprland
-            ./home/extra/gaming.nix
+            ./home/gaming.nix
 
             home-manager.nixosModules.home-manager {
               home-manager.useGlobalPkgs = true;
