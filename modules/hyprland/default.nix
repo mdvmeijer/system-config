@@ -1,9 +1,8 @@
-{ pkgs, config, inputs, ... }:
+{ pkgs, config, ... }:
 
 {
   imports =
     [
-      inputs.hyprland.nixosModules.default
       ./swaylock.nix
     ];
 

@@ -37,7 +37,6 @@
         lateralus = nixpkgs.lib.nixosSystem {
           inherit system;
           inherit pkgs;
-          specialArgs = { inherit inputs; };
           modules = [
             ./hosts/lateralus
 
@@ -59,11 +58,11 @@
         ayame = nixpkgs.lib.nixosSystem {
           inherit system;
           inherit pkgs;
-          specialArgs = { inherit inputs; };
           modules = [
             ./hosts/ayame
 
             ./modules/core
+            inputs.hyprland.nixosModules.default
             ./modules/hyprland
 
             home-manager.nixosModules.home-manager {
@@ -85,12 +84,12 @@
         zenith = nixpkgs.lib.nixosSystem {
           inherit system;
           inherit pkgs;
-          specialArgs = { inherit inputs; };
           modules = [
             ./hosts/zenith
             nixos-hardware.nixosModules.framework-13-7040-amd
 
             ./modules/core
+            inputs.hyprland.nixosModules.default
             ./modules/hyprland
             ./modules/gaming
 
