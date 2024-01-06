@@ -2,8 +2,6 @@
 
 {
   home-manager.users.${username} = { pkgs, ... }: {
-    home.stateVersion = "22.11";
-
     services.dunst = {
       enable = true;
       settings = {

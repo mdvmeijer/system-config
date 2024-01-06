@@ -2,8 +2,6 @@
 
 { 
   home-manager.users.${username} = { pkgs, ... }: {
-    home.stateVersion = "22.11";
-
     programs.bash = {
       enable = true;
       # Commands to run in login shell

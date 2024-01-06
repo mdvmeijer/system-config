@@ -7,10 +7,8 @@ let
   cfg = config.meeriModules.mimeApps;
 in {
   imports = [
-    (import ./core/default.nix args-with-username)
+    (import ./core args-with-username)
 
-    (import ./extra/obs.nix args-with-username)
-    (import ./extra/qutebrowser.nix args-with-username)
     (import ./extra/gaming.nix args-with-username)
     ./extra/work.nix
 

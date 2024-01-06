@@ -2,19 +2,27 @@ args@{ config, pkgs, lib, username, ... }:
 
 {
   imports = [
-    (import ./alacritty/default.nix args)
-    (import ./bash/default.nix args)
-    (import ./vim/default.nix args)
+    (import ./alacritty args)
+    (import ./bash args)
     (import ./bat.nix args)
-    (import ./exa.nix args)
-    (import ./tmux/default.nix args)
-    (import ./zathura.nix args)
+    (import ./tmux args)
 
     (import ./hyprland.nix args)
-    ./doom-emacs/default.nix
+    ./doom-emacs
   ];
 
   home-manager.users.meeri = {
+    programs.obs-studio.enable = true;
+    programs.eza.enable = true;
+
+    programs.zathura = {
+      enable = true;
+      options = {
+        sandbox = "none";
+        selection-clipboard = "clipboard";
+      };
+    };
+
     services.batsignal.enable = true;
   };
 }

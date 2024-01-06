@@ -2,8 +2,6 @@
 
 {
   home-manager.users.${username} = { pkgs, ... }: {
-    home.stateVersion = "22.11";
-
     programs.waybar = {
       enable = true;
       settings = {
