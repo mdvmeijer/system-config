@@ -177,19 +177,6 @@ in
     localuser = null;
   };
 
-  nixpkgs.overlays = [
-    (final: prev: {
-      # discord package from nixpkgs is outdated: it prompts for an update and is otherwise unusable
-      discord = prev.discord.overrideAttrs (
-        _: { src = builtins.fetchTarball {
-          url =
-          "https://discord.com/api/download?platform=linux&format=tar.gz";
-          sha256 = "1091nv1lwqlcs890vcil8frx6j87n4mig1xdrfxi606cxkfirfbh";
-        }; }
-      );
-    })
-  ];
-
   fonts.packages = with pkgs; [
     agave
     iosevka
