@@ -1,17 +1,10 @@
 { config, pkgs, inputs, lib, username-main, ... }:
 
 let
-  select-power-profile = pkgs.writeShellScriptBin "select-power-profile" (builtins.readFile ./scripts/power-management/select-power-profile);
   set-powersave-profile = pkgs.writeShellScriptBin "set-powersave-profile" (builtins.readFile ./scripts/power-management/set-powersave-profile);
   set-balanced-profile = pkgs.writeShellScriptBin "set-balanced-profile" (builtins.readFile ./scripts/power-management/set-balanced-profile);
   set-performance-profile = pkgs.writeShellScriptBin "set-performance-profile" (builtins.readFile ./scripts/power-management/set-performance-profile);
   set-extreme-profile = pkgs.writeShellScriptBin "set-extreme-profile" (builtins.readFile ./scripts/power-management/set-extreme-profile);
-
-  taskell-manager = pkgs.writeShellScriptBin "taskell-manager" (builtins.readFile ../../scripts/fzf/taskell-manager.sh);
-  wofi-key-value-store = pkgs.writeShellScriptBin "wofi-key-value-store" (builtins.readFile ../../scripts/wofi/wofi-key-value-store.sh);
-
-  enable-internal-monitor = pkgs.writeShellScriptBin "enable-internal-monitor" (builtins.readFile ./scripts/monitor-selection/enable-internal-monitor.sh);
-  disable-internal-monitor = pkgs.writeShellScriptBin "disable-internal-monitor" (builtins.readFile ./scripts/monitor-selection/disable-internal-monitor.sh);
 in
 {
   imports =
@@ -73,17 +66,10 @@ in
     intel-gpu-tools  # for verifying HW acceleration with intel_gpu_top
 
     # scripts
-    select-power-profile
     set-powersave-profile
     set-balanced-profile
     set-performance-profile
     set-extreme-profile
-
-    taskell-manager
-    wofi-key-value-store
-
-    enable-internal-monitor
-    disable-internal-monitor
   ];
 
   security.sudo.extraRules = [
@@ -217,7 +203,7 @@ in
     hostName = "lateralus";
     networkmanager.enable = true;
     firewall = {
-      enable = false;
+      enable = true;
       # allowedTCPPorts = [
       #   3000 # localhost React server
       #   8080 # localhost Argon2 server

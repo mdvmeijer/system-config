@@ -2,10 +2,7 @@
 
 let
   system-config-file-opener = pkgs.writeShellScriptBin "system-config-file-opener" (builtins.readFile ../../scripts/fzf/system-config-file-opener.sh);
-  # wofi-key-value-store = pkgs.writeShellScriptBin "wofi-key-value-store" (builtins.readFile ../../scripts/wofi/wofi-key-value-store.sh);
-
-#   enable-internal-monitor = pkgs.writeShellScriptBin "enable-internal-monitor" (builtins.readFile ./scripts/monitor-selection/enable-internal-monitor.sh);
-#   disable-internal-monitor = pkgs.writeShellScriptBin "disable-internal-monitor" (builtins.readFile ./scripts/monitor-selection/disable-internal-monitor.sh);
+  wofi-key-value-store = pkgs.writeShellScriptBin "wofi-key-value-store" (builtins.readFile ../../scripts/wofi/wofi-key-value-store.sh);
 in
 {
   imports =
@@ -19,19 +16,19 @@ in
     ];
 
   users.users.${username-main} = {
-      isNormalUser = true;
-      description = "Max Meijer";
-      extraGroups = [ 
-        "networkmanager"
-        "wheel"
-        "libvirtd"
-        "kvm"
-        "mlocate"
-        "dialout"  # Access to serial ports, e.g. for Arduino
-        "plugdev"
-        "adbusers"
-      ];
-      initialPassword = "password";
+    isNormalUser = true;
+    description = "Max Meijer";
+    extraGroups = [ 
+      "networkmanager"
+      "wheel"
+      "libvirtd"
+      "kvm"
+      "mlocate"
+      "dialout"  # Access to serial ports, e.g. for Arduino
+      "plugdev"
+      "adbusers"
+    ];
+    initialPassword = "password";
   };
 
   environment.sessionVariables = rec {
@@ -49,6 +46,7 @@ in
 
   environment.systemPackages = with pkgs; [
     system-config-file-opener
+    wofi-key-value-store
 
     wget
     discord
