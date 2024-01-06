@@ -61,7 +61,7 @@
           inherit pkgs;
           specialArgs = { inherit inputs; inherit username-main; };
           modules = [
-            ./hosts/ayame/configuration.nix
+            ./hosts/ayame
 
             ./modules/core
 
@@ -82,7 +82,7 @@
           inherit pkgs;
           specialArgs = { inherit inputs; inherit username-main; };
           modules = [
-            ./hosts/zenith/configuration.nix
+            ./hosts/zenith
             nixos-hardware.nixosModules.framework-13-7040-amd
 
             ./modules/core
