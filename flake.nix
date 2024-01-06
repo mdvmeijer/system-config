@@ -46,11 +46,13 @@
 
             ./modules/core
 
-            ./home
+            ./home/core
 
             home-manager.nixosModules.home-manager {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
+
+              home-manager.users.meeri.home.stateVersion = "22.11";
             }
           ];
         };
@@ -63,11 +65,15 @@
 
             ./modules/core
 
-            ./home
+            ./home/core
+            ./home/extra/work.nix
+            ./home/hyprland
 
             home-manager.nixosModules.home-manager {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
+
+              home-manager.users.meeri.home.stateVersion = "23.05";
             }
           ];
         };
@@ -80,13 +86,18 @@
             nixos-hardware.nixosModules.framework-13-7040-amd
 
             ./modules/core
-            ./modules/extra/gaming/default.nix
+            ./modules/extra/gaming
 
-            ./home
+            ./home/core
+            ./home/extra/work.nix
+            ./home/hyprland
+            ./home/extra/gaming.nix
 
             home-manager.nixosModules.home-manager {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
+
+              home-manager.users.meeri.home.stateVersion = "23.11";
             }
           ];
         };

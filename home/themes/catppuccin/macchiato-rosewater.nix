@@ -1,7 +1,7 @@
-{ pkgs, config, lib, username, ... }:
+{ pkgs, config, lib, meeri, ... }:
 
 {
-  home-manager.users.${username} = { pkgs, ... }: {
+  home-manager.users.meeri = { pkgs, ... }: {
     # TODO: Some themes are embedded in dotfiles (vim, dunst) or not managed by Nix entirely (Qt); this needs refactoring
 
     home.pointerCursor = {

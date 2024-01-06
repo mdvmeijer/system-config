@@ -1,11 +1,11 @@
-{ pkgs, config, lib, username, ... }:
+{ pkgs, config, lib, ... }:
 
 {
   environment.systemPackages = with pkgs; [
     gnome.gnome-themes-extra
   ];
 
-  home-manager.users.${username} = { pkgs, ... }: {
+  home-manager.users.meeri = { pkgs, ... }: {
     # TODO: Some themes are embedded in dotfiles (vim, dunst); this needs refactoring
     # TODO: set gruvbox-material theme for dunst
 

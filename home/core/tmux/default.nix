@@ -1,8 +1,8 @@
-{ config, pkgs, lib, username, ... }:
+{ config, pkgs, lib, ... }:
 
 {
 
-  home-manager.users.${username} = { pkgs, ... }: {
+  home-manager.users.meeri = { pkgs, ... }: {
     programs.tmux = {
       enable = true;
       clock24 = true;

@@ -1,4 +1,4 @@
-args@{ config, pkgs, lib, username, inputs, ... }:
+args@{ config, pkgs, lib, inputs, ... }:
 
 with lib;
 let
@@ -7,10 +7,13 @@ in
 {
   imports =
     [
-      (import ./waybar args)
-      (import ./dunst.nix args)
-      (import ./swaylock args)
-      (import ./hyprpaper args)
+      ./waybar
+      ./dunst.nix
+      ./swaylock
+      ./hyprpaper
+
+      # ../themes/catppuccin/macchiato-rosewater.nix
+      ../themes/gruvbox/gruvbox-material.nix
     ];
 
   options.meeriModules.hyprland = {
@@ -20,7 +23,7 @@ in
   };
 
   # Hyprland config is handled with home-manager
-  config.home-manager.users.${username} = { pkgs, ... }: {
+  config.home-manager.users.meeri = { pkgs, ... }: {
     imports = [
       inputs.hyprland.homeManagerModules.default
     ];

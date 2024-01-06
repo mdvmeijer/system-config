@@ -1,7 +1,7 @@
-{ config, pkgs, lib, username, ... }:
+{ config, pkgs, lib, ... }:
 
 {
-  home-manager.users.${username} = {
+  home-manager.users.meeri = {
     home.file.".config/hypr/hyprpaper.conf".text = let
       wallpaper = ./wallpapers/skyline-aesthetic-colors.png;
     in

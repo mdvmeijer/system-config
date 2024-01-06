@@ -1,7 +1,7 @@
-{ config, pkgs, lib, username, ... }:
+{ config, pkgs, lib, ... }:
 
 {
-  home-manager.users.${username} = { pkgs, ... }: {
+  home-manager.users.meeri = { pkgs, ... }: {
     programs.waybar = {
       enable = true;
       settings = {

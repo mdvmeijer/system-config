@@ -1,6 +1,6 @@
-{ config, pkgs, lib, username, ... }:
+{ config, pkgs, lib, ... }:
 {
-  home-manager.users.${username} = {
+  home-manager.users.meeri = {
     programs.swaylock = {
       enable = true;
       package = pkgs.swaylock-effects;
