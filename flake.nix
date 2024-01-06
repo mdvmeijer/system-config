@@ -46,7 +46,7 @@
 
             ./modules/core
 
-            ./home/main-user.nix
+            ./home
 
             home-manager.nixosModules.home-manager {
               home-manager.useGlobalPkgs = true;
@@ -63,7 +63,7 @@
 
             ./modules/core
 
-            ./home/main-user.nix
+            ./home
 
             home-manager.nixosModules.home-manager {
               home-manager.useGlobalPkgs = true;
@@ -82,7 +82,7 @@
             ./modules/core
             ./modules/extra/gaming/default.nix
 
-            ./home/main-user.nix
+            ./home
 
             home-manager.nixosModules.home-manager {
               home-manager.useGlobalPkgs = true;

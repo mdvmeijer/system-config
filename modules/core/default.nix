@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, username-main, ... }:
 
 let
   system-config-file-opener = pkgs.writeShellScriptBin "system-config-file-opener" (builtins.readFile ../../scripts/fzf/system-config-file-opener.sh);
@@ -19,6 +19,22 @@ in
 
       ./hyprland.nix
     ];
+
+  users.users.${username-main} = {
+      isNormalUser = true;
+      description = "Max Meijer";
+      extraGroups = [ 
+        "networkmanager"
+        "wheel"
+        "libvirtd"
+        "kvm"
+        "mlocate"
+        "dialout"  # Access to serial ports, e.g. for Arduino
+        "plugdev"
+        "adbusers"
+      ];
+      initialPassword = "password";
+  };
 
   environment.sessionVariables = rec {
     XDG_CACHE_HOME  = "$HOME/.cache";

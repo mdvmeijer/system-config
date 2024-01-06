@@ -28,22 +28,6 @@ in {
   };
 
   config = {
-    users.users.${username} = {
-      isNormalUser = true;
-      description = "Max Meijer";
-      extraGroups = [ 
-        "networkmanager"
-        "wheel"
-        "libvirtd"
-        "kvm"
-        "mlocate"
-        "dialout"  # Access to serial ports, e.g. for Arduino
-        "plugdev"
-        "adbusers"
-      ];
-      initialPassword = "password";
-    };
-
     home-manager.users.${username} = { pkgs, ... }: {
       home.stateVersion = "22.11";
 
