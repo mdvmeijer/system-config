@@ -64,10 +64,11 @@
             ./hosts/ayame
 
             ./modules/core
+            ./modules/hyprland
 
             ./home/core
-            ./home/work.nix
             ./home/hyprland
+            ./home/work.nix
 
             home-manager.nixosModules.home-manager {
               home-manager.useGlobalPkgs = true;
@@ -86,12 +87,13 @@
             nixos-hardware.nixosModules.framework-13-7040-amd
 
             ./modules/core
+            ./modules/hyprland
             ./modules/gaming
 
             ./home/core
-            ./home/work.nix
             ./home/hyprland
             ./home/gaming.nix
+            ./home/work.nix
 
             home-manager.nixosModules.home-manager {
               home-manager.useGlobalPkgs = true;

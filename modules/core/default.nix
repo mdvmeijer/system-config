@@ -16,8 +16,6 @@ in
       ./mullvad-vpn.nix
       ./virtualization.nix
       ./tailscale.nix
-
-      ./hyprland.nix
     ];
 
   users.users.${username-main} = {
