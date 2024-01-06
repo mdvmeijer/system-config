@@ -28,7 +28,7 @@
       ../../core/alacritty/dotfiles/catppuccin/catppuccin-macchiato.yml
     ];
 
-    programs.waybar.style = ../../core/waybar/dotfiles/catppuccin-macchiato.css;
+    programs.waybar.style = ../../hyprland/waybar/dotfiles/catppuccin-macchiato.css;
 
     programs.bat.config.theme = "catppuccin-macchiato";
   };

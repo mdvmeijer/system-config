@@ -38,7 +38,7 @@
     ];
 
     # TODO: set gruvbox theme for waybar
-    programs.waybar.style = ../../core/waybar/dotfiles/catppuccin-macchiato.css;
+    programs.waybar.style = ../../hyprland/waybar/dotfiles/catppuccin-macchiato.css;
 
     # TODO: set gruvbox theme for bat
     programs.bat.config.theme = "catppuccin-macchiato";

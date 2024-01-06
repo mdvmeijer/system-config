@@ -7,7 +7,7 @@ args@{ config, pkgs, lib, username, ... }:
     (import ./bat.nix args)
     (import ./tmux args)
 
-    (import ./hyprland.nix args)
+    (import ../hyprland args)
     ./doom-emacs
   ];
 
@@ -23,6 +23,6 @@ args@{ config, pkgs, lib, username, ... }:
       };
     };
 
-    services.batsignal.enable = true;
+    services.batsignal.enable = true; # Battery daemon
   };
 }
