@@ -32,15 +32,12 @@
       overlay-fw-ectool = final: prev: {
         fw-ectool = fw-ectool.packages.${prev.system}.default;
       };
-
-      username-main = "meeri";
-      username-work = "max";
     in {
       nixosConfigurations = {
         lateralus = nixpkgs.lib.nixosSystem {
           inherit system;
           inherit pkgs;
-          specialArgs = { inherit inputs; inherit username-main; inherit username-work; };
+          specialArgs = { inherit inputs; };
           modules = [
             ./hosts/lateralus
 
@@ -62,7 +59,7 @@
         ayame = nixpkgs.lib.nixosSystem {
           inherit system;
           inherit pkgs;
-          specialArgs = { inherit inputs; inherit username-main; };
+          specialArgs = { inherit inputs; };
           modules = [
             ./hosts/ayame
 
@@ -88,7 +85,7 @@
         zenith = nixpkgs.lib.nixosSystem {
           inherit system;
           inherit pkgs;
-          specialArgs = { inherit inputs; inherit username-main; };
+          specialArgs = { inherit inputs; };
           modules = [
             ./hosts/zenith
             nixos-hardware.nixosModules.framework-13-7040-amd

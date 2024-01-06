@@ -1,4 +1,4 @@
-{ config, pkgs, username-main, ... }:
+{ config, pkgs, ... }:
 
 let
   system-config-file-opener = pkgs.writeShellScriptBin "system-config-file-opener" (builtins.readFile ../../scripts/fzf/system-config-file-opener.sh);
@@ -15,7 +15,7 @@ in
       ./tailscale.nix
     ];
 
-  users.users.${username-main} = {
+  users.users.meeri = {
     isNormalUser = true;
     description = "Max Meijer";
     extraGroups = [ 

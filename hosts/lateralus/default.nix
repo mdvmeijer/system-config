@@ -1,4 +1,4 @@
-{ config, pkgs, inputs, lib, username-main, ... }:
+{ config, pkgs, inputs, lib, ... }:
 
 let
   set-powersave-profile = pkgs.writeShellScriptBin "set-powersave-profile" (builtins.readFile ./scripts/power-management/set-powersave-profile);
@@ -74,7 +74,7 @@ in
 
   security.sudo.extraRules = [
     {  
-      users = [ "${username-main}" ];
+      users = [ "meeri" ];
       commands = [
         { 
           command = "${set-powersave-profile}/bin/set-powersave-profile";
