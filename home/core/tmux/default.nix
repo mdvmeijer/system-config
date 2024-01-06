@@ -1,25 +1,22 @@
-{ config, pkgs, lib, ... }:
+{ config, pkgs, ... }:
 
 {
+  programs.tmux = {
+    enable = true;
+    clock24 = true;
+    terminal = "screen-256color";
+    shortcut = "Space";
+    plugins = with pkgs.tmuxPlugins; [
+      dracula
+      sensible
+      resurrect
+    ];
+    extraConfig = ''
+      set -g mouse on
 
-  home-manager.users.meeri = { pkgs, ... }: {
-    programs.tmux = {
-      enable = true;
-      clock24 = true;
-      terminal = "screen-256color";
-      shortcut = "Space";
-      plugins = with pkgs.tmuxPlugins; [
-        dracula
-        sensible
-        resurrect
-      ];
-      extraConfig = ''
-        set -g mouse on
+      set -g @dracula-plugins " " 
 
-        set -g @dracula-plugins " " 
-
-        set-option -g default-command bash
-      '';
-    };
+      set-option -g default-command bash
+    '';
   };
 }

@@ -23,93 +23,91 @@ in {
   };
 
   config = {
-    home-manager.users.meeri = {
-      programs.obs-studio.enable = true;
-      programs.eza.enable = true;
+    programs.obs-studio.enable = true;
+    programs.eza.enable = true;
 
-      programs.zathura = {
-        enable = true;
-        options = {
-          sandbox = "none";
-          selection-clipboard = "clipboard";
-        };
+    programs.zathura = {
+      enable = true;
+      options = {
+        sandbox = "none";
+        selection-clipboard = "clipboard";
+      };
+    };
+
+    services.batsignal.enable = true; # Battery daemon
+
+    programs.git = {
+      enable = true;
+
+      userName = "M.D.V. Meijer";
+      userEmail = "mdvmeijer@protonmail.com";
+
+      aliases = {
+        ci = "commit";
+        co = "checkout";
+        s = "status";
+        sw = "switch";
+        p = "pull";
+        f = "fetch";
+        d = "diff";
+        b = "branch";
+        l = "log";
+        mg = "merge";
+        rb = "rebase";
       };
 
-      services.batsignal.enable = true; # Battery daemon
+      extraConfig = {
+        push.autoSetupRemote = true;
+      };
+    };
 
-      programs.git = {
-        enable = true;
+    xdg.mimeApps = {
+      enable = true;
 
-        userName = "M.D.V. Meijer";
-        userEmail = "mdvmeijer@protonmail.com";
+      associations.added = {
+        "text/plain" = "vim.desktop";
+        "text/html" = "firefox.desktop";
+        "application/pdf" = "org.pwmt.zathura-pdf-mupdf.desktop";
+        "image/jpeg" = "org.kde.gwenview.desktop";
+        "image/png" = "org.kde.gwenview.desktop";
 
-        aliases = {
-          ci = "commit";
-          co = "checkout";
-          s = "status";
-          sw = "switch";
-          p = "pull";
-          f = "fetch";
-          d = "diff";
-          b = "branch";
-          l = "log";
-          mg = "merge";
-          rb = "rebase";
-        };
+        "x-scheme-handler/chrome" = "firefox.desktop";
+        "x-scheme-handler/http" = "firefox.desktop";
+        "x-scheme-handler/https" = "firefox.desktop";
 
-        extraConfig = {
-          push.autoSetupRemote = true;
-        };
+        "x-scheme-handler/signalcaptcha" = "signal-desktop.desktop";
+
+        # .docx files
+        "application/vnd.openxmlformats-officedocument.wordprocessingml.document" = "writer.desktop";
+
+        # .odt files
+        "application/vnd.oasis.opendocument.text" = "writer.desktop";
+
+        "video/mp4" = "mpv.desktop";
+        "video/x-matroska" = "mpv.desktop";
       };
 
-      xdg.mimeApps = {
-        enable = true;
+      defaultApplications = {
+        "text/plain" = "vim.desktop";
+        "text/html" = "firefox.desktop";
+        "application/pdf" = "org.pwmt.zathura-pdf-mupdf.desktop";
+        "image/jpeg" = "org.kde.gwenview.desktop";
+        "image/png" = "org.kde.gwenview.desktop";
 
-        associations.added = {
-          "text/plain" = "vim.desktop";
-          "text/html" = "firefox.desktop";
-          "application/pdf" = "org.pwmt.zathura-pdf-mupdf.desktop";
-          "image/jpeg" = "org.kde.gwenview.desktop";
-          "image/png" = "org.kde.gwenview.desktop";
+        "x-scheme-handler/chrome" = "${cfg.defaultBrowser}";
+        "x-scheme-handler/http" = "${cfg.defaultBrowser}";
+        "x-scheme-handler/https" = "${cfg.defaultBrowser}";
 
-          "x-scheme-handler/chrome" = "firefox.desktop";
-          "x-scheme-handler/http" = "firefox.desktop";
-          "x-scheme-handler/https" = "firefox.desktop";
+        "x-scheme-handler/signalcaptcha" = "signal-desktop.desktop";
 
-          "x-scheme-handler/signalcaptcha" = "signal-desktop.desktop";
+        # .docx files
+        "application/vnd.openxmlformats-officedocument.wordprocessingml.document" = "writer.desktop";
 
-          # .docx files
-          "application/vnd.openxmlformats-officedocument.wordprocessingml.document" = "writer.desktop";
+        # .odt files
+        "application/vnd.oasis.opendocument.text" = "writer.desktop";
 
-          # .odt files
-          "application/vnd.oasis.opendocument.text" = "writer.desktop";
-
-          "video/mp4" = "mpv.desktop";
-          "video/x-matroska" = "mpv.desktop";
-        };
-
-        defaultApplications = {
-          "text/plain" = "vim.desktop";
-          "text/html" = "firefox.desktop";
-          "application/pdf" = "org.pwmt.zathura-pdf-mupdf.desktop";
-          "image/jpeg" = "org.kde.gwenview.desktop";
-          "image/png" = "org.kde.gwenview.desktop";
-
-          "x-scheme-handler/chrome" = "${cfg.defaultBrowser}";
-          "x-scheme-handler/http" = "${cfg.defaultBrowser}";
-          "x-scheme-handler/https" = "${cfg.defaultBrowser}";
-
-          "x-scheme-handler/signalcaptcha" = "signal-desktop.desktop";
-
-          # .docx files
-          "application/vnd.openxmlformats-officedocument.wordprocessingml.document" = "writer.desktop";
-
-          # .odt files
-          "application/vnd.oasis.opendocument.text" = "writer.desktop";
-
-          "video/mp4" = "mpv.desktop";
-          "video/x-matroska" = "mpv.desktop";
-        };
+        "video/mp4" = "mpv.desktop";
+        "video/x-matroska" = "mpv.desktop";
       };
     };
   };

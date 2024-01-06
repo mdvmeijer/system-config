@@ -46,13 +46,16 @@
 
             ./modules/core
 
-            ./home/core
-
             home-manager.nixosModules.home-manager {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
 
-              home-manager.users.meeri.home.stateVersion = "22.11";
+              home-manager.users.meeri = {
+                home.stateVersion = "22.11";
+                imports = [
+                  ./home/core
+                ];
+              };
             }
           ];
         };
@@ -66,15 +69,19 @@
             ./modules/core
             ./modules/hyprland
 
-            ./home/core
-            ./home/hyprland
-            ./home/work.nix
-
             home-manager.nixosModules.home-manager {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
 
-              home-manager.users.meeri.home.stateVersion = "23.05";
+              home-manager.users.meeri = {
+                home.stateVersion = "23.05";
+                imports = [
+                  ./home/core
+                  inputs.hyprland.homeManagerModules.default
+                  ./home/hyprland
+                  ./home/work.nix
+                ];
+              };
             }
           ];
         };
@@ -90,16 +97,20 @@
             ./modules/hyprland
             ./modules/gaming
 
-            ./home/core
-            ./home/hyprland
-            ./home/gaming.nix
-            ./home/work.nix
-
             home-manager.nixosModules.home-manager {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
 
-              home-manager.users.meeri.home.stateVersion = "23.11";
+              home-manager.users.meeri = {
+                home.stateVersion = "23.11";
+                imports = [
+                  ./home/core
+                  inputs.hyprland.homeManagerModules.default
+                  ./home/hyprland
+                  ./home/gaming.nix
+                  ./home/work.nix
+                ];
+              };
             }
           ];
         };

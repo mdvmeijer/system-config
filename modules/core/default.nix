@@ -165,6 +165,9 @@ in
 
   services.udisks2.enable = true;
 
+  programs.adb.enable = true;
+
+
   services.locate = {
     enable = true;
     package = pkgs.mlocate;

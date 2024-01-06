@@ -41,7 +41,9 @@
 
     dolphin
     gnome.nautilus
+    nautilus-open-any-terminal
     papirus-icon-theme
+    gnome.gnome-themes-extra
   ];
 
   nix.settings = {

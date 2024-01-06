@@ -23,7 +23,7 @@
   networking.hostName = "ayame";
   hardware.bluetooth.enable = true;
 
-  meeriModules.hyprland = {
+  home-manager.users.meeri.meeriModules.hyprland = {
     monitorConfig = ''
       # Config for 3440x1440 monitor
       # monitor=eDP-1, 1920x1080, 0x0, 1.00
@@ -42,7 +42,7 @@
     '';
   };
 
-  meeriModules.mimeApps = {
+  home-manager.users.meeri.meeriModules.mimeApps = {
     defaultBrowser = "chromium.desktop";
   };
 
