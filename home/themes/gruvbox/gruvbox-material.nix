@@ -29,7 +29,7 @@
   home.sessionVariables.GTK_THEME = "Gruvbox-Dark-BL";
 
   programs.alacritty.settings.import = [
-    ../../core/alacritty/dotfiles/gruvbox/gruvbox_material.yml
+    ../../core/alacritty/dotfiles/gruvbox/gruvbox_material.toml
   ];
 
   # TODO: set gruvbox theme for waybar

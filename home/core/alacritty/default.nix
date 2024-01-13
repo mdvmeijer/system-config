@@ -14,18 +14,14 @@
       scrolling = {
         history = 10000;
         multiplier = 3;
-        auto_scroll = false;
       };
-
-      tabspaces = 4;
 
       font.normal = {
         family = "Jetbrains Mono";
-        # family = "iosevka";
         style = "Medium";
       };
 
-      key_bindings = [
+      keyboard.bindings = [
         {
           key = "PageUp";
           mods = "Shift";
