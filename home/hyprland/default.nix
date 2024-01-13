@@ -66,7 +66,7 @@ in
         exec-once = waybar  # Status bar
         exec-once = dunst  # Notifications
         exec-once = hyprpaper  # Wallpaper
-        exec-once = swayosd  # Volume & brightness indicator
+        exec-once = swayosd-server  # Volume & brightness indicator
         exec-once = udiskie  # USB automounter
         exec-once = ${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1
   
@@ -242,9 +242,9 @@ in
         binde = ,XF86MonbrightnessUp, exec, brightnessctl set +5%
   
         # Control audio volume with hardware volume keys
-        bind = ,XF86AudioMute, exec, swayosd --output-volume mute-toggle
-        binde = ,XF86AudioLowerVolume, exec, swayosd --output-volume lower
-        binde = ,XF86AudioRaiseVolume, exec, swayosd --output-volume raise
+        bind = ,XF86AudioMute, exec, swayosd-client --output-volume mute-toggle
+        binde = ,XF86AudioLowerVolume, exec, swayosd-client --output-volume lower
+        binde = ,XF86AudioRaiseVolume, exec, swayosd-client --output-volume raise
         
         # Control audio playback with hardware playback keys
         bind=, XF86AudioPlay, exec, playerctl play-pause
