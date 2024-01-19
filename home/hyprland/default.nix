@@ -7,6 +7,7 @@ in
 {
   imports =
     [
+      ./wofi.nix
       ./waybar
       ./dunst.nix
       ./swaylock

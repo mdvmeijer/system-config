@@ -59,7 +59,6 @@ in
     glances
     qbittorrent
     mlocate
-    wofi
     zip
     unzip
     texlive.combined.scheme-full  # LaTeX stuff
