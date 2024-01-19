@@ -118,7 +118,7 @@
       less = "less -I";  # Ignore case
       locate = "locate -i";  # Ignore case
       cp = "cp -i";  # Ask before overwriting existing file
-      free = "free -m";  # SHow in MB
+      free = "free -m";  # Show in MB
       grep = "grep --color=auto";  # Highlight matching phrase
       
       v = "vim";
@@ -137,21 +137,12 @@
       gp = "cd ~/projects";
       gdoc = "cd ~/Documents";
       gdow = "cd ~/Downloads";
-      gpic = "cd ~/Pictures";
-      gtor = "cd ~/Torrents";
+      gpic = "cd ~/01-personal/04-media";
+      gtor = "cd ~/04-media/00-inbox/01-torrents";
       gcou = "cd ~/Documents/exchange/courses";
       
       # Edit file shorthands
       ec = "system-config-file-opener";
-      
-      # Git shorthands
-      branch = "git branch";
-      checkout = "git checkout";
-      commit = "git commit -m";
-      fetch = "git fetch";
-      pull = "git pull origin";
-      push = "git push origin";
-      status = "git status";
       
       cat = "bat";
       bc = "eva";
@@ -169,6 +160,8 @@
       
       ".." = "cd ..";
       "..." = "cd ../..";
+
+      nf = "neofetch";
     };
   };
 
