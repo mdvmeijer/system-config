@@ -4,6 +4,7 @@
   home.packages = with pkgs; [
     android-studio
     slack
+    drawio
   ];
 
   programs.chromium = {
