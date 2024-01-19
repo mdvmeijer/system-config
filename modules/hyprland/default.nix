@@ -17,6 +17,8 @@
   # TODO: Find proper config
   xdg.portal.config.common.default = "*";
 
+  services.gvfs.enable = true;
+
   environment.systemPackages = with pkgs; [
     hyprpaper
     brightnessctl

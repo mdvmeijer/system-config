@@ -157,6 +157,8 @@ in
     gnuradio
     android-tools  # fastboot, adb
     scrcpy  # Mirror phone screen
+
+    cifs-utils
   ];
 
   security.polkit.enable = true;
