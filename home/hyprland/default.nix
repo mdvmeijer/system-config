@@ -12,6 +12,7 @@ in
       ./dunst.nix
       ./swaylock
       ./hyprpaper
+      ./vimiv
 
       # ../themes/catppuccin/macchiato-rosewater.nix
       ../themes/gruvbox/gruvbox-material.nix

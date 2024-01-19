@@ -130,8 +130,6 @@ in
     cmatrix
     genact
 
-    gwenview
-
     element-desktop
     # fractal
     remmina

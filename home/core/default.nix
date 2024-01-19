@@ -68,8 +68,8 @@ in {
         "text/plain" = "vim.desktop";
         "text/html" = "firefox.desktop";
         "application/pdf" = "org.pwmt.zathura-pdf-mupdf.desktop";
-        "image/jpeg" = "org.kde.gwenview.desktop";
-        "image/png" = "org.kde.gwenview.desktop";
+        "image/jpeg" = "vimiv.desktop";
+        "image/png" = "vimiv.desktop";
 
         "x-scheme-handler/chrome" = "firefox.desktop";
         "x-scheme-handler/http" = "firefox.desktop";
@@ -91,8 +91,8 @@ in {
         "text/plain" = "vim.desktop";
         "text/html" = "firefox.desktop";
         "application/pdf" = "org.pwmt.zathura-pdf-mupdf.desktop";
-        "image/jpeg" = "org.kde.gwenview.desktop";
-        "image/png" = "org.kde.gwenview.desktop";
+        "image/jpeg" = "vimiv.desktop";
+        "image/png" = "vimiv.desktop";
 
         "x-scheme-handler/chrome" = "${cfg.defaultBrowser}";
         "x-scheme-handler/http" = "${cfg.defaultBrowser}";
