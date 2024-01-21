@@ -159,13 +159,10 @@ in
   ];
 
   security.polkit.enable = true;
-
   programs.dconf.enable = true;
-
   services.udisks2.enable = true;
-
   programs.adb.enable = true;
-
+  services.fwupd.enable = true;
 
   services.locate = {
     enable = true;
