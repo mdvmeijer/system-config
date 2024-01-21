@@ -27,11 +27,13 @@ in
 
   config = {
     # XWayland stuff
-    home.packages = with pkgs.xorg; [
-      xprop
-      xhost
-      xeyes  # To test for XWayland apps
-      xlsclients  # To test for XWayland apps
+    home.packages = with pkgs; [
+      xorg.xprop
+      xorg.xhost
+      xorg.xeyes  # To test for XWayland apps
+      xorg.xlsclients  # To test for XWayland apps
+
+      networkmanagerapplet
     ];
 
     home.sessionVariables = {
@@ -71,6 +73,7 @@ in
         exec-once = swayosd-server  # Volume & brightness indicator
         exec-once = udiskie  # USB automounter
         exec-once = ${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1
+        exec-once = nm-applet --indicator
   
         windowrule = workspace 2 silent,^(code)$
   
