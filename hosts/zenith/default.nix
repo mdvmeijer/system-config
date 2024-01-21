@@ -42,6 +42,15 @@
   # Enable networking
   networking.networkmanager.enable = true;
 
+  fileSystems."/mnt/media" = {
+    device = "//100.78.70.68/media";
+    fsType = "cifs";
+    options = let
+      # this line prevents hanging on network split
+      automount_opts = "x-systemd.automount,noauto,x-systemd.idle-timeout=60,x-systemd.device-timeout=5s,x-systemd.mount-timeout=5s";
+    in ["${automount_opts},credentials=/etc/nixos/smb-secrets"];
+  };
+
   # Set your time zone.
   time.timeZone = "Europe/Amsterdam";
 
