@@ -9,6 +9,7 @@ in {
     ./bash
     ./bat.nix
     ./tmux
+    ./lf
 
     ./doom-emacs
   ];

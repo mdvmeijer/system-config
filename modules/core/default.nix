@@ -78,7 +78,6 @@ in
     nicotine-plus
     gimp
     zola
-    lf
     file
     feh
     konsole
