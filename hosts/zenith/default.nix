@@ -121,12 +121,11 @@
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-  # environment.systemPackages = with pkgs; [
-  #   vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-  #   #fwupd
-  # #  wget
-  #   git
-  # ];
+  environment.systemPackages = with pkgs; [
+    solaar
+  ];
+
+  hardware.logitech.wireless.enable = true;
 
   # services.fwupd.enable = true;
 
