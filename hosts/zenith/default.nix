@@ -29,7 +29,7 @@
 
   home-manager.users.meeri.meeriModules.hyprland = {
     monitorConfig = ''
-      monitor=eDP-1, 2256x1504, 0x0, 1.175
+      monitor=eDP-1, 2256x1504, 0x0, 1.333333
     '';
   };
 
