@@ -10,27 +10,32 @@
         "spacing" = 4;  # Gaps between modules
         "modules-left" = ["hyprland/workspaces"];
         "modules-center" = ["hyprland/window"];
-        "modules-right" = ["tray" "backlight" "pulseaudio" "battery" "clock"];
+        "modules-right" = ["tray" "pulseaudio" "backlight" "battery" "clock"];
         "hyprland/window" = {
           "max-length" =  50;
           "separate-outputs" = true;  # have the window title be per-monitor
         };
         "hyprland/workspaces" = {
           "on-click" = "activate";
-          "format" = "{name}: {icon}";
-          "format-icons" = {
-            "1" = "";
-            "2" = "";
-            "3" = "";
-            "4" = "";
-            "5" = "";
-            "6" = "";
-            "7" = "";
-            "8" = "";
-            "9" = "";
-            "10" = "";
-            "focused" = "";
-            "default" = "";
+          "format" = "{name}";
+          # "format" = "{name}: {icon}";
+          # "format-icons" = {
+          #   "1" = "";
+          #   "2" = "";
+          #   "3" = "";
+          #   "4" = "";
+          #   "5" = "";
+          #   "6" = "";
+          #   "7" = "";
+          #   "8" = "";
+          #   "9" = "";
+          #   "10" = "";
+          #   "focused" = "";
+          #   "default" = "";
+          # };
+          "persistent-workspaces" = {
+             "*" = 9; # 5 workspaces by default on every monitor
+             # "HDMI-A-1": 3 // but only three on HDMI-A-1
           };
           "sort-by-number" = true;
         };
