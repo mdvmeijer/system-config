@@ -59,7 +59,6 @@
 
 window#waybar {
   background-color: shade(@base, 1.0);
-  border: 2px solid alpha(@crust, 0.3);
 }
 
 #workspaces {
