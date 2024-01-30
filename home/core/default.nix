@@ -72,6 +72,8 @@ in {
         "image/jpeg" = "vimiv.desktop";
         "image/png" = "vimiv.desktop";
 
+        "inode/directory" = "org.gnome.Nautilus.desktop";
+
         "x-scheme-handler/chrome" = "firefox.desktop";
         "x-scheme-handler/http" = "firefox.desktop";
         "x-scheme-handler/https" = "firefox.desktop";
@@ -94,6 +96,8 @@ in {
         "application/pdf" = "org.pwmt.zathura-pdf-mupdf.desktop";
         "image/jpeg" = "vimiv.desktop";
         "image/png" = "vimiv.desktop";
+
+        "inode/directory" = "org.gnome.Nautilus.desktop";
 
         "x-scheme-handler/chrome" = "${cfg.defaultBrowser}";
         "x-scheme-handler/http" = "${cfg.defaultBrowser}";
