@@ -178,6 +178,7 @@ in
     overpass
     paratype-pt-serif
     emacs-all-the-icons-fonts
+    (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
   ];
 
   nix = {

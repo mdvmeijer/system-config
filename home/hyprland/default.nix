@@ -8,6 +8,7 @@ in
   imports =
     [
       ./wofi.nix
+      ./rofi
       ./waybar
       ./dunst.nix
       ./swaylock
@@ -334,7 +335,7 @@ in
         bind = $mainMod CTRL, S, togglesplit,
         bind = $mainMod CTRL, P, pseudo,
   
-        bind = $mainMod, R, exec, wofi --show drun
+        bind = $mainMod, R, exec, rofi -show drun
         
         bind = $mainMod, F, fullscreen, 1
         bind = $mainMod SHIFT, F, fullscreen, 0
