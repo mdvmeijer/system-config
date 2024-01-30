@@ -18,9 +18,9 @@
   xdg.portal.config.common.default = "*";
 
   services.gvfs.enable = true;
+  services.blueman.enable = true;
 
   environment.systemPackages = with pkgs; [
-    hyprpaper
     brightnessctl
     pamixer
     playerctl

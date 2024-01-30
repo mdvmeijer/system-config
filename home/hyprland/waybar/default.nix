@@ -8,7 +8,7 @@
         "layer" = "top";
         "height" = 32;
         "spacing" = 4;  # Gaps between modules
-        "modules-left" = ["hyprland/workspaces" "network" "custom/mullvad" "bluetooth"];
+        "modules-left" = ["hyprland/workspaces"];
         "modules-center" = ["hyprland/window"];
         "modules-right" = ["tray" "backlight" "pulseaudio" "battery" "clock"];
         "hyprland/window" = {
@@ -71,8 +71,8 @@
         };
         "bluetooth" = {
           # "controller": "controller1", // specify the alias of the controller if there are more than 1 on the system
-          "format" = " {status}";
-          "format-disabled" = "";  # an empty format will hide the module
+          "format" = "";
+          "format-disabled" = " off";  # an empty format will hide the module
           "format-connected" = " {num_connections}";
           "tooltip-format" = "{controller_alias}\t{controller_address}";
           "tooltip-format-connected" = "{controller_alias}\t{controller_address}\n\n{device_enumerate}";
@@ -83,7 +83,7 @@
           "format-alt" = "{:%a, %d %b  %H:%M}";
         };
         "network" = {
-          "format-wifi" = "{essid} ({signalStrength}%) ";
+          "format-wifi" = "{essid} ";
           "format-ethernet" = "";
           "format-disconnected" = "";
           "tooltip-format" = "{ipaddr}/{cidr} via {gwaddr} ";

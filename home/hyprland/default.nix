@@ -69,11 +69,14 @@ in
         # Daemons for various desktop environment functions
         exec-once = waybar  # Status bar
         exec-once = dunst  # Notifications
-        exec-once = hyprpaper  # Wallpaper
-        exec-once = swayosd-server  # Volume & brightness indicator
-        exec-once = udiskie  # USB automounter
+        exec-once = ${pkgs.hyprpaper}/bin/hyprpaper  # Wallpaper
+        exec-once = ${pkgs.swayosd}/bin/swayosd-server  # Volume & brightness indicator
+        exec-once = ${pkgs.udiskie}/bin/udiskie  # USB automounter
         exec-once = ${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1
+        # exec-once = ${pkgs.networkmanagerapplet}/bin/nm-applet --indicator
         exec-once = nm-applet --indicator
+        exec-once = ${pkgs.tailscale-systray}/bin/tailscale-systray
+        exec-once = blueman-applet
   
         windowrule = workspace 2 silent,^(code)$
   
@@ -247,9 +250,9 @@ in
         binde = ,XF86MonbrightnessUp, exec, brightnessctl set +5%
   
         # Control audio volume with hardware volume keys
-        bind = ,XF86AudioMute, exec, swayosd-client --output-volume mute-toggle
-        binde = ,XF86AudioLowerVolume, exec, swayosd-client --output-volume lower
-        binde = ,XF86AudioRaiseVolume, exec, swayosd-client --output-volume raise
+        bind = ,XF86AudioMute, exec, ${pkgs.swayosd}/bin/swayosd-client --output-volume mute-toggle
+        binde = ,XF86AudioLowerVolume, exec, ${pkgs.swayosd}/bin/swayosd-client --output-volume lower
+        binde = ,XF86AudioRaiseVolume, exec, ${pkgs.swayosd}/bin/swayosd-client --output-volume raise
         
         # Control audio playback with hardware playback keys
         bind=, XF86AudioPlay, exec, playerctl play-pause

@@ -82,7 +82,6 @@ in
     feh
     konsole
     zsh
-    polkit_gnome
 
     eva  # bc alternative (calculator)
     du-dust  # du alternative
@@ -147,7 +146,6 @@ in
     rustup
     direnv
     lsof
-    udiskie  # Auto mount external drives
 
     jetbrains.rust-rover
     gnuradio
