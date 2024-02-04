@@ -98,9 +98,17 @@ window#waybar {
   border-left: none;
 }
 
-#mode, #bluetooth, #custom-vpn, #custom-mullvad, #battery, #cpu, #memory, #network, #pulseaudio, #idle_inhibitor, #backlight, #custom-storage, #custom-updates, #custom-weather, #custom-mail, #clock, #temperature {
+#mode, #bluetooth, #custom-vpn, #custom-mullvad, #cpu, #memory, #network, #pulseaudio, #idle_inhibitor, #backlight, #custom-storage, #custom-updates, #custom-weather, #custom-mail, #clock, #temperature {
   margin: 4px 2px;
-  padding: 0 6px;
+  padding: 0 11px 0 6px;
+  background-color: @base02;
+  border-radius: 4px;
+  min-width: 20px;
+}
+
+#battery {
+  margin: 4px 2px;
+  padding: 0 15px 0 6px;
   background-color: @base02;
   border-radius: 4px;
   min-width: 20px;
