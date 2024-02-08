@@ -183,6 +183,8 @@ in
             preserve_split = yes # you probably want this
   
             no_gaps_when_only = yes  # Remove border when just 1 window is present on a workspace
+
+            special_scale_factor = 0.9
         }
         
         master {
