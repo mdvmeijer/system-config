@@ -41,6 +41,7 @@ in
       QT_QPA_PLATFORM = "wayland;xcb";
       
       GDK_BACKEND = "wayland,x11";
+      SDL_VIDEODRIVER = "wayland";
       CLUTTER_BACKEND = "wayland";
   
       XDG_CURRENT_DESKTOP = "Hyprland";
@@ -49,7 +50,7 @@ in
   
       # TODO: Change back when support is better. Right now some applications (e.g. vscode) misbehave in Wayland mode
       # NIXOS_OZONE_WL = "1";
-  
+
       GRIM_DEFAULT_DIR = "$HOME/80-tmp/02-screenshots";
     };
   
@@ -85,8 +86,12 @@ in
         windowrule = float,title:^(Open File)$
         windowrule = float,title:^(Open Folder)$
   
-        # Steam friends list
+        # Open Steam popup windows floating instead of tiling
         windowrule = float,title:^(Friends List)$
+        windowrule = float,title:^(Steam Settings)$
+
+        # Prevent Steam menus from disappearing after mouse movement
+        windowrulev2 = stayfocused,title:^()$,class:^(steam)$
   
         # For cliphist
         exec-once = wl-paste --type text --watch cliphist store #Stores only text data
@@ -132,7 +137,7 @@ in
         
             rounding = 4
             blur {
-                  enabled = no;
+                  enabled = no
             }
         
             drop_shadow = no
@@ -328,8 +333,8 @@ in
   
         bind = $mainMod, Space, exec, emacs
   
-        # bind = $mainMod, O, exec, alacritty -e lf
-        bind = $mainMod, O, exec, nautilus
+        bind = $mainMod, O, exec, alacritty -e lf
+        bind = $mainMod SHIFT, O, exec, nautilus
   
         bind = $mainMod CTRL, F, togglefloating, 
         bind = $mainMod CTRL, S, togglesplit,

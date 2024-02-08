@@ -1,7 +1,7 @@
 (setq user-full-name "mdvmeijer"
       user-mail-address "mdvmeijer@protonmail.com")
 
-(setq doom-font (font-spec :family "JetBrains Mono" :size 18 :weight 'semi-light)
+(setq doom-font (font-spec :family "JetBrainsMono Nerd Font" :size 18 :weight 'semi-light)
       doom-variable-pitch-font (font-spec :family "PT Serif" :size 20))
 
 (setq display-line-numbers-type 'relative)

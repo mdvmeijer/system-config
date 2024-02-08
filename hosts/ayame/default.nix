@@ -34,7 +34,7 @@
       monitor=eDP-1, 1920x1080, 0x0, 1.00
       monitor=HDMI-A-1, 3440x1440@60, -800x-1440, 1.00
       workspace=1,monitor:eDP-1  # Bind workspace 1 to external monitor
-      workspace=2,monitor:HDMI-A-1  # Bind workspace 1 to external monitor
+      workspace=2,monitor:HDMI-A-1  # Bind workspace 2 to external monitor
 
       # Config for 1920x1080 monitor
       # monitor=eDP-1, 1920x1080, 0x0, 1.00

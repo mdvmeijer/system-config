@@ -25,6 +25,11 @@
   home-manager.users.meeri.meeriModules.hyprland = {
     monitorConfig = ''
       monitor=eDP-1, 2256x1504, 0x0, 1.333333
+
+      # Home config for 3440x1440 monitor
+      monitor=DP-3, 3440x1440@144, -900x-1440, 1.00
+      workspace=1,monitor:eDP-1  # Bind workspace 1 to external monitor
+      workspace=2,monitor:DP-3  # Bind workspace 2 to external monitor
     '';
   };
 
@@ -34,11 +39,19 @@
     driSupport32Bit = true;
   };
 
-  # Enable networking
   networking.networkmanager.enable = true;
 
   fileSystems."/mnt/media" = {
     device = "//100.78.70.68/media";
+    fsType = "cifs";
+    options = let
+      # this line prevents hanging on network split
+      automount_opts = "x-systemd.automount,noauto,x-systemd.idle-timeout=60,x-systemd.device-timeout=5s,x-systemd.mount-timeout=5s";
+    in ["${automount_opts},credentials=/etc/nixos/smb-secrets"];
+  };
+
+  fileSystems."/mnt/library" = {
+    device = "//100.78.70.68/library";
     fsType = "cifs";
     options = let
       # this line prevents hanging on network split
@@ -78,6 +91,7 @@
 
   environment.systemPackages = with pkgs; [
     solaar
+    # fw-ectool
   ];
 
   hardware.logitech.wireless.enable = true;

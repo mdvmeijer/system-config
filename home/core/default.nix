@@ -24,6 +24,8 @@ in {
   };
 
   config = {
+    home.homeDirectory = "/home/meeri";
+
     programs.obs-studio.enable = true;
     programs.eza.enable = true;
 
@@ -51,15 +53,34 @@ in {
         p = "pull";
         f = "fetch";
         d = "diff";
+        dc = "diff --cached";
         b = "branch";
         l = "log";
         mg = "merge";
         rb = "rebase";
+        cp = "cherry-pick";
+
+        branches = "branch -a";
+        remotes = "remote -v";
+        tags = "tags -l";
       };
 
       extraConfig = {
         push.autoSetupRemote = true;
       };
+    };
+
+    xdg.userDirs = {
+      enable = true;
+
+      desktop = "${config.home.homeDirectory}/desktop";
+      documents = "${config.home.homeDirectory}/documents";
+      download = "${config.home.homeDirectory}/downloads";
+      music = "${config.home.homeDirectory}/music";
+      pictures = "${config.home.homeDirectory}/pictures";
+      publicShare = "${config.home.homeDirectory}/public";
+      templates = "${config.home.homeDirectory}/templates";
+      videos = "${config.home.homeDirectory}/videos";
     };
 
     xdg.mimeApps = {

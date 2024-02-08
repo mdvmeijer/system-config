@@ -106,7 +106,7 @@
 
           " Use highlighting when doing a search.
           " TODO: configure better hl color
-          " set hlsearch
+          set hlsearch
 
           " Ignore capital letters during search.
           set ignorecase

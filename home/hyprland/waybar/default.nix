@@ -33,10 +33,10 @@
           #   "focused" = "";
           #   "default" = "";
           # };
-          "persistent-workspaces" = {
-             "*" = 9; # 5 workspaces by default on every monitor
-             # "HDMI-A-1": 3 // but only three on HDMI-A-1
-          };
+          # "persistent-workspaces" = {
+          #    "*" = 9; # 5 workspaces by default on every monitor
+          #    # "HDMI-A-1": 3 // but only three on HDMI-A-1
+          # };
           "sort-by-number" = true;
         };
         "wireplumber" = {  # often mis-reports as muted, hence using pulseaudio

@@ -5,7 +5,7 @@
   xdg.configFile."lf/icons".source = ./res/icons;
 
   # TODO: Image preview support for alacritty
-  home.packages = [ pkgs.kitty ];
+  # home.packages = [ pkgs.kitty ];
 
   # Based on https://github.com/vimjoyer/lf-nix-video
   programs.lf = {
@@ -13,7 +13,7 @@
 
     settings = {
       preview = true;
-      hidden = true;
+      # hidden = true;
       drawbox = true;
       icons = true;
       ignorecase = true;
