@@ -10,7 +10,7 @@
         "spacing" = 4;  # Gaps between modules
         "modules-left" = ["hyprland/workspaces"];
         "modules-center" = ["hyprland/window"];
-        "modules-right" = ["tray" "pulseaudio" "backlight" "battery" "clock"];
+        "modules-right" = ["pulseaudio" "backlight" "battery" "tray" "clock"];
         "hyprland/window" = {
           "max-length" =  50;
           "separate-outputs" = true;  # have the window title be per-monitor
@@ -84,8 +84,9 @@
           "tooltip-format-enumerate-connected" = "{device_alias}\t{device_address}";
         };
         "clock" = {
-          "format" = "{:%a, %d %b  %H:%M}";
-          "format-alt" = "{:%a, %d %b  %H:%M}";
+          "format" = "{:%H:%M}";
+          "tooltip" = true;
+          "tooltip-format" = "{:%a, %d %b}";
         };
         "network" = {
           "format-wifi" = "{essid} ";
