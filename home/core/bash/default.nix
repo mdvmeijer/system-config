@@ -87,14 +87,8 @@
       eval "$(direnv hook bash)"
     '';
     shellAliases = {
-      clockmon = ''watch -n.1 "grep \"^[c]pu MHz\" /proc/cpuinfo"'';
-      tempmon = ''watch -n1 "sensors"'';
-      
-      gtop = "sudo intel_gpu_top";
-      
-      # Check power limits
-      st-rapl = "cat /sys/class/powercap/intel-rapl/intel-rapl\:0/constraint_1_power_limit_uw";
-      lt-rapl = "cat /sys/class/powercap/intel-rapl/intel-rapl\:0/constraint_0_power_limit_uw";
+      cpuclock = ''watch -n.1 "grep \"^[c]pu MHz\" /proc/cpuinfo"'';
+      cputemp = ''watch -n1 "sensors"'';
       
       # Control screen backlight
       brightness-up = "brightnessctl set 5%+";
@@ -109,29 +103,18 @@
       media-pause = "playerctl play-pause";
       media-next = "playerctl next";
       media-previous = "playerctl previous";
-      
-      # Add convenient flags
-      ls = "exa";
-      lm = "exa --long --group-directories-first";
-      ll = "exa --long --all --group-directories-first";
-      lt = "exa --tree --level=3 --group-directories-first";
-      less = "less -I";  # Ignore case
-      locate = "locate -i";  # Ignore case
-      cp = "cp -i";  # Ask before overwriting existing file
-      free = "free -m";  # Show in MB
-      grep = "grep --color=auto";  # Highlight matching phrase
-      
-      v = "vim";
 
+      # Bluetooth
       bt-restart = "sudo systemctl restart bluetooth";
       btctl = "bluetoothctl";
 
-      # Nix shorthands
+      # Nix
       rb = "sudo nixos-rebuild switch --flake ~/projects/system-config";
+      ec = "system-config-file-opener";
       flu = "nix flake update";
       try = "nix-shell -p";
       
-      # FS navigation shorthands
+      # FS navigation
       gc = "cd ~/projects/system-config";
       gs = "cd ~/projects/scripts";
       gp = "cd ~/projects";
@@ -141,13 +124,22 @@
       gtor = "cd ~/04-media/00-inbox/01-torrents";
       gcou = "cd ~/Documents/exchange/courses";
       
-      # Edit file shorthands
-      ec = "system-config-file-opener";
+      # Add convenient flags
+      less = "less -I";  # Ignore case
+      locate = "locate -i";  # Ignore case
+      cp = "cp -i";  # Ask before overwriting existing file
+      free = "free -m";  # Show in MB
+      grep = "grep --color=auto";  # Highlight matching phrase
       
+      # Replace basic commands with new & shiny versions
       cat = "bat";
       bc = "eva";
       du = "dust";
       df = "duf";
+      ls = "exa";
+      ll = "exa --long --group-directories-first";
+      la = "exa --long --all --group-directories-first";
+      lt = "exa --tree --level=3 --group-directories-first";
       
       break-pomodoro = "termdown 5m -b";
       work-pomodoro = "termdown 25m -b";
@@ -162,6 +154,16 @@
       "..." = "cd ../..";
 
       nf = "neofetch";
+
+      webcam = "mpv --demuxer-lavf-format=video4linux2 --demuxer-lavf-o-set=input_format=mjpeg av://v4l2:/dev/video0";
+      myip = "curl --silent https://ifconfig.me";
+      mk = "mkdir -p";
+
+      # Single character
+      v = "vim";
+      g = "git";
+      y = "wl-copy";
+      p = "wl-paste";
     };
   };
 
