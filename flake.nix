@@ -9,7 +9,7 @@
     };
 
     fw-ectool.url = "github:ssddq/fw-ectool";
-    hyprland.url = "github:hyprwm/Hyprland/v0.34.0";
+    hyprland.url = "github:hyprwm/Hyprland/v0.35.0";
     nixos-hardware.url = "github:nixos/nixos-hardware/master";
   };
 
