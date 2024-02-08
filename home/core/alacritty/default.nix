@@ -23,23 +23,48 @@
 
       keyboard.bindings = [
         {
-          key = "PageUp";
-          mods = "Shift";
+          key = "Return";
+          mods = "Control|Shift";
+          action = "SpawnNewInstance";
+        }
+        {
+          key = "K";
+          mods = "Alt";
+          action = "ScrollLineUp";
+        }
+        {
+          key = "J";
+          mods = "Alt";
+          action = "ScrollLineDown";
+        }
+        {
+          key = "U";
+          mods = "Alt";
+          action = "ScrollHalfPageUp";
+        }
+        {
+          key = "D";
+          mods = "Alt";
+          action = "ScrollHalfPageDown";
+        }
+        {
+          key = "B";
+          mods = "Alt";
           action = "ScrollPageUp";
         }
         {
-          key = "PageDown";
-          mods = "Shift";
+          key = "F";
+          mods = "Alt";
           action = "ScrollPageDown";
         }
         {
-          key = "Home";
-          mods = "Shift";
+          key = "g";
+          mods = "Alt";
           action = "ScrollToTop";
         }
         {
-          key = "End";
-          mods = "Shift";
+          key = "G";
+          mods = "Alt";
           action = "ScrollToBottom";
         }
       ];
