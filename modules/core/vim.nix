@@ -195,6 +195,9 @@
           " set statusline=%f%m%r%h\ [%L]\ [%{&ff}]\ %y%=[%03p%%]\ [line:%05l,col:%02v]
 
           " }}}
+
+          set path+=~/10-projects/nixos/**
+          set path+=~/10-projects/blog/**
         '';
       })
     ];

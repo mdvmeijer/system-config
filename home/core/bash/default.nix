@@ -109,15 +109,15 @@
       btctl = "bluetoothctl";
 
       # Nix
-      rb = "sudo nixos-rebuild switch --flake ~/projects/system-config";
+      rb = "sudo nixos-rebuild switch";
       ec = "system-config-file-opener";
       flu = "nix flake update";
       try = "nix-shell -p";
       
       # FS navigation
-      gc = "cd ~/projects/system-config";
-      gs = "cd ~/projects/scripts";
-      gp = "cd ~/projects";
+      gc = "cd ~/10-projects/nixos";
+      gs = "cd ~/10-projects/scripts";
+      gp = "cd ~/10-projects";
       gdoc = "cd ~/Documents";
       gdow = "cd ~/Downloads";
       gpic = "cd ~/01-personal/04-media";

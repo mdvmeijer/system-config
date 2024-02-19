@@ -8,7 +8,7 @@
 ### - Remove common directory prefix from fzf entries
 
 ### CONFIGURATION VARIABLES
-root_dir=/home/meeri/projects/system-config
+root_dir=/home/meeri/10-projects/nixos
 ###
 
 selected_path=$(find $root_dir -type f -not -path '*.git*' | fzf)
