@@ -31,6 +31,8 @@ in
     initialPassword = "password";
   };
 
+  users.groups.plugdev = {};
+
   environment.sessionVariables = rec {
     XDG_CACHE_HOME  = "$HOME/.cache";
     XDG_CONFIG_HOME = "$HOME/.config";
@@ -153,6 +155,7 @@ in
     scrcpy  # Mirror phone screen
 
     cifs-utils
+    nix-index
   ];
 
   security.polkit.enable = true;
