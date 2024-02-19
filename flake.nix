@@ -92,6 +92,7 @@
             inputs.hyprland.nixosModules.default
             ./modules/hyprland
             ./modules/gaming
+            ./modules/ledgerlive.nix
 
             home-manager.nixosModules.home-manager {
               home-manager.useGlobalPkgs = true;
