@@ -16,6 +16,8 @@
         multiplier = 3;
       };
 
+      selection.save_to_clipboard = true;
+
       font.normal = {
         family = "Jetbrains Mono";
         style = "Medium";
