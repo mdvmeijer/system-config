@@ -59,8 +59,11 @@ in
       # package = null;  # Use system-wide package instead
   
       extraConfig = ''
+        # See https://wiki.hyprland.org/Configuring/Keywords/ for more
+        $mainMod = SUPER
+        
         ${cfg.monitorConfig}
-  
+
         # Default catch-all monitor config
         monitor=,preferred,auto,auto
   
@@ -197,9 +200,6 @@ in
             workspace_swipe = true
         }
         
-        # See https://wiki.hyprland.org/Configuring/Keywords/ for more
-        $mainMod = SUPER
-        
         $screenLockCmd = swaylock --clock --indicator --screenshots --effect-scale 0.4 --effect-vignette 0.2:0.5 --effect-blur 4x2 --datestr "%a %e.%m.%Y" --timestr "%k:%M"
         $suspendCmd = systemctl suspend
         $lockAndSuspendCmd = $screenLockCmd & sleep 1; $suspendCmd &
@@ -214,10 +214,6 @@ in
         bind = $mainMod ALT CTRL, L, exec, $lockAndSuspendCmd
   
         bind=, XF86PowerOff, exec, systemctl suspend
-  
-        # Yeet current workspace to primary or secondary monitor
-        bind = $mainMod ALT, 1, movecurrentworkspacetomonitor, eDP-1
-        bind = $mainMod ALT, 2, movecurrentworkspacetomonitor, HDMI-A-1
   
         # Go to previous workspace
   

@@ -26,16 +26,23 @@
   home-manager.users.meeri = {
     meeriModules.hyprland = {
       monitorConfig = ''
-        # Config for 3440x1440 monitor
-        # monitor=eDP-1, 1920x1080, 0x0, 1.00
-        # monitor=HDMI-A-1, 3440x1440@144, 1920x0, 1.00
-        # workspace=1,monitor:HDMI-A-1  # Bind workspace 1 to external monitor
+        monitor=eDP-1, 1920x1080, 0x0, 1.00
 
         # Work config for 3440x1440 monitor
-        monitor=eDP-1, 1920x1080, 0x0, 1.00
         monitor=HDMI-A-1, 3440x1440@60, -800x-1440, 1.00
         workspace=1,monitor:eDP-1  # Bind workspace 1 to external monitor
         workspace=2,monitor:HDMI-A-1  # Bind workspace 2 to external monitor
+        # Yeet current workspace to primary or secondary monitor
+        bind = $mainMod ALT, 1, movecurrentworkspacetomonitor, eDP-1
+        bind = $mainMod ALT, 2, movecurrentworkspacetomonitor, HDMI-A-1
+
+        # # Home config for 3440x1440 monitor
+        # monitor=DP-2, 3440x1440@144, -800x-1440, 1.00
+        # workspace=1,monitor:eDP-1  # Bind workspace 1 to external monitor
+        # workspace=2,monitor:DP-2  # Bind workspace 2 to external monitor
+        # # Yeet current workspace to primary or secondary monitor
+        # bind = $mainMod ALT, 1, movecurrentworkspacetomonitor, eDP-1
+        # bind = $mainMod ALT, 2, movecurrentworkspacetomonitor, DP-2
 
         # Config for 1920x1080 monitor
         # monitor=eDP-1, 1920x1080, 0x0, 1.00

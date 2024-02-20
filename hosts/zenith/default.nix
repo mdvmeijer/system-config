@@ -30,6 +30,9 @@
       monitor=DP-3, 3440x1440@144, -900x-1440, 1.00
       workspace=1,monitor:eDP-1  # Bind workspace 1 to external monitor
       workspace=2,monitor:DP-3  # Bind workspace 2 to external monitor
+      # Yeet current workspace to primary or secondary monitor
+      bind = $mainMod ALT, 1, movecurrentworkspacetomonitor, eDP-1
+      bind = $mainMod ALT, 2, movecurrentworkspacetomonitor, DP-3
     '';
   };
 
