@@ -59,10 +59,12 @@ in {
         mg = "merge";
         rb = "rebase";
         cp = "cherry-pick";
+        res = "restore";
+        resta = "restore --staged";
 
         branches = "branch -a";
         remotes = "remote -v";
-        tags = "tags -l";
+        tags = "tag -l";
       };
 
       extraConfig = {
