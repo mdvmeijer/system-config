@@ -167,6 +167,7 @@ in
             col.border_inactive = rgba(000000aa)
   
             groupbar {
+                font_family = Jetbrains Mono
                 font_size = 10
                 render_titles = true
                 gradients = false
