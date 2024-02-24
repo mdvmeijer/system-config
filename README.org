@@ -1,4 +1,4 @@
-#+title: Readme
+#+title: My NixOS configuration
 
 Flake-based modular NixOS configuration for multiple hosts:
 - =zenith=, a 13'' Framework laptop (Ryzen 5 7640U) I use for general productivity work
