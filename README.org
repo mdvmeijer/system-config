@@ -1,0 +1,15 @@
+#+title: Readme
+
+Flake-based modular NixOS configuration for multiple hosts:
+- =zenith=, a 13'' Framework laptop (Ryzen 5 7640U) I use for general productivity work
+- =ayame=,  a 14'' Thinkpad (Core i7-1185G7) I use for work-related stuff
+- =lateralus=, a Framework mainboard (Core i5-1240P) repurposed as a server
+
+* Process for adding a new host
+In order to get this config up and running on a clean install on NixOS, the user is required to do some manual setup. Parts of this manual setup are able to be automated in the future.
+- Clone repo in =/home/meeri/10-projects/nixos=
+- Create a =hosts= subdirectory and populate it with =configuration.nix= and =hardware-configuration.nix= found in =/etc/nixos=
+- Create an entry in the attribute set ~nixosConfigurations~ in =flake.nix= and include the appropriate modules
+- Delete the now-redundant =/etc/nixos= directory and create a symlink from =/home/meeri/10-projects/nixos= to =/etc/nixos=
+- Set up =doom-emacs= ([[https://github.com/doomemacs/doomemacs][link]])
+- Make sure secrets are present in =/root= (for =smb= and =borgbase=)
