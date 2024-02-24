@@ -62,11 +62,6 @@
       ### Edge Impulse CLI (for embedded AI course)
       export PATH=$PATH:~/.npm-global/bin
       
-      if command -v fzf-share >/dev/null; then
-        source "$(fzf-share)/key-bindings.bash"
-        source "$(fzf-share)/completion.bash"
-      fi
-      
       # Eternal bash history. (source: https://superuser.com/a/664061)
       # ---------------------
       # Undocumented feature which sets the size to "unlimited".
@@ -81,10 +76,6 @@
       # http://superuser.com/questions/20900/bash-history-loss
       PROMPT_COMMAND="history -a; $PROMPT_COMMAND"
       shopt -s histappend
-      
-      eval "$(starship init bash)"
-
-      eval "$(direnv hook bash)"
     '';
     shellAliases = {
       cpuclock = ''watch -n.1 "grep \"^[c]pu MHz\" /proc/cpuinfo"'';
@@ -140,6 +131,7 @@
       ll = "exa --long --group-directories-first";
       la = "exa --long --all --group-directories-first";
       lt = "exa --tree --level=3 --group-directories-first";
+      cd = "z";
       
       break-pomodoro = "termdown 5m -b";
       work-pomodoro = "termdown 25m -b";
@@ -167,6 +159,7 @@
     };
   };
 
+  # HM modules for starship, fzf, direnv and zoxide append hooks to .bashrc
   programs.starship = {
     enable = true;
 
@@ -180,4 +173,7 @@
       };
     };
   };
+  programs.fzf.enable = true;
+  programs.direnv.enable = true;
+  programs.zoxide.enable = true;
 }

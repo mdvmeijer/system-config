@@ -88,7 +88,6 @@ in
     eva  # bc alternative (calculator)
     du-dust  # du alternative
     duf  # df alternative
-    zoxide  # cd alternative
     tokei  # Enumerate code files
     fd  # find alternative
     
@@ -109,7 +108,6 @@ in
     mpv
     neofetch
     tmux
-    fzf
     speedtest-cli
     calibre
     # taskell  # CLI kanban board
@@ -146,7 +144,6 @@ in
     psmisc  # For fuser command
     nodePackages.pnpm
     rustup
-    direnv
     lsof
 
     jetbrains.rust-rover
