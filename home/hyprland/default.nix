@@ -179,6 +179,10 @@ in
             swallow_regex = ^(Alacritty)$
   
             disable_hyprland_logo = true
+
+            # Lower the amount of sent frames when nothing is happening on-screen,
+            # thereby decreasing power consumption. From Hyprland wiki.
+            vfr = true
         }
         
         dwindle {
