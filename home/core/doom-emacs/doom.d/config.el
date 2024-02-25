@@ -32,6 +32,9 @@
 ;; (setq org-directory "~/01-personal/01-MAIN")
 
 (after! org
+  (setq org-export-with-toc nil)
+  (setq org-export-with-author nil)
+  (setq org-export-with-title nil)
   (setq org-agenda-files '("~/06-org/agenda"))
   (setq org-todo-keywords        ; This overwrites the default Doom org-todo-keywords
           '((sequence

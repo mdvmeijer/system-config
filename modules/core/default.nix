@@ -63,7 +63,6 @@ in
     mlocate
     zip
     unzip
-    texlive.combined.scheme-full  # LaTeX stuff
     powertop
     easyeffects  # Fix FW speakers
 

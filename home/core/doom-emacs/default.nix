@@ -7,4 +7,9 @@
     # recursive = true;
     onChange = builtins.readFile ./doom-sync.sh;
   };
+
+  home.packages = with pkgs; [
+    pandoc  # Use because default .md backend wrongly formats code blocks
+    texlive.combined.scheme-full  # For LaTeX + PDF export
+  ];
 }
