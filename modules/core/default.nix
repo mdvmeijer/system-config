@@ -176,8 +176,7 @@ in
     font-awesome  # for waybar icons
     overpass
     paratype-pt-serif
-    emacs-all-the-icons-fonts
-    (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
+    nerdfonts
   ];
 
   nix = {
