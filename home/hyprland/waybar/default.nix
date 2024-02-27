@@ -84,9 +84,7 @@
           "tooltip-format-enumerate-connected" = "{device_alias}\t{device_address}";
         };
         "clock" = {
-          "format" = "{:%H:%M}";
-          "tooltip" = true;
-          "tooltip-format" = "{:%a, %d %b}";
+          "format" = "{:%a %d %H:%M}";
         };
         "network" = {
           "format-wifi" = "{essid} ";
