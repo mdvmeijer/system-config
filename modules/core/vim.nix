@@ -7,7 +7,7 @@
       (pkgs.vim_configurable.customize {
         name = "vim";
         vimrcConfig.packages.myplugins = with pkgs.vimPlugins; {
-          start = [ delimitMate nerdtree catppuccin-vim gruvbox-material ]; # vim-autoclose is not packaged
+          start = [ delimitMate nerdtree catppuccin-vim gruvbox-material fzf-vim ]; # vim-autoclose is not packaged
         };
         vimrcConfig.customRC = ''
           " GENERAL BEHAVIOR ---------------------------------------------------------------- {{{
@@ -125,7 +125,8 @@
 
           " MAPPINGS --------------------------------------------------------------- {{{
 
-          let mapleader = ","
+          let mapleader = " "
+          set notimeout
 
           " Shortcut to rapidly toggle `set list`
           nnoremap <leader>l :set list!<CR>
@@ -139,6 +140,9 @@
           nnoremap <C-n> :NERDTree<CR>
           nnoremap <C-t> :NERDTreeToggle<CR>
           nnoremap <C-f> :NERDTreeFind<CR>
+
+          " https://www.barbarianmeetscoding.com/blog/5-minutes-vim-ctrl-p-considered-harmful
+          nnoremap <leader>s :<C-u>FZF<CR>
 
           nnoremap <C-h> <C-w>h
           nnoremap <C-j> <C-w>j
