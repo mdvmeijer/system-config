@@ -337,6 +337,7 @@ in
         bind = $mainMod, Space, exec, emacs
   
         bind = $mainMod, O, exec, alacritty -e lf
+        bind = $mainMod ALT, O, exec, alacritty -e lf /home/meeri/03-edu/02-master/graduation/papers
         bind = $mainMod SHIFT, O, exec, nautilus
   
         bind = $mainMod CTRL, F, togglefloating, 

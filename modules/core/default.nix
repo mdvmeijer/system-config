@@ -44,6 +44,10 @@ in
     #PATH = [
     #  "${XDG_BIN_HOME}"
     #];
+
+    PATH = [
+      "$HOME/.emacs.d/bin"
+    ];
   };
 
   environment.systemPackages = with pkgs; [
@@ -83,6 +87,7 @@ in
     feh
     konsole
     zsh
+    tree
 
     eva  # bc alternative (calculator)
     du-dust  # du alternative
@@ -146,12 +151,12 @@ in
     lsof
 
     jetbrains.rust-rover
-    gnuradio
     android-tools  # fastboot, adb
     scrcpy  # Mirror phone screen
 
     cifs-utils
     nix-index
+    protonmail-desktop
   ];
 
   security.polkit.enable = true;

@@ -9,7 +9,7 @@
     };
 
     fw-ectool.url = "github:ssddq/fw-ectool";
-    hyprland.url = "github:hyprwm/Hyprland/v0.36.0";
+    hyprland.url = "github:hyprwm/Hyprland/v0.39.1";
     nixos-hardware.url = "github:nixos/nixos-hardware/master";
   };
 
@@ -93,6 +93,8 @@
             ./modules/hyprland
             ./modules/gaming
             ./modules/ledgerlive.nix
+            ./modules/flipperzero.nix
+            ./modules/gnuradio.nix
 
             home-manager.nixosModules.home-manager {
               home-manager.useGlobalPkgs = true;
