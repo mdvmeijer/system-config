@@ -144,6 +144,10 @@
           " https://www.barbarianmeetscoding.com/blog/5-minutes-vim-ctrl-p-considered-harmful
           nnoremap <leader>s :<C-u>FZF<CR>
 
+          " https://www.barbarianmeetscoding.com/blog/5-minutes-vim-moving-fast-within-a-file
+          noremap H ^
+          noremap L g_
+
           nnoremap <C-h> <C-w>h
           nnoremap <C-j> <C-w>j
           nnoremap <C-k> <C-w>k
