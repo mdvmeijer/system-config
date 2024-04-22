@@ -60,10 +60,12 @@
           inherit pkgs;
           modules = [
             ./hosts/ayame
+            nixos-hardware.nixosModules.lenovo-thinkpad-t14s
 
             ./modules/core
             inputs.hyprland.nixosModules.default
             ./modules/hyprland
+            ./modules/gaming
 
             home-manager.nixosModules.home-manager {
               home-manager.useGlobalPkgs = true;
