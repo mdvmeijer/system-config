@@ -8,9 +8,9 @@
         "layer" = "top";
         "height" = 32;
         "spacing" = 4;  # Gaps between modules
-        "modules-left" = ["hyprland/workspaces"];
+        "modules-left" = ["custom/launcher" "hyprland/workspaces"];
         "modules-center" = ["hyprland/window"];
-        "modules-right" = ["pulseaudio" "backlight" "battery" "tray" "clock"];
+        "modules-right" = ["pulseaudio" "backlight" "memory" "battery" "tray" "clock" "custom/powermenu"];
         "hyprland/window" = {
           "max-length" =  50;
           "separate-outputs" = true;  # have the window title be per-monitor
@@ -46,7 +46,7 @@
           "format-icons" = ["" "" ""];
         };
         "pulseaudio" = {
-          "format" = "{volume}% {icon}";
+          "format" = "{icon} {volume}%";
           "format-bluetooth" = "{volume}% {icon}";
           "format-muted" = "";
           "format-icons" = {
@@ -68,7 +68,7 @@
             "warning" = 30;
             "critical" = 15;
           };
-          "format" = "{capacity}% {icon}";
+          "format" = "{icon} {capacity}%";
           "format-charging" = "{capacity}% ";
           "format-good" = "{capacity}% {icon}"; # An empty format will hide the module
           "format-full" = "{capacity}% {icon}";
@@ -86,6 +86,13 @@
         "clock" = {
           "format" = "{:%a %d %H:%M}";
         };
+        "memory" = {
+          "interval" = 1;
+          "format" = "󰍛 {percentage}%";
+          "states" = {
+            "warning" = 85;
+          };
+        };
         "network" = {
           "format-wifi" = "{essid} ";
           "format-ethernet" = "";
@@ -94,7 +101,7 @@
         };
         "backlight" = {
           "device" = "intel_backlight";
-          "format" = "{percent}% {icon}";
+          "format" = "{icon} {percent}%";
           # "format-icons" = ["" ""];
           "format-icons" = [""];
         };
@@ -108,6 +115,16 @@
           "exec" = ./scripts/waybar-mullvad-status.sh;
           "on-click" = ./scripts/waybar-mullvad-toggle.sh;
           "return-type" = "json";
+        };
+        "custom/launcher" = {
+          "format" = "󰫢 ";
+          "on-click" = "rofi -show drun";
+          "tooltip" = false;
+        };
+        "custom/powermenu" = {
+          "format" = "";
+          "on-click" = "wlogout";
+          "tooltip" = false;
         };
       };
     };

@@ -98,17 +98,29 @@ window#waybar {
   border-left: none;
 }
 
+#custom-launcher {
+  font-size: 20px;
+  padding-left: 8px;
+}
+
 #mode, #bluetooth, #custom-vpn, #custom-mullvad, #cpu, #memory, #network, #pulseaudio, #idle_inhibitor, #backlight, #custom-storage, #custom-updates, #custom-weather, #custom-mail, #clock, #temperature {
   margin: 4px 2px;
-  padding: 0 11px 0 6px;
+  padding: 0 6px 0 6px;
   background-color: @base02;
   border-radius: 4px;
   min-width: 20px;
 }
 
+#custom-powermenu {
+  margin: 4px 2px;
+  padding: 0 12px 0 0;
+  border-radius: 4px;
+  color: #eb6f92;
+}
+
 #battery {
   margin: 4px 2px;
-  padding: 0 15px 0 6px;
+  padding: 0 6px 0 6px;
   background-color: @base02;
   border-radius: 4px;
   min-width: 20px;
