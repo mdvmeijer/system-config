@@ -19,7 +19,7 @@ configuration {
     /*drun-display-format:        "name";*/
     fixed-num-lines:            true;
     terminal:                   "alacritty";
-    disable-history:            true;
+    disable-history:            false;
     cycle:                      false;
     scroll-method:              1;
     matching:                   "fuzzy";
