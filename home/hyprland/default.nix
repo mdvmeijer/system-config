@@ -11,8 +11,8 @@ in
       ./rofi
       ./waybar
       ./dunst.nix
-      ./swaylock
       ./hyprpaper
+      ./hyprlock
       ./vimiv
 
       # ../themes/catppuccin/macchiato-rosewater.nix
@@ -205,7 +205,7 @@ in
             workspace_swipe = true
         }
         
-        $screenLockCmd = swaylock --clock --indicator --screenshots --effect-scale 0.4 --effect-vignette 0.2:0.5 --effect-blur 4x2 --datestr "%a %e.%m.%Y" --timestr "%k:%M"
+        $screenLockCmd = ${pkgs.hyprlock}/bin/hyprlock
         $suspendCmd = systemctl suspend
         $lockAndSuspendCmd = $screenLockCmd & sleep 1; $suspendCmd &
         
