@@ -59,7 +59,7 @@
             "default" = ["" ""];
           };
           "scroll-step" = 1;
-          "on-click-middle" = "swayosd --output-volume mute-toggle";
+          "on-click-middle" = "swayosd-client --output-volume mute-toggle";
           "ignored-sinks" = ["Easy Effects Sink"];
         };
         "battery" = {
@@ -118,7 +118,7 @@
         };
         "custom/launcher" = {
           "format" = "󰫢 ";
-          "on-click" = "rofi -show drun";
+          "on-click" = "pkill -9 rofi || rofi -show drun";
           "tooltip" = false;
         };
         "custom/powermenu" = {
