@@ -14,6 +14,7 @@ in
       ./hyprpaper
       ./hyprlock
       ./vimiv
+      ./wlogout
 
       # ../themes/catppuccin/macchiato-rosewater.nix
       ../themes/gruvbox/gruvbox-material.nix
@@ -214,6 +215,8 @@ in
   
         # Keybind to lock screen
         bind = $mainMod ALT, L, exec, $screenLockCmd
+
+        bind = CTRL ALT, Delete, exec, ${pkgs.wlogout}/bin/wlogout -b 5 -c 0 -r 0 -T 400 -B 400
   
         # Keybind to lock screen and suspend
         bind = $mainMod ALT CTRL, L, exec, $lockAndSuspendCmd

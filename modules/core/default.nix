@@ -157,7 +157,6 @@ in
     cifs-utils
     nix-index
     protonmail-desktop
-    wlogout
   ];
 
   security.polkit.enable = true;

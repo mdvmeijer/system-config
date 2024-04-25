@@ -70,8 +70,8 @@
           };
           "format" = "{icon} {capacity}%";
           "format-charging" = "{capacity}% ";
-          "format-good" = "{capacity}% {icon}"; # An empty format will hide the module
-          "format-full" = "{capacity}% {icon}";
+          "format-good" = "{icon} {capacity}%"; # An empty format will hide the module
+          "format-full" = "{icon} {capacity}%";
           "format-icons" = ["" "" "" "" ""];
         };
         "bluetooth" = {
@@ -123,7 +123,7 @@
         };
         "custom/powermenu" = {
           "format" = "";
-          "on-click" = "wlogout";
+          "on-click" = "${pkgs.wlogout} -b 5 -c 0 -r 0 -T 400 -B 400";
           "tooltip" = false;
         };
       };
