@@ -2,8 +2,8 @@
 
 {
   home.file.".config/hypr/hyprlock.conf".text = let
-    wallpaper1 = ../hyprpaper/wallpapers/anime_skull.png;
-    wallpaper2 = ../hyprpaper/wallpapers/sif.png;
+    wallpaper-laptop = ../hyprpaper/wallpapers/anime_skull.png;
+    wallpaper-external = ../hyprpaper/wallpapers/sif.png;
   in
   ''
     general {
@@ -12,7 +12,7 @@
     
     background {
         monitor = eDP-1
-        path = ${wallpaper1}
+        path = ${wallpaper-laptop}
         color = rgba(25, 20, 20, 1.0)
     
         # all these options are taken from hyprland, see https://wiki.hyprland.org/Configuring/Variables/#blur for explanations
@@ -27,7 +27,7 @@
     
     background {
         monitor = DP-7
-        path = ${wallpaper2}
+        path = ${wallpaper-external}
         color = rgba(25, 20, 20, 1.0)
     
         # all these options are taken from hyprland, see https://wiki.hyprland.org/Configuring/Variables/#blur for explanations
@@ -42,7 +42,7 @@
 
     background {
         monitor = HDMI-A-1
-        path = ${wallpaper2}
+        path = ${wallpaper-external}
         color = rgba(25, 20, 20, 1.0)
     
         # all these options are taken from hyprland, see https://wiki.hyprland.org/Configuring/Variables/#blur for explanations
