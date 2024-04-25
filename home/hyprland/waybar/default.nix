@@ -123,7 +123,7 @@
         };
         "custom/powermenu" = {
           "format" = "";
-          "on-click" = "${pkgs.wlogout} -b 5 -c 0 -r 0 -T 400 -B 400";
+          "on-click" = "${pkgs.wlogout}/bin/wlogout -b 5 -c 0 -r 0 -T 400 -B 400";
           "tooltip" = false;
         };
       };
