@@ -58,7 +58,8 @@
             "car" = "";
             "default" = ["" ""];
           };
-          "scroll-step" = 1;
+          "scroll-step" = 5;
+          "on-click" = "audio-sink-switcher";
           "on-click-middle" = "swayosd-client --output-volume mute-toggle";
           "ignored-sinks" = ["Easy Effects Sink"];
         };

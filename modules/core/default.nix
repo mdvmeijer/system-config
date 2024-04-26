@@ -3,6 +3,7 @@
 let
   system-config-file-opener = pkgs.writeShellScriptBin "system-config-file-opener" (builtins.readFile ../../scripts/fzf/system-config-file-opener.sh);
   wofi-key-value-store = pkgs.writeShellScriptBin "wofi-key-value-store" (builtins.readFile ../../scripts/wofi/wofi-key-value-store.sh);
+  audio-sink-switcher = pkgs.writeShellScriptBin "audio-sink-switcher" (builtins.readFile ../../scripts/rofi/audio-sink-switcher.sh);
 in
 {
   imports =
@@ -53,6 +54,7 @@ in
   environment.systemPackages = with pkgs; [
     system-config-file-opener
     wofi-key-value-store
+    audio-sink-switcher
 
     wget
     discord

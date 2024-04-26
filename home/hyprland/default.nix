@@ -318,6 +318,9 @@ in
         bind=,g,exec,wofi-key-value-store get
         bind=,g,submap,reset
   
+        bind=,a,exec,audio-sink-switcher
+        bind=,a,submap,reset
+
         # use reset to go back to the global submap
         bind=,escape,submap,reset 
         
