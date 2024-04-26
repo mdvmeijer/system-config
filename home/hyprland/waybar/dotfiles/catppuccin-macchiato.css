@@ -99,8 +99,9 @@ window#waybar {
 }
 
 #custom-launcher {
-  font-size: 20px;
-  padding-left: 8px;
+  background-image: url("/home/meeri/10-projects/nixos/home/hyprland/waybar/icons/nix-logo-transparent-24px.png");
+  background-repeat: no-repeat;
+  margin: 5px 0 0 6px;
 }
 
 #mode, #bluetooth, #custom-vpn, #custom-mullvad, #cpu, #memory, #network, #pulseaudio, #idle_inhibitor, #backlight, #custom-storage, #custom-updates, #custom-weather, #custom-mail, #clock, #temperature {

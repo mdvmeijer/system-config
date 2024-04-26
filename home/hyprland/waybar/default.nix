@@ -117,7 +117,7 @@
           "return-type" = "json";
         };
         "custom/launcher" = {
-          "format" = "󰫢 ";
+          "format" = "   ";
           "on-click" = "pkill -9 rofi || rofi -show drun";
           "tooltip" = false;
         };
