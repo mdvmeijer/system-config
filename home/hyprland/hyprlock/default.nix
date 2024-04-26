@@ -11,22 +11,7 @@
     }
     
     background {
-        monitor = eDP-1
-        path = ${wallpaper-laptop}
-        color = rgba(25, 20, 20, 1.0)
-    
-        # all these options are taken from hyprland, see https://wiki.hyprland.org/Configuring/Variables/#blur for explanations
-        blur_passes = 1 # 0 disables blurring
-        blur_size = 7
-        noise = 0.0117
-        contrast = 0.8916
-        brightness = 0.8172
-        vibrancy = 0.1696
-        vibrancy_darkness = 0.0
-    }
-    
-    background {
-        monitor = DP-7
+        monitor =
         path = ${wallpaper-external}
         color = rgba(25, 20, 20, 1.0)
     
@@ -41,8 +26,8 @@
     }
 
     background {
-        monitor = HDMI-A-1
-        path = ${wallpaper-external}
+        monitor = eDP-1
+        path = ${wallpaper-laptop}
         color = rgba(25, 20, 20, 1.0)
     
         # all these options are taken from hyprland, see https://wiki.hyprland.org/Configuring/Variables/#blur for explanations
