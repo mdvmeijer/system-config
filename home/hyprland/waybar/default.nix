@@ -8,7 +8,7 @@
         "layer" = "top";
         "height" = 32;
         "spacing" = 4;  # Gaps between modules
-        "modules-left" = ["custom/launcher" "hyprland/workspaces"];
+        "modules-left" = ["custom/launcher" "hyprland/workspaces" "mpris"];
         "modules-center" = ["hyprland/window"];
         "modules-right" = ["pulseaudio" "backlight" "memory" "battery" "tray" "clock" "custom/powermenu"];
         "hyprland/window" = {
@@ -126,6 +126,37 @@
           "format" = "";
           "on-click" = "${pkgs.wlogout}/bin/wlogout -b 5 -c 0 -r 0 -T 400 -B 400";
           "tooltip" = false;
+        };
+        "mpris" = {
+          "format" = "{player_icon} {dynamic}";
+          "format-paused" = "{status_icon} <i>{dynamic}</i>";
+          "player-icons" = {
+            "default" = "▶";
+            "mpv" = "🎵";
+          };
+          "status-icons" = {
+            "paused" = "⏸";
+          };
+          "title-len" = 25;
+          "dynamic-len" = 45;
+          "dynamic-order" = [
+            "title"
+            "artist"
+            "position"
+            "length"
+          ];
+          "dynamic-importance-order" = [
+            "position"
+            "length"
+            "title"
+            "artist"
+          ];
+          "ignored-players" = [
+            "firefox"
+            "chromium"
+            "chrome"
+          ];
+          # "interval" = 1;
         };
       };
     };
