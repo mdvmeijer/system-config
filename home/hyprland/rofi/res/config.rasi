@@ -45,7 +45,7 @@ configuration {
     background:     #32302FFF;
     background-alt: #282828FF;
     foreground:     #EBDBB2FF;
-    selected:       #83A598FF;
+    selected:       #D6B889FF;
     active:         #B8BB26FF;
     urgent:         #FB4934FF;
 
@@ -92,7 +92,7 @@ window {
     margin:                      0px;
     padding:                     0px;
     border:                      2px solid;
-    border-radius:               15px;
+    border-radius:               10px;
     border-color:                @alternate-background;
     cursor:                      "default";
     /* Backgroud Colors */
@@ -114,7 +114,7 @@ mainbox {
     margin:                      0px;
     padding:                     5px;
     border:                      0px solid;
-    border-radius:               15px;
+    border-radius:               5px;
     border-color:                @border-colour;
     background-color:            transparent;
     children:                    [ "inputbar", "message", "listview" ];
@@ -127,7 +127,7 @@ inputbar {
     margin:                      5px 5px 0px 5px;
     padding:                     5px;
     border:                      0px solid;
-    border-radius:               10px;
+    border-radius:               5px;
     border-color:                @border-colour;
     background-color:            @alternate-background;
     text-color:                  @foreground-colour;
@@ -210,7 +210,7 @@ listview {
 scrollbar {
     handle-width:                5px ;
     handle-color:                @handle-colour;
-    border-radius:               10px;
+    border-radius:               5px;
     background-color:            @alternate-background;
 }
 
@@ -221,7 +221,7 @@ element {
     margin:                      0px;
     padding:                     8px 10px;
     border:                      0px solid;
-    border-radius:               10px;
+    border-radius:               5px;
     border-color:                @border-colour;
     background-color:            transparent;
     text-color:                  @foreground-colour;
@@ -242,7 +242,7 @@ element normal.active {
 element selected.normal {
     background-color:            var(selected-normal-background);
     text-color:                  var(selected-normal-foreground);
-    border-radius:               10px;
+    border-radius:               5px;
 }
 element selected.urgent {
     background-color:            var(selected-urgent-background);
@@ -295,7 +295,7 @@ mode-switcher{
 button {
     padding:                     5px 10px;
     border:                      0px solid;
-    border-radius:               10px;
+    border-radius:               5px;
     border-color:                @border-colour;
     background-color:            @alternate-background;
     text-color:                  inherit;
@@ -322,7 +322,7 @@ message {
 textbox {
     padding:                     8px 10px;
     border:                      0px solid;
-    border-radius:               10px;
+    border-radius:               5px;
     border-color:                @border-colour;
     background-color:            @alternate-background;
     text-color:                  @foreground-colour;
@@ -336,7 +336,7 @@ textbox {
 error-message {
     padding:                     10px;
     border:                      2px solid;
-    border-radius:               10px;
+    border-radius:               5px;
     border-color:                @border-colour;
     background-color:            @background-colour;
     text-color:                  @foreground-colour;
