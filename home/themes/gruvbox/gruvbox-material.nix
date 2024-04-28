@@ -13,7 +13,8 @@
 
   qt = {
     enable = true;
-    platformTheme = "gtk";
+    # TODO: Set dark theme
+    # platformTheme = "gtk";
   };
 
   gtk = {
