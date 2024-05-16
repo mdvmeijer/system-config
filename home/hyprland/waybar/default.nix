@@ -59,7 +59,7 @@
             "default" = ["" ""];
           };
           "scroll-step" = 5;
-          "on-click" = "audio-sink-switcher";
+          "on-click" = "pkill -9 rofi || audio-sink-switcher";
           "on-click-middle" = "swayosd-client --output-volume mute-toggle";
           "ignored-sinks" = ["Easy Effects Sink"];
         };
