@@ -69,6 +69,7 @@ in {
 
       extraConfig = {
         push.autoSetupRemote = true;
+        init.defaultBranch = "main";
       };
     };
 
@@ -136,6 +137,14 @@ in {
 
         "video/mp4" = "mpv.desktop";
         "video/x-matroska" = "mpv.desktop";
+      };
+    };
+
+    # Declaratively set QEMU connection for virt-manager
+    dconf.settings = {
+      "org/virt-manager/virt-manager/connections" = {
+        autoconnect = ["qemu:///system"];
+        uris = ["qemu:///system"];
       };
     };
   };
