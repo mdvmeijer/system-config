@@ -14,10 +14,6 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  boot.kernelParams = [
-    "mem_sleep_default=deep"
-  ];
-
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
   networking.hostName = "ayame";
@@ -36,17 +32,21 @@
         bind = $mainMod ALT, 1, movecurrentworkspacetomonitor, eDP-1
         bind = $mainMod ALT, 2, movecurrentworkspacetomonitor, HDMI-A-1
 
-        # # Home config for 3440x1440 monitor
-        # monitor=DP-2, 3440x1440@144, -800x-1440, 1.00
+        # Home config for 3440x1440 monitor
+        # monitor=DP-3, 3440x1440@144, -800x-1440, 1.00
         # workspace=1,monitor:eDP-1  # Bind workspace 1 to external monitor
-        # workspace=2,monitor:DP-2  # Bind workspace 2 to external monitor
+        # workspace=2,monitor:DP-3  # Bind workspace 2 to external monitor
         # # Yeet current workspace to primary or secondary monitor
         # bind = $mainMod ALT, 1, movecurrentworkspacetomonitor, eDP-1
-        # bind = $mainMod ALT, 2, movecurrentworkspacetomonitor, DP-2
+        # bind = $mainMod ALT, 2, movecurrentworkspacetomonitor, DP-3
 
         # Config for 1920x1080 monitor
         # monitor=eDP-1, 1920x1080, 0x0, 1.00
         # monitor=HDMI-A-1, 1920x1080, 0x-1080, 1.00
+
+        # Work config for 3840x2160 monitor
+        # monitor=eDP-1, 1920x1080, 0x0, 1.00
+        # monitor=HDMI-A-1, 3840x2160, -600x-1727, 1.25
       '';
     };
 
