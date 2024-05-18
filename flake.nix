@@ -11,9 +11,12 @@
     fw-ectool.url = "github:ssddq/fw-ectool";
     hyprland.url = "github:hyprwm/Hyprland/v0.39.1";
     nixos-hardware.url = "github:nixos/nixos-hardware/master";
+    nix-matlab = {
+      url = "gitlab:doronbehar/nix-matlab";
+    };
   };
 
-  outputs = inputs@{ self, nixpkgs, home-manager, fw-ectool, hyprland, nixos-hardware }:
+  outputs = inputs@{ self, nixpkgs, home-manager, fw-ectool, hyprland, nixos-hardware, nix-matlab }:
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs {
@@ -26,6 +29,7 @@
         };
         overlays = [ 
           overlay-fw-ectool
+          nix-matlab.overlay
         ];
       };
 

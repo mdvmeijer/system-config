@@ -159,6 +159,7 @@ in
     cifs-utils
     nix-index
     protonmail-desktop
+    matlab
   ];
 
   security.polkit.enable = true;
