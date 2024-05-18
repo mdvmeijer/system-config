@@ -11,6 +11,7 @@
     ];
 
   hardware.framework.amd-7040.preventWakeOnAC = true;
+  services.logind.lidSwitch = "ignore"; # Make sure logind does not interfere with hyprland lid handler
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -19,20 +20,28 @@
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
   boot.initrd.luks.devices."luks-2003e3bf-9a37-416f-8417-f0fe2b246fea".device = "/dev/disk/by-uuid/2003e3bf-9a37-416f-8417-f0fe2b246fea";
-  networking.hostName = "zenith"; # Define your hostname.
+  networking.hostName = "zenith";
   hardware.bluetooth.enable = true;
 
   home-manager.users.meeri.meeriModules.hyprland = {
     monitorConfig = ''
       monitor=eDP-1, 2256x1504, 0x0, 1.333333
 
-      # Home config for 3440x1440 monitor
+      # Home config for 3440x1440@144 monitor
       monitor=DP-7, 3440x1440@144, -900x-1440, 1.00
       workspace=1,monitor:eDP-1  # Bind workspace 1 to external monitor
       workspace=2,monitor:DP-7  # Bind workspace 2 to external monitor
       # Yeet current workspace to primary or secondary monitor
       bind = $mainMod ALT, 1, movecurrentworkspacetomonitor, eDP-1
       bind = $mainMod ALT, 2, movecurrentworkspacetomonitor, DP-7
+
+      # Home config for 3840x2160@60 monitor
+      # monitor=DP-2, 3840x2160@60, 0x-1080, 2.00
+      # workspace=1,monitor:eDP-1  # Bind workspace 1 to external monitor
+      # workspace=2,monitor:DP-2  # Bind workspace 2 to external monitor
+      # # Yeet current workspace to primary or secondary monitor
+      # bind = $mainMod ALT, 1, movecurrentworkspacetomonitor, eDP-1
+      # bind = $mainMod ALT, 2, movecurrentworkspacetomonitor, DP-2
     '';
   };
 

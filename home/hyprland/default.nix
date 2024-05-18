@@ -36,6 +36,7 @@ in
       xorg.xlsclients  # To test for XWayland apps
 
       networkmanagerapplet
+      hyprlock
     ];
 
     home.sessionVariables = {
@@ -58,8 +59,10 @@ in
     wayland.windowManager.hyprland = {
       enable = true;
       # package = null;  # Use system-wide package instead
-  
-      extraConfig = ''
+
+      extraConfig = let
+          lid_handler = ./scripts/lid_handler.sh;
+      in ''
         # See https://wiki.hyprland.org/Configuring/Keywords/ for more
         $mainMod = SUPER
         
@@ -211,8 +214,9 @@ in
         $lockAndSuspendCmd = $screenLockCmd & sleep 1; $suspendCmd &
         
         # On lid close, lock screen and suspend
-        # bindl = , switch:on:Lid Switch, exec, $lockAndSuspendCmd
-  
+        # TODO: Adapt to multiple hosts
+        bindl=,switch:Lid Switch, exec, ${lid_handler}
+
         # Keybind to lock screen
         bind = $mainMod ALT, L, exec, $screenLockCmd
 
