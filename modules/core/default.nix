@@ -71,6 +71,7 @@ in
     unzip
     powertop
     easyeffects  # Fix FW speakers
+    sshfs
 
     firefox
     tor-browser-bundle-bin
@@ -81,7 +82,6 @@ in
     lm_sensors
     spotify
     smartmontools  # Get SMART data
-    obsidian
     nicotine-plus
     gimp
     zola
@@ -167,6 +167,8 @@ in
   services.udisks2.enable = true;
   programs.adb.enable = true;
   services.fwupd.enable = true;
+  
+  services.upower.enable = true;
 
   services.locate = {
     enable = true;
