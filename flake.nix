@@ -9,7 +9,14 @@
     };
 
     fw-ectool.url = "github:ssddq/fw-ectool";
-    hyprland.url = "github:hyprwm/Hyprland/v0.39.1";
+    # hyprland.url = "github:hyprwm/Hyprland/v0.39.0";
+    hyprland = {
+      type = "git";
+      url = "https://github.com/hyprwm/Hyprland";
+      rev = "9e781040d9067c2711ec2e9f5b47b76ef70762b3";
+      # rev = "ea2501d4556f84d3de86a4ae2f4b22a474555b9f";
+      submodules = true;
+    };
     nixos-hardware.url = "github:nixos/nixos-hardware/master";
     nix-matlab = {
       url = "gitlab:doronbehar/nix-matlab";
