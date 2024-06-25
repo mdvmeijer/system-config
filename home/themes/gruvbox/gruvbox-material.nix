@@ -5,7 +5,7 @@
   # TODO: set gruvbox-material theme for dunst
 
   home.pointerCursor = {
-    name = "Catppuccin-Macchiato-Rosewater-Cursors";
+    name = "catppuccin-macchiato-rosewater-cursors";
     package = pkgs.catppuccin-cursors.macchiatoRosewater;
     size = 24;
     gtk.enable = true;
@@ -21,13 +21,14 @@
     enable = true;
     # For GTK2/3
     theme = {
-      name = "Gruvbox-Dark-BL";
-      package = pkgs.gruvbox-gtk-theme;
-      # name = "Adwaita-dark";
+      # name = "Gruvbox-Dark-BL-LB";
+      # package = pkgs.gruvbox-gtk-theme;
+      name = "Adwaita-dark";
     };
   };
   # For GTK4
-  home.sessionVariables.GTK_THEME = "Gruvbox-Dark-BL";
+  # home.sessionVariables.GTK_THEME = "Gruvbox-Dark-BL-LB";
+  home.sessionVariables.GTK_THEME = "Adwaita-dark";
 
   programs.alacritty.settings.import = [
     ../../core/alacritty/dotfiles/gruvbox/gruvbox_material.toml
