@@ -114,10 +114,9 @@
     VDPAU_DRIVER = lib.mkIf config.hardware.opengl.enable (lib.mkDefault "va_gl");
   };
 
-  hardware.opengl = {
+  hardware.graphics = {
     enable = true;
-    driSupport = true;
-    driSupport32Bit = true;
+    enable32Bit = true;
     # Setting the LD_LIBRARY_PATH globally like this in NixOS can cause problems, e.g. with nodejs
     # setLdLibraryPath = true;
     extraPackages = with pkgs; [

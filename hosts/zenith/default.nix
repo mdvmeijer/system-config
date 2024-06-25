@@ -29,11 +29,12 @@
 
       # Home config for 3440x1440@144 monitor
       monitor=DP-7, 3440x1440@144, -900x-1440, 1.00
+      monitor=DP-8, 3440x1440@144, -900x-1440, 1.00
       workspace=1,monitor:eDP-1  # Bind workspace 1 to external monitor
-      workspace=2,monitor:DP-7  # Bind workspace 2 to external monitor
+      workspace=2,monitor:DP-8  # Bind workspace 2 to external monitor
       # Yeet current workspace to primary or secondary monitor
       bind = $mainMod ALT, 1, movecurrentworkspacetomonitor, eDP-1
-      bind = $mainMod ALT, 2, movecurrentworkspacetomonitor, DP-7
+      bind = $mainMod ALT, 2, movecurrentworkspacetomonitor, DP-8
 
       # Home config for 3840x2160@60 monitor
       # monitor=DP-2, 3840x2160@60, 0x-1080, 2.00
@@ -45,10 +46,9 @@
     '';
   };
 
-  hardware.opengl = {
+  hardware.graphics = {
     enable = true;
-    driSupport = true;
-    driSupport32Bit = true;
+    enable32Bit = true;
   };
 
   networking.networkmanager.enable = true;
