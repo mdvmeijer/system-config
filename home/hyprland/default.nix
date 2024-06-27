@@ -173,8 +173,11 @@ in
             groupbar {
                 font_family = Jetbrains Mono
                 font_size = 10
-                render_titles = true
+                render_titles = false
                 gradients = false
+
+                col.active = rgba(F9F5D788)
+                col.inactive = rgba(000000aa)
             }
         }
   
@@ -339,7 +342,7 @@ in
         
         # Example binds, see https://wiki.hyprland.org/Configuring/Binds/ for more
         bind = $mainMod, C, killactive, 
-        bind = $mainMod CTRL, M, exit,
+        bind = $mainMod SHIFT CTRL, M, exit,
   
         # For use with emacs daemon
         # bind = $mainMod, Space, exec, emacsclient --create-frame
