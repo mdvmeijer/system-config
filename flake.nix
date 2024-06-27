@@ -10,20 +10,19 @@
 
     fw-ectool.url = "github:ssddq/fw-ectool";
     # hyprland.url = "github:hyprwm/Hyprland/v0.39.0";
-    hyprland = {
-      type = "git";
-      url = "https://github.com/hyprwm/Hyprland";
-      rev = "9e781040d9067c2711ec2e9f5b47b76ef70762b3";
-      # rev = "ea2501d4556f84d3de86a4ae2f4b22a474555b9f";
-      submodules = true;
-    };
+    # hyprland = {
+    #   type = "git";
+    #   url = "https://github.com/hyprwm/Hyprland";
+    #   rev = "4f7113972e9803a41329125e5e8f77fe5281fb22";
+    #   submodules = true;
+    # };
     nixos-hardware.url = "github:nixos/nixos-hardware/master";
     nix-matlab = {
       url = "gitlab:doronbehar/nix-matlab";
     };
   };
 
-  outputs = inputs@{ self, nixpkgs, home-manager, fw-ectool, hyprland, nixos-hardware, nix-matlab }:
+  outputs = inputs@{ self, nixpkgs, home-manager, fw-ectool, nixos-hardware, nix-matlab }:
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs {
@@ -74,7 +73,6 @@
             nixos-hardware.nixosModules.lenovo-thinkpad-t14s
 
             ./modules/core
-            inputs.hyprland.nixosModules.default
             ./modules/hyprland
             ./modules/gaming
 
@@ -86,7 +84,6 @@
                 home.stateVersion = "23.05";
                 imports = [
                   ./home/core
-                  inputs.hyprland.homeManagerModules.default
                   ./home/hyprland
                   ./home/work.nix
                 ];
@@ -102,7 +99,6 @@
             nixos-hardware.nixosModules.framework-13-7040-amd
 
             ./modules/core
-            inputs.hyprland.nixosModules.default
             ./modules/hyprland
             ./modules/gaming
             ./modules/ledgerlive.nix
@@ -117,7 +113,6 @@
                 home.stateVersion = "23.11";
                 imports = [
                   ./home/core
-                  inputs.hyprland.homeManagerModules.default
                   ./home/hyprland
                   ./home/gaming.nix
                   ./home/work.nix

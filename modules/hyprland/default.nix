@@ -6,8 +6,6 @@
       ./swaylock.nix
     ];
 
-  # Module from inputs.hyprland substitutes nixpkgs `programs.hyprland` with its own,
-  # allowing for pulling the latest changes once they are available.
   # Besides installing the Hyprland package, this module sets some system-wide configuration
   # (e.g. polkit, xdg-desktop-portal-hyprland)
   programs.hyprland.enable = true;
