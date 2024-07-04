@@ -201,11 +201,6 @@ in
             special_scale_factor = 0.9
         }
         
-        master {
-            # See https://wiki.hyprland.org/Configuring/Master-Layout/ for more
-            new_is_master = true
-        }
-        
         gestures {
             # See https://wiki.hyprland.org/Configuring/Variables/ for more
             workspace_swipe = true
