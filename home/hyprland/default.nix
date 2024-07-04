@@ -15,6 +15,7 @@ in
       ./hyprlock
       ./vimiv
       ./wlogout
+      ./swappy.nix
 
       # ../themes/catppuccin/macchiato-rosewater.nix
       ../themes/gruvbox/gruvbox-material.nix
@@ -52,8 +53,6 @@ in
   
       # TODO: Change back when support is better. Right now some applications (e.g. vscode) misbehave in Wayland mode
       # NIXOS_OZONE_WL = "1";
-
-      GRIM_DEFAULT_DIR = "$HOME/80-tmp/02-screenshots";
     };
   
     wayland.windowManager.hyprland = {

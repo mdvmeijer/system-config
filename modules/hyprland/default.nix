@@ -36,7 +36,6 @@
     # Screenshot tools
     grim
     slurp
-    swappy
 
     dolphin
     gnome.nautilus
