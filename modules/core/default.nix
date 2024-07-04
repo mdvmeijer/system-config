@@ -11,7 +11,6 @@ in
       ./vim.nix
       ./python.nix
       ./vscode.nix
-      ./mullvad-vpn.nix
       ./virtualization.nix
       ./tailscale.nix
     ];
