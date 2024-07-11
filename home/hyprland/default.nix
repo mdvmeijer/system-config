@@ -13,7 +13,7 @@ in
       ./dunst.nix
       ./hyprpaper
       ./hyprlock
-      ./vimiv
+      # ./vimiv
       ./wlogout
       ./swappy.nix
 

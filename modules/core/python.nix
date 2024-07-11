@@ -6,6 +6,7 @@
       myPythonPackages = pythonPackages: with pythonPackages; [
         watchdog
         cbor2
+        numpy
       ];
     in [
       (python3.withPackages myPythonPackages)

@@ -45,7 +45,6 @@
         # monitor=HDMI-A-1, 1920x1080, 0x-1080, 1.00
 
         # Work config for 3840x2160 monitor
-        # monitor=eDP-1, 1920x1080, 0x0, 1.00
         # monitor=HDMI-A-1, 3840x2160, -600x-1727, 1.25
       '';
     };

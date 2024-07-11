@@ -108,7 +108,7 @@ in
 
     tldr
     libnotify
-    youtube-dl
+    yt-dlp
     signal-desktop
     mpv
     neofetch

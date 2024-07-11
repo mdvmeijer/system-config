@@ -3,6 +3,7 @@
 {
   home.packages = with pkgs; [
     android-studio
+    # androidStudioPackages.canary
     slack
     drawio
   ];
