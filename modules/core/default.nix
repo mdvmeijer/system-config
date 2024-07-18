@@ -143,6 +143,7 @@ in
     nmap
 
     rpi-imager
+    exfat
 
     simple-mtpfs  # To transfer files to/from Android phone
     graphviz  # To generate org-roam graphs
@@ -168,6 +169,8 @@ in
   services.fwupd.enable = true;
   
   services.upower.enable = true;
+
+  boot.supportedFilesystems = [ "ntfs" ];
 
   services.locate = {
     enable = true;

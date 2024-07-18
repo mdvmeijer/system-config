@@ -114,7 +114,6 @@ in
   boot.initrd.luks.devices."luks-dffaa50a-c064-4595-b099-ee9812816276".device = "/dev/disk/by-uuid/dffaa50a-c064-4595-b099-ee9812816276";
   boot.initrd.luks.devices."luks-dffaa50a-c064-4595-b099-ee9812816276".keyFile = "/crypto_keyfile.bin";
 
-  boot.supportedFilesystems = [ "ntfs" ];
   hardware.bluetooth.enable = true;
 
   # Enable sound with pipewire.
