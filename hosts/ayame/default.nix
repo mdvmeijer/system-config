@@ -18,6 +18,7 @@
 
   networking.hostName = "ayame";
   hardware.bluetooth.enable = true;
+  programs.ssh.startAgent = true;
 
   home-manager.users.meeri = {
     meeriModules.hyprland = {
@@ -96,8 +97,6 @@
       in ["${automount_opts},credentials=/etc/nixos/smb-secrets"];
   };
 
-  # Enable sound with pipewire.
-  sound.enable = true;
   hardware.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
@@ -110,7 +109,7 @@
   boot.initrd.kernelModules = [ "i915" ];
 
   environment.variables = {
-    VDPAU_DRIVER = lib.mkIf config.hardware.opengl.enable (lib.mkDefault "va_gl");
+    VDPAU_DRIVER = lib.mkIf config.hardware.graphics.enable (lib.mkDefault "va_gl");
   };
 
   hardware.graphics = {

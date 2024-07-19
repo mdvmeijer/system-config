@@ -38,10 +38,10 @@
     slurp
 
     dolphin
-    gnome.nautilus
+    nautilus
     nautilus-open-any-terminal
     papirus-icon-theme
-    gnome.gnome-themes-extra
+    gnome-themes-extra
   ];
 
   nix.settings = {
