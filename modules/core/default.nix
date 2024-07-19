@@ -149,6 +149,7 @@ in
     graphviz  # To generate org-roam graphs
     psmisc  # For fuser command
     nodePackages.pnpm
+    bun
     rustup
     lsof
 
@@ -160,6 +161,7 @@ in
     nix-index
     protonmail-desktop
     matlab
+    wayvnc
   ];
 
   security.polkit.enable = true;

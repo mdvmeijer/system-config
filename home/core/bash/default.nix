@@ -121,6 +121,7 @@
       cp = "cp -i";  # Ask before overwriting existing file
       free = "free -m";  # Show in MB
       grep = "grep --color=auto";  # Highlight matching phrase
+      rsync = "rsync -zaPv";
       
       # Replace basic commands with new & shiny versions
       cat = "bat";
