@@ -69,7 +69,6 @@ in
     zip
     unzip
     powertop
-    easyeffects  # Fix FW speakers
     sshfs
 
     firefox
@@ -160,7 +159,6 @@ in
     cifs-utils
     nix-index
     protonmail-desktop
-    matlab
     wayvnc
   ];
 

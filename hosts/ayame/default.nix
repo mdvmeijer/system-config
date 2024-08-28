@@ -49,11 +49,6 @@
         # monitor=HDMI-A-1, 3840x2160, -600x-1727, 1.25
       '';
     };
-
-    services.easyeffects = {
-      enable = true;
-      preset = "Advanced Auto Gain";
-    };
   };
 
   home-manager.users.meeri.meeriModules.mimeApps = {

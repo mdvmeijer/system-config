@@ -2,7 +2,7 @@
 
 {
   home.file.".config/hypr/hyprlock.conf".text = let
-    wallpaper-laptop = ../hyprpaper/wallpapers/anime_skull.png;
+    wallpaper-laptop = ../hyprpaper/wallpapers/louis-picard-perfect-blue-poster-no-text.jpg;
     wallpaper-external = ../hyprpaper/wallpapers/sif.png;
   in
   ''

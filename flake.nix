@@ -17,12 +17,9 @@
     #   submodules = true;
     # };
     nixos-hardware.url = "github:nixos/nixos-hardware/master";
-    nix-matlab = {
-      url = "gitlab:doronbehar/nix-matlab";
-    };
   };
 
-  outputs = inputs@{ self, nixpkgs, home-manager, fw-ectool, nixos-hardware, nix-matlab }:
+  outputs = inputs@{ self, nixpkgs, home-manager, fw-ectool, nixos-hardware }:
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs {
@@ -35,7 +32,6 @@
         };
         overlays = [ 
           overlay-fw-ectool
-          nix-matlab.overlay
         ];
       };
 
@@ -75,6 +71,7 @@
             ./modules/core
             ./modules/hyprland
             ./modules/gaming
+            ./modules/gnuradio.nix
 
             home-manager.nixosModules.home-manager {
               home-manager.useGlobalPkgs = true;
