@@ -105,6 +105,7 @@
             home-manager.nixosModules.home-manager {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
+              home-manager.backupFileExtension = "bak";
 
               home-manager.users.meeri = {
                 home.stateVersion = "23.11";

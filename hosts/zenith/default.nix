@@ -17,7 +17,7 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot.kernelPackages = pkgs.linuxPackages_6_9;
 
   boot.initrd.luks.devices."luks-2003e3bf-9a37-416f-8417-f0fe2b246fea".device = "/dev/disk/by-uuid/2003e3bf-9a37-416f-8417-f0fe2b246fea";
   networking.hostName = "zenith";

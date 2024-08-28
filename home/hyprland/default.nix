@@ -52,7 +52,7 @@ in
       XDG_SESSION_DESKTOP = "Hyprland";
   
       # TODO: Change back when support is better. Right now some applications (e.g. vscode) misbehave in Wayland mode
-      # NIXOS_OZONE_WL = "1";
+      NIXOS_OZONE_WL = "1";
     };
   
     wayland.windowManager.hyprland = {
@@ -99,6 +99,11 @@ in
         # Prevent Steam menus from disappearing after mouse movement
         windowrulev2 = stayfocused,title:^()$,class:^(steam)$
   
+        # Open GNU Radio plots floating and in a fixed location
+        windowrule = float,title:^(BPSK_Rx)$
+        windowrule = move 10 42,title:^(BPSK_Rx)$
+        windowrule = size 788 673,title:^(BPSK_Rx)$
+
         # For cliphist
         exec-once = wl-paste --type text --watch cliphist store #Stores only text data
         exec-once = wl-paste --type image --watch cliphist store #Stores only image data
